@@ -8,6 +8,8 @@ use Bouncer;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\changeUserValidator;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class EditProfileController extends Controller
 {
@@ -41,6 +43,21 @@ class EditProfileController extends Controller
         $user->name  = auth()->user()->name;
         $user->email = $input->email;
         $user->gsm   = $input->gsm;
+
+        $info    = User::find(auth()->user()->id);
+        $imgPath = public_path('assets/img/profile/'. $info->image);
+
+        if (Input::file()) {
+
+            $image = Input::file('image');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+            $path = public_path('assets/img/profile/' . $filename);
+
+
+            Image::make($image->getRealPath())->resize(160, 160)->save($path);
+            $user->image = $filename;
+        }
 
         if (isset($input->password)) {
             $user->password = bcrypt($input->password);

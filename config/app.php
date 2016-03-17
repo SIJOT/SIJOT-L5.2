@@ -160,6 +160,7 @@ return [
          * Added providers
          */
         Silber\Bouncer\BouncerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -211,6 +212,7 @@ return [
          * Added facades
          */
         'Bouncer' => Silber\Bouncer\BouncerFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

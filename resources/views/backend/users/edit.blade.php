@@ -39,7 +39,7 @@
                         </div>
                     @endif
 
-                    <form action="{!! route('profile.edit.insert') !!}" method="POST">
+                    <form action="{!! route('profile.edit.insert') !!}" method="POST" enctype="multipart/form-data">
                        {{-- CSRF field --}}
                        {{ csrf_field() }}
 
@@ -108,6 +108,11 @@
                                        </div>
                                        <input type="text" name="password_confirmation" value="" placeholder="wachtwoord bevestiging" class="form-control">
                                    </div>
+                               </div>
+
+                               <div class="form-group">
+                                   <label for="profileImg">Profiel foto:</label>
+                                   <input type="file" name="image" id="profileImg">
                                </div>
                            </div>
 
