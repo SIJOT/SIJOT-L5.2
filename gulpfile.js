@@ -27,5 +27,6 @@ var jsFiles = [
 
 
 elixir(function(mix) {
-    mix.scripts(jsFiles, 'public/js/bootstrap.js');
+    mix.scripts(jsFiles, 'public/js/bootstrap.js')
+        .less(['bootstrap-theme.less', 'bootstrap.less']);;
 });
