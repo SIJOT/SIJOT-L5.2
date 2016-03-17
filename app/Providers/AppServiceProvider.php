@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Bouncer;
 use App\Rental;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +15,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Role seed.
+        Bouncer::seeder(function () {
+            Bouncer::allow('active')
+                ->to('');
+
+            Bouncer::allow('blocked')
+                ->to('');
+
+            Bouncer::allow('admin')
+                ->to('');
+        });
+
         // Rental global variables
         view()->share('rentalCount', Rental::all()->count());
         view()->share('rentalOption', Rental::where('Status', 1)->count());
