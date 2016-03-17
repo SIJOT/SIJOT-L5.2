@@ -4,8 +4,7 @@ html > body {
   /* Margin bottom by footer height */
   position: relative;
   min-height: 100vh;
-  padding-bottom: 178px;
-}
+  padding-bottom: 178px; }
 
 .footer {
   position: absolute;
@@ -17,110 +16,95 @@ html > body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: auto;
-  background-color: #222;
-}
+  background-color: #222; }
 
 .fa-btn {
-  margin-right: 7px;
-}
+  margin-right: 7px; }
 
 .fa-btn-contact {
-  margin-right: 5px;
-}
+  margin-right: 5px; }
 
 .footer-heading {
-  color: #fff;
-}
+  color: #fff; }
 
 ul.list-unstyled > li > a {
   color: #9D9D9D;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 ul.list-unstyled > li > a:hover {
-  color: #fff;
-}
+  color: #fff; }
 
 span.devider {
-  color: #9D9D9D;
-}
+  color: #9D9D9D; }
 
 .margin-fix {
-  margin-top: -10px;
-}
+  margin-top: -10px; }
 
 /*hyperlinks footer */
 a.hyperlink-footer {
   color: #9D9D9D;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 a.hyperlink-footer:hover {
-  color: #fff;
-}
-/* end hyperlinks footer*/
+  color: #fff; }
 
+/* end hyperlinks footer*/
 /* Divider footer */
 .footer-divider {
-  color: #9D9D9D;
-}
+  color: #9D9D9D; }
+
 /* end divider footer */
-
 .info-text-footer {
-  color: #9D9D9D;;
-}
-
-
+  color: #9D9D9D; }
 
 .background {
   /* padding-top:75px; */
-  background: #bdd732 url('../img/background.png') no-repeat fixed center 110px;
-}
+  background: #bdd732 url("../img/background.png") no-repeat fixed center 110px; }
+
 .font-heading {
   font-family: Allan, helvetica, arial, sans-serif;
-  font-size: 22px;
-}
+  font-size: 22px; }
+
 .font-title {
   font-family: Allan, helvetica, arial, sans-serif;
-  font-size: 18px;
-}
+  font-size: 18px; }
+
 .border {
-  border: 1.2px solid #aac12b;
-}
+  border: 1.2px solid #aac12b; }
+
 .Icon-color,
 .Title-color {
-  color: #bdd732;
-}
+  color: #bdd732; }
+
 .color-white {
   background-color: #ffffff;
   padding: 6px;
   border: 1.2px solid #dddddd;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-}
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
+
 .color-kapoenen {
-  background-color: #ffff00;
-}
+  background-color: #ffff00; }
+
 .color-welpen {
-  background-color: #228b22;
-}
+  background-color: #228b22; }
+
 .color-jonggivers {
-  background-color: #f5821f;
-}
+  background-color: #f5821f; }
+
 .color-givers {
-  background-color: #256f91;
-}
+  background-color: #256f91; }
+
 .color-jins {
-  background-color: #ed1c23;
-}
+  background-color: #ed1c23; }
+
 .color-leiding {
-  background-color: #663399;
-}
+  background-color: #663399; }
+
 .thumbnail {
   position: relative;
-  overflow: hidden;
-}
+  overflow: hidden; }
+
 .caption {
   position: absolute;
   top: -100%;
@@ -132,25 +116,17 @@ a.hyperlink-footer:hover {
   text-align: center;
   color: #ffffff !important;
   z-index: 2;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
+  transition: all 0.5s ease-in-out; }
+
 .thumbnail:hover .caption {
-  top: 0%;
-}
+  top: 0%; }
+
 @font-face {
   font-family: 'Scouts-en-Gidsen-Vlaanderen';
-  src:url('../fonts/Scouts-en-Gidsen-Vlaanderen.eot?96su6b');
-  src:url('../fonts/Scouts-en-Gidsen-Vlaanderen.eot?#iefix96su6b') format('embedded-opentype'),
-  url('../fonts/Scouts-en-Gidsen-Vlaanderen.woff?96su6b') format('woff'),
-  url('../fonts/Scouts-en-Gidsen-Vlaanderen.ttf?96su6b') format('truetype'),
-  url('../fonts/Scouts-en-Gidsen-Vlaanderen.svg?96su6b#Scouts-en-Gidsen-Vlaanderen') format('svg');
+  src: url("../fonts/Scouts-en-Gidsen-Vlaanderen.eot?96su6b");
+  src: url("../fonts/Scouts-en-Gidsen-Vlaanderen.eot?#iefix96su6b") format("embedded-opentype"), url("../fonts/Scouts-en-Gidsen-Vlaanderen.woff?96su6b") format("woff"), url("../fonts/Scouts-en-Gidsen-Vlaanderen.ttf?96su6b") format("truetype"), url("../fonts/Scouts-en-Gidsen-Vlaanderen.svg?96su6b#Scouts-en-Gidsen-Vlaanderen") format("svg");
   font-weight: normal;
-  font-style: normal;
-}
+  font-style: normal; }
 
 .scouts {
   font-family: 'Scouts-en-Gidsen-Vlaanderen';
@@ -160,130 +136,119 @@ a.hyperlink-footer:hover {
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  -moz-osx-font-smoothing: grayscale; }
 
 /* Internationaal */
 .scouts-int-scouts:before {
-  content: "\53";
-}
+  content: "\53"; }
+
 .scouts-int-scouts-color:before {
   content: "\53";
-  color: #5f1d7f;
-}
+  color: #5f1d7f; }
+
 .scouts-int-scouts-full:before {
-  content: "\46";
-}
+  content: "\46"; }
+
 .scouts-int-scouts-full-color:before {
   content: "\46";
-  color: #5f1d7f;
-}
+  color: #5f1d7f; }
+
 .scouts-int-gidsen:before {
-  content: "\47";
-}
+  content: "\47"; }
+
 .scouts-int-gidsen-color:before {
   content: "\47";
-  color: #0063a7;
-}
-
+  color: #0063a7; }
 
 /* Scouts en Gidsen Vlaanderen */
 .scouts-scoutsgidsenvl:before {
-  content: "\56";
-}
+  content: "\56"; }
+
 .scouts-scoutsgidsenvl-color:before {
   content: "\56";
-  color: #758e3a;
-}
+  color: #758e3a; }
+
 .scouts-zeescouting:before {
-  content: "\5a";
-}
+  content: "\5a"; }
+
 .scouts-zeescouting-color:before {
   content: "\5a";
-  color: #004878;
-}
-
-
+  color: #004878; }
 
 /* Groepen */
 .scouts-kapoenen-zeehondjes:before {
-  content: "\4f";
-}
+  content: "\4f"; }
+
 .scouts-kapoenen-zeehondjes-color:before {
   width: 75px;
   height: 75px;
   content: "\4f";
-  color: #dcef07;
-}
+  color: #dcef07; }
+
 .scouts-zee-kabouters-welpen:before {
-  content: "\4b";
-}
+  content: "\4b"; }
+
 .scouts-zee-kabouters-welpen-color:before {
   content: "\4b";
-  color: #298e40;
-}
+  color: #298e40; }
+
 .scouts-jonggidsen-jongverkenners-scheepsmakkers:before {
-  content: "\4a";
-}
+  content: "\4a"; }
+
 .scouts-jonggidsen-jongverkenners-scheepsmakkers-color:before {
   content: "\4a";
-  color: #fb8b05;
-}
+  color: #fb8b05; }
+
 .scouts-zee-gidsen-verkenners:before {
-  content: "\54";
-}
+  content: "\54"; }
+
 .scouts-zee-gidsen-verkenners-color:before {
   content: "\54";
-  color: #0d29d3;
-}
+  color: #0d29d3; }
+
 .scouts-jins-loodsen:before {
-  content: "\49";
-}
+  content: "\49"; }
+
 .scouts-jins-loodsen-color:before {
   content: "\49";
-  color: #b1031c;
-}
+  color: #b1031c; }
+
 .scouts-akabe:before {
-  content: "\45";
-}
+  content: "\45"; }
+
 .scouts-akabe-color:before {
   content: "\45";
-  color: #bb4599;
-}
+  color: #bb4599; }
+
 .scouts-leiding:before {
-  content: "\4c";
-}
+  content: "\4c"; }
+
 .scouts-leiding-color:before {
   content: "\4c";
-  color: #730ccd;
-}
-
-
+  color: #730ccd; }
 
 /* Hopper */
 .scouts-hopper-wnkl:before {
-  content: "\48";
-}
+  content: "\48"; }
+
 .scouts-hopper-wnkl-color:before {
   content: "\48";
-  color: #b6121b;
-}
+  color: #b6121b; }
 
 .scouts-hopper-jgd:before {
-  content: "\42";
-}
+  content: "\42"; }
+
 .scouts-hopper-jgd-color:before {
   content: "\42";
-  color: #727b34;
-}
+  color: #727b34; }
+
 .scouts-hopper:before {
-  content: "\52";
-}
+  content: "\52"; }
+
 .scouts-hopper-color:before {
   content: "\52";
-  color: #000000;
-}
+  color: #000000; }
 
+/*# sourceMappingURL=frontend.css.map */

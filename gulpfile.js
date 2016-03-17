@@ -28,5 +28,6 @@ var jsFiles = [
 
 elixir(function(mix) {
     mix.scripts(jsFiles, 'public/js/bootstrap.js')
-        .less(['bootstrap-theme.less', 'bootstrap.less']);;
+        .less(['bootstrap-theme.less', 'bootstrap.less'])
+        .sass('frontend.scss');
 });
