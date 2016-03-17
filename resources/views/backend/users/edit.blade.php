@@ -93,7 +93,7 @@
 
                                    <div class="input-group">
                                        <div class="input-group-addon">
-                                           <i class="fa fa-envelope"></i>
+                                           <i class="fa fa-asterisk"></i>
                                        </div>
                                        <input type="password" name="password" value="" placeholder="wachtwoord" class="form-control">
                                    </div>
@@ -104,7 +104,7 @@
 
                                    <div class="input-group">
                                        <div class="input-group-addon">
-                                           <i class="fa fa-envelope"></i>
+                                           <i class="fa fa-asterisk"></i>
                                        </div>
                                        <input type="text" name="password_confirmation" value="" placeholder="wachtwoord bevestiging" class="form-control">
                                    </div>
