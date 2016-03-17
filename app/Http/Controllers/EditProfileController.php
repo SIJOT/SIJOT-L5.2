@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use Bouncer;
-use App\Abilities;
-use App\Http\Requests\changeUserValidator;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests\changeUserValidator;
 
 class EditProfileController extends Controller
 {
@@ -28,7 +25,7 @@ class EditProfileController extends Controller
     {
         $data['user']      = User::find(auth()->user()->id);
         $data['roles']     = Role::all();
-        $data['abilities'] = Abilities::all();
+
         return view('backend.users.edit', $data);
     }
 
