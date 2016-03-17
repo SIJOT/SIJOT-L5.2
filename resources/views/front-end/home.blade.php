@@ -100,7 +100,7 @@
         </div><!--/.navbar-collapse -->
     </div>
 </div>
-<img style="margin-bottom: 60px; width: 100%; height: 400px;" src="/assets/files/front.jpg">
+<img style="margin-bottom: 60px; width: 100%; height: 400px;" src="/assets/img/front.jpg">
 
 <div class="container marketing">
     <div class="row">

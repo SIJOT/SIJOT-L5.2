@@ -47,7 +47,7 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="user user-menu">
                         <a href="#">
-                            <img src="@if(isset(Auth::user()->image)) {!! '/assets/img/profile/' . Auth::user()->image !!} @else http://placehold.it/160x160 @endif" class="user-image" alt="User Image">
+                            <img src="@if(! empty(Auth::user()->image)) {!! '/assets/img/profile/' . Auth::user()->image !!} @else http://placehold.it/160x160 @endif" class="user-image" alt="User Image">
                             <span class="hidden-xs"> {{ Auth::user()->name }} </span>
                         </a>
                     </li>
@@ -65,7 +65,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="@if(isset(Auth::user()->image)) {!! '/assets/img/profile/' . Auth::user()->image !!} @else http://placehold.it/160x160 @endif" class="img-circle" alt="User Image">
+                    <img src="@if(! empty(Auth::user()->image)) {!! '/assets/img/profile/' . Auth::user()->image !!} @else http://placehold.it/160x160 @endif" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>{{ Auth::user()->name  }}</p>
@@ -77,7 +77,7 @@
                 <li class="header">NAVIGATIE</li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-files-o"></i>
+                        <i class="fa fa-home"></i>
                         <span>Verhuur</span>
                         <span class="label label-danger pull-right">{{ $rentalCount }}</span>
                     </a>
@@ -119,6 +119,11 @@
                 </li>
                 <li>
                     <a href=""> <i class="fa fa-cloud"></i> <span>De cloud</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('backend.groups.view') }}">
+                        <i class="fa fa-leaf"></i> <span>Takken</span>
+                    </a>
                 </li>
                 <li>
                     <a href="{!! route('profile.edit.view') !!}"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>

@@ -40,6 +40,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('permission/{id}', 'editProfileController@editGroups')->name('profile.edit.perms');
     });
 
+    Route::group(['prefix' => 'backend/groups'], function () {
+        Route::get('view', 'takkenBackendController@view')->name('backend.groups.view');
+    });
+
     Route::group(['prefix' => 'backend/users/'], function () {
         Route::get('insert', 'userController@insert')->name('backend.users.insert');
         Route::post('store', 'userController@store')->name('backend.users.store');
