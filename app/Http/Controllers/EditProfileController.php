@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\changeUserValidator;
 use App\User;
+use App\Role;
+use Bouncer;
+use App\Abilities;
+use App\Http\Requests\changeUserValidator;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class EditProfileController extends Controller
 {
@@ -22,7 +26,9 @@ class EditProfileController extends Controller
      */
     public function view()
     {
-        $data['user'] = User::find(auth()->user()->id);
+        $data['user']      = User::find(auth()->user()->id);
+        $data['roles']     = Role::all();
+        $data['abilities'] = Abilities::all();
         return view('backend.users.edit', $data);
     }
 
@@ -52,10 +58,18 @@ class EditProfileController extends Controller
     /**
      * Edit the user groups off the user.
      *
+     * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function editGroups()
+    public function editGroups($id)
     {
+        $user = User::find($id);
+        $user->roles()->sync([]);
+
+        foreach(Input::get('roles') as $role) {
+            Bouncer::assign($role)->to($user);
+        }
+
         return redirect()->back(302);
     }
 }

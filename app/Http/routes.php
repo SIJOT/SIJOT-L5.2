@@ -36,6 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'profile/'], function() {
         Route::get('edit', 'editProfileController@view')->name('profile.edit.view');
         Route::post('insert', 'editProfileController@editInfo')->name('profile.edit.insert');
+        Route::post('permission/{id}', 'editProfileController@editGroups')->name('profile.edit.perms');
     });
 
     Route::group(['prefix' => 'backend/users/'], function () {

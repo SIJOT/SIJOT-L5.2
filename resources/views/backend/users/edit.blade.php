@@ -120,6 +120,37 @@
                         Mogelijke wijzigingen aan de gebruikers groepen kan meer of minder
                         rechten met zich meebrengen.
                     </div>
+
+                    <form action="{!! route('profile.edit.perms', ['id' => $user->id]) !!}" method="POST">
+                        {{-- csrf_field() --}}
+                        {!! csrf_field() !!}
+
+                        <div class="row">
+
+                            <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+                                <div class="form-group">
+                                    <h3>Roles</h3>
+
+                                    <select class="form-control" name="roles[]" size="8" multiple>
+                                        @foreach($roles as $role)
+                                            <option value="{!! $role->name !!}" @if($user->is($role->name)) selected @endif>
+                                                {!! $role->name !!}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-success" type="submit">Wijzigen</button>
+                                    <button class="btn btn-danger" type="reset">Reset</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
                 </div>
 
             </div>
