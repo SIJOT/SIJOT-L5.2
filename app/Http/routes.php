@@ -37,6 +37,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('overview', 'userController@index')->name('backend.users.overview');
         Route::get('block/{id}', 'userController@block')->name('backend.users.block');
         Route::get('unblock/{id}', 'userController@unblock')->name('backend.users.unblock');
+        Route::get('delete/{id}', 'userController@destroy')->name('backend.users.destory');
     });
 
     Route::group(['prefix' => 'backend/rental/'], function () {

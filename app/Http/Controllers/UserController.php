@@ -61,8 +61,11 @@ class UserController extends Controller
 
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        User::destroy($id);
+        session()->flash('message', 'U hebt een gebruiker verwijderd');
 
+        return redirect()->back(302);
     }
 }
