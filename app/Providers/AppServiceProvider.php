@@ -18,14 +18,18 @@ class AppServiceProvider extends ServiceProvider
     {
         // Role seed.
         Bouncer::seeder(function () {
-            Bouncer::allow('active')
-                ->to('');
+            Bouncer::allow('active')->to('');
+            Bouncer::allow('blocked')->to('');
+            Bouncer::allow('admin')->to('');
 
-            Bouncer::allow('blocked')
-                ->to('');
-
-            Bouncer::allow('admin')
-                ->to('');
+            // Takken.
+            Bouncer::allow('kapoenen')->to('');
+            Bouncer::allow('welpen')->to('');
+            Bouncer::allow('jong-givers')->to('');
+            Bouncer::allow('givers')->to('');
+            Bouncer::allow('jins')->to('');
+            Bouncer::allow('leiding')->to('');
+            Bouncer::allow('groepsleiding')->to('');
         });
 
         // Rental global variables
