@@ -121,7 +121,7 @@
                     <a href=""> <i class="fa fa-cloud"></i> <span>De cloud</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>
+                    <a href="{!! route('profile.edit.view') !!}"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>
                 </li>
                 <li>
                     <a href="{!! url('/login') !!}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>

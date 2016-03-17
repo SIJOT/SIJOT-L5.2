@@ -33,6 +33,11 @@ Route::group(['middleware' => 'web'], function () {
     // Rental routes
     Route::post('rental/insert', 'rentalController@store')->name('rental.store');
 
+    Route::group(['prefix' => 'profile/'], function() {
+        Route::get('edit', 'editProfileController@view')->name('profile.edit.view');
+        Route::post('insert', 'editProfileController@editInfo')->name('profile.edit.insert');
+    });
+
     Route::group(['prefix' => 'backend/users/'], function () {
         Route::get('insert', 'userController@insert')->name('backend.users.insert');
         Route::post('store', 'userController@store')->name('backend.users.store');
