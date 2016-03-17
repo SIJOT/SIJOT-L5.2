@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Bouncer;
 use App\Rental;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,9 +29,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // Rental global variables
-        view()->share('rentalCount', Rental::all()->count());
-        view()->share('rentalOption', Rental::where('Status', 1)->count());
-        view()->share('rentalNew', Rental::where('Status', 0)->count());
+        if (Schema::hasTable('rentals')) {
+            view()->share('rentalCount', Rental::all()->count());
+            view()->share('rentalOption', Rental::where('Status', 1)->count());
+            view()->share('rentalNew', Rental::where('Status', 0)->count());
+        }
     }
 
     /**
