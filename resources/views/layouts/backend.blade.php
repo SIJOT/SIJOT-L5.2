@@ -129,7 +129,7 @@
                     <a href="{!! route('profile.edit.view') !!}"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>
                 </li>
                 <li>
-                    <a href="{!! url('/login') !!}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>
+                    <a href="{!! url('/logout') !!}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>
                 </li>
             </ul>
         </section>

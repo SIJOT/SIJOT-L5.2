@@ -13,8 +13,18 @@ class GroupTableSeed extends Seeder
     {
         DB::table('groups')->delete();
 
-        $kapoenen['uri'] = 'kapoenen';
+        $data1['uri'] = 'kapoenen';
+        $data2['uri'] = 'welpen';
+        $data3['uri'] = 'jonggivers';
+        $data4['uri'] = 'givers';
+        $data5['uri'] = 'jins';
+        $data6['uri'] = 'leiding';
 
-        DB::table('groups')->insert($kapoenen);
+        DB::table('groups')->insert($data1);
+        DB::table('groups')->insert($data2);
+        DB::table('groups')->insert($data3);
+        DB::table('groups')->insert($data4);
+        DB::table('groups')->insert($data5);
+        DB::table('groups')->insert($data6);
     }
 }
