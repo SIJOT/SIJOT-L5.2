@@ -28,6 +28,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    Route::get('/', 'HomeController@Front')->name('home');
     Route::get('/home', 'HomeController@index')->name('backend.home');
 
     // Rental routes
