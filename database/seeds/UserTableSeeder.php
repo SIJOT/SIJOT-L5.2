@@ -11,6 +11,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->delete();
+
         $data['name'] = 'Tim Joosten';
         $data['email'] = 'Topairy@gmail.com';
         $data['gsm'] = '0474834880';
