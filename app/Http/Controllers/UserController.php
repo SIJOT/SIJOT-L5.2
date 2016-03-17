@@ -95,6 +95,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        // Unset all the roles.
+        $user = User::find($id);
+        $user->roles()->sync([]);
+
+        // Delete account
         User::destroy($id);
         session()->flash('message', 'U hebt een gebruiker verwijderd');
 
