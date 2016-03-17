@@ -28,12 +28,14 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('backend.home');
 
     // Rental routes
     Route::post('rental/insert', 'rentalController@store')->name('rental.store');
 
     Route::group(['prefix' => 'backend/users/'], function () {
+        Route::get('insert', 'userController@insert')->name('backend.users.insert');
+        Route::post('store', 'userController@store')->name('backend.users.store');
         Route::get('overview', 'userController@index')->name('backend.users.overview');
         Route::get('block/{id}', 'userController@block')->name('backend.users.block');
         Route::get('unblock/{id}', 'userController@unblock')->name('backend.users.unblock');

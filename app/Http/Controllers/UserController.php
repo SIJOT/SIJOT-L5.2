@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserValidator;
 use Bouncer;
 use App\User;
 use Illuminate\Http\Request;
@@ -56,11 +57,42 @@ class UserController extends Controller
         return redirect()->back(302);
     }
 
-    public function insertNewUser()
+    public function insert()
     {
-
+        return view('backend.users.insert');
     }
 
+
+    /**
+     * Insert a new user
+     *
+     * @param  UserValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(UserValidator $input)
+    {
+        $new = new User();
+        $new->name = $input->name;
+        $new->gsm = $input->gsm;
+        $new->email = $input->email;
+        $new->save();
+
+        // Latest inserted id.
+        $id = $new->id;
+
+        $user = User::find($id);
+        Bouncer::assign('active')->to($user);
+
+        session()->flash('message', 'U hebt een gebruiker toegevoegd.');
+        return redirect()->back(302);
+    }
+
+    /**
+     * Destroy a user.
+     *
+     * @param  int, $id, The user id in the database.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         User::destroy($id);

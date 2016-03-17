@@ -26,7 +26,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="../../index2.html" class="logo">
+        <a href="{!! route('backend.home') !!}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>S</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -111,7 +111,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{!! route('backend.users.overview') !!}"><i class="fa fa-circle-o"></i> Gebruikers overzicht</a></li>
                         <li>
-                            <a href="#">
+                            <a href="{!! route('backend.users.insert') !!}">
                                 <i class="fa fa-circle-o"></i> Nieuwe gebruiker
                             </a>
                         </li>
