@@ -16,6 +16,7 @@ class VerhuurTable extends Migration
             $t->increments('id');
             $t->string('Start_date');
             $t->string('End_date');
+            $t->integer('Status')->default(0);
             $t->string('Group');
             $t->string('Email');
             $t->string('telephone');

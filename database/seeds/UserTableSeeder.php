@@ -13,6 +13,7 @@ class UserTableSeeder extends Seeder
     {
         $data['name'] = 'Tim Joosten';
         $data['email'] = 'Topairy@gmail.com';
+        $data['gsm'] = '0474834880';
         $data['password'] = bcrypt('admin');
 
         DB::table('users')->insert($data);
