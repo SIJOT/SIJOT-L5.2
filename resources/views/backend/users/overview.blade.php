@@ -54,7 +54,7 @@
 
                                 <td>
                                     <div class="btn-group">
-                                        <a class="btn btn-xs btn-danger" href="">
+                                        <a class="btn btn-xs btn-danger" href="{!! route('backend.users.destroy', ['id' => $user->id]) !!}">
                                             <span class="fa fa-trash"></span>
                                         </a>
 
