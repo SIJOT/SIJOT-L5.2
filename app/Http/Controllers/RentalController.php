@@ -6,15 +6,13 @@ use App\Rental;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 
 class RentalController extends Controller
 {
     public function __construct()
     {
         // Set the authencated routes.
-        $this->middleware('auth', [
-            'except' => 'indexFront', 'domainAccess', 'insertFront', 'calendar', 'store'
-        ]);
     }
 
     /**
@@ -101,8 +99,25 @@ class RentalController extends Controller
      */
     public function store(Requests\RentalValidator $input)
     {
+        // TODO: Inject UNIX Timestamps
+        // TODO: Implement mailing logic.
+
         Rental::insert($input->except('_token'));
         session()->flash('message', 'Nieuwe verhuring toegevoegd');
+
+        $user = $input->all();
+
+        if (! auth()->check()) {
+            Mail::send('emails.notification', ['data' => $user], function($m) use ($notification) {
+
+            });
+        }
+
+        // Data mail to the requester.
+        Mail::send('emails.aanvraag', ['user' => $user], function ($m) use ($user) {
+            $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
+            $m->to($user['Email'], $user['Group'])->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
+        });
 
         return redirect()->back(302);
     }
