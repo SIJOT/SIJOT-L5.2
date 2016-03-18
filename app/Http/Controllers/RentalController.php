@@ -109,7 +109,8 @@ class RentalController extends Controller
 
         if (! auth()->check()) {
             Mail::send('emails.notification', ['data' => $user], function($m) use ($notification) {
-
+                $m->from('', '');
+                $m->to('', '')->subject('');
             });
         }
 
