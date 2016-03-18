@@ -11,6 +11,7 @@ class RentalController extends Controller
 {
     public function __construct()
     {
+        // Set the authencated routes.
         $this->middleware('auth', [
             'except' => 'indexFront', 'domainAccess', 'insertFront', 'calendar', 'store'
         ]);

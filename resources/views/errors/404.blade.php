@@ -25,7 +25,7 @@
                             Sorry, an error has occured, Requested page not found!
                         </div>
                         <div class="error-actions">
-                            <a href="{!! route('/') !!}" class="btn btn-primary btn-lg">Take Me Home </a>
+                            <a href="{!! url('/') !!}" class="btn btn-primary btn-lg">Take Me Home </a>
                             <a href="mailto:" class="btn btn-default btn-lg"> Contact Support </a>
                         </div>
                     </div>

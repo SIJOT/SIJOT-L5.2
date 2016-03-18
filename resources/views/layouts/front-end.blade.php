@@ -14,6 +14,7 @@
         <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
         <link href="{!! asset('css/frontend.css') !!}" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="http://fonts.googleapis.com/css?family=Allan:700" rel="stylesheet" type="text/css">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -33,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Sint-Joris</a>
+                    <a class="navbar-brand font-heading" href="{!! url('/') !!}">Sint-Joris</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
