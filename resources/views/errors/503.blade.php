@@ -1,47 +1,32 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Scouts &amp; Gidsen - Sint-Joris | 503</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <!-- Bootstrap -->
+    <link href="{!! asset('css/404.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    503 Under maintenance</h2>
+                <div class="error-details">
+                    Sorry, we are soon up and running again!
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>
