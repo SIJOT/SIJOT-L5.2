@@ -59,7 +59,7 @@ a.hyperlink-footer:hover {
 
 .background {
   /* padding-top:75px; */
-  background: #bdd732 url("../img/background.png") no-repeat fixed center 110px; }
+  background: #bdd732 url("../img/background.png") no-repeat fixed center 10px; }
 
 .font-heading {
   font-family: Allan, helvetica, arial, sans-serif;

@@ -9,11 +9,62 @@ use App\Http\Requests;
 
 class RentalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => 'indexFront', 'domainAccess', 'insertFront', 'calendar', 'store'
+        ]);
+    }
+
+    /**
+     * Get the info page about the domain rental.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function indexFront()
+    {
+        $data['title'] = 'Verhuur';
+        return view('front-end.rentalIndex', $data);
+    }
+
+    /**
+     * Front-end view for inserting a new rental request.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function insertFront()
+    {
+        $data['title'] = 'Verhuur aanvragen';
+        return view('front-end.rentalNew', $data);
+    }
+
+    /**
+     * Get the info page about the domain access.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function domainAccess()
+    {
+        $data['title'] = 'Bereikbaarheid';
+        return view('front-end.rentalAccess', $data);
+    }
+
+    /**
+     * Get the rental calendar.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function calendar()
+    {
+        $data['title']   = 'verhuur Kalender';
+        $data['rentals'] = Rental::where('status', 2)->get();
+        return view('front-end.rentalCalendar', $data);
+    }
 
     /**
      * Get all the requested rentals.
      *
-     * @param string $type, the database selector, where the data range will set on.
+     * @param  string $type, the database selector, where the data range will set on.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function indexAdmin($type)
@@ -37,13 +88,14 @@ class RentalController extends Controller
      */
     public function insert()
     {
-        return view('backend.rental.insert');
+        $data['title'] = '';
+        return view('backend.rental.insert', $data);
     }
 
     /**
      * Insert a new rental.
      *
-     * @param Requests\RentalValidator $input
+     * @param  Requests\RentalValidator $input
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Requests\RentalValidator $input)
@@ -88,7 +140,7 @@ class RentalController extends Controller
     /**
      * Set a rental to option status.
      *
-     * @param int, $id, The rental id in the database.
+     * @param  int, $id, The rental id in the database.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function option($id)

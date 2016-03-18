@@ -31,6 +31,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'HomeController@Front')->name('home');
     Route::get('/home', 'HomeController@index')->name('backend.home');
 
+    Route::get('verhuur', 'rentalController@indexFront')->name('rental.index');
+    Route::get('verhuur/aanvraag', 'rentalController@insertFront')->name('rental.request');
+    Route::get('verhuur/bereikbaarheid', 'rentalController@domainAccess')->name('rental.access');
+    Route::get('verhuur/kalender', 'rentalController@calendar')->name('rental.calendar');
+
+    Route::get('takken', 'takkenController@overview')->name('takken.index');
+    Route::get('tak/{id}', 'takkenController@group')->name('takken.specific');
+
     // Rental routes
     Route::post('rental/insert', 'rentalController@store')->name('rental.store');
 

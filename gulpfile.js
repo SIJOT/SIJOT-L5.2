@@ -18,16 +18,18 @@ var jsFiles = [
     'bootstrap/collapse.js',
     'bootstrap/dropdown.js',
     'bootstrap/modal.js',
+    'bootstrap/tooltip.js',
     'bootstrap/popover.js',
     'bootstrap/scrollspy.js',
     'bootstrap/tab.js',
-    'bootstrap/tooltip.js',
     'bootstrap/transition.js'
 ];
 
 
 elixir(function(mix) {
     mix.scripts(jsFiles, 'public/js/bootstrap.js')
-        .less(['bootstrap-theme.less', 'bootstrap.less'])
-        .sass('frontend.scss');
+        .less(['bootstrap.less', 'bootstrap.less'])
+        .sass('frontend.scss')
+        .copy('resources/assets/img/favicon.ico', 'public/img/favicon.ico')
+        .copy('resources/assets/img/background.png', 'public/img/background.png');
 });
