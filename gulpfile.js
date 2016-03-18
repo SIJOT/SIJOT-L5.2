@@ -30,6 +30,7 @@ elixir(function(mix) {
     mix.scripts(jsFiles, 'public/js/bootstrap.js')
         .less(['bootstrap.less', 'bootstrap.less'])
         .sass('frontend.scss')
+        .sass('404.scss', 'public/css/404.css')
         .copy('resources/assets/img/favicon.ico', 'public/img/favicon.ico')
         .copy('resources/assets/img/background.png', 'public/img/background.png');
 });
