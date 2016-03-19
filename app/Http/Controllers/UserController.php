@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use App\Http\Requests\UserValidator;
 use Bouncer;
 use App\User;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-
     }
 
     /**
@@ -24,13 +21,15 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = User::paginate(15);
+
         return view('backend.users.overview', $data);
     }
 
     /**
      * Block a user.
      *
-     * @param  int, $id, the user id in the database
+     * @param int, $id, the user id in the database
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function block($id)
@@ -45,7 +44,8 @@ class UserController extends Controller
     /**
      * Unblock a user.
      *
-     * @param  int, $id, the user id in the database
+     * @param int, $id, the user id in the database
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function unblock($id)
@@ -62,11 +62,11 @@ class UserController extends Controller
         return view('backend.users.insert');
     }
 
-
     /**
-     * Insert a new user
+     * Insert a new user.
      *
-     * @param  UserValidator $input
+     * @param UserValidator $input
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserValidator $input)
@@ -84,13 +84,15 @@ class UserController extends Controller
         Bouncer::assign('active')->to($user);
 
         session()->flash('message', 'U hebt een gebruiker toegevoegd.');
+
         return redirect()->back(302);
     }
 
     /**
      * Destroy a user.
      *
-     * @param  int, $id, The user id in the database.
+     * @param int, $id, The user id in the database.
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
