@@ -44,7 +44,6 @@ class EditProfileController extends Controller
         $user->gsm   = $input->gsm;
 
         $info    = User::find(auth()->user()->id);
-        $imgPath = public_path('assets/img/profile/'. $info->image);
 
         if (Input::file()) {
 
