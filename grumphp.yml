@@ -1,4 +1,5 @@
 # grumphp.yml
+# testing the code before pushing to github.
 parameters:
   bin_dir: "./vendor/bin"
   git_dir: "."
