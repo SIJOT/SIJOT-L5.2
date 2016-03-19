@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Rental;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Mail;
