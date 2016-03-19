@@ -8,7 +8,6 @@ use Bouncer;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\changeUserValidator;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class EditProfileController extends Controller
