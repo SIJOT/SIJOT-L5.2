@@ -11,15 +11,25 @@ parameters:
     tasks:
       composer:
         file: ./composer.json
-      git_blacklist: ~
+      git_blacklist:
+        keywords:
+          - "die("
+          - "dd("
+          - "var_dump("
+          - "exit;"
+        triggered_by: [php]
       git_commit_message: ~
-      grunt: ~
       jsonlint: ~
       phpcs: ~
       phpcsfixer: ~
       phpspec: ~
       phpunit: ~
-      securitychecker: ~
+      securitychecker:
+        lockfile: ./composer.lock
+        format: ~
+        end_point: ~
+        timeout: ~
+        run_always: false
       xmllint: ~
       yamllint: ~
     extensions: []
