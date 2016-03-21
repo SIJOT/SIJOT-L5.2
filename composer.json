@@ -18,13 +18,12 @@
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "laravel/homestead": "^3.0",
         "phpro/grumphp": "^0.8.0",
-        "behat/behat": "~3.0",
         "fabpot/php-cs-fixer": "~1.10",
         "phpspec/phpspec": "~2.1",
         "phpunit/phpunit": "~4.5",
+        "codeception/codeception": "2.1.x-dev",
         "roave/security-advisories":  "dev-master@dev",
         "squizlabs/php_codesniffer": "~2.3",
-        "codeception/codeception": "~2.1",
         "sensiolabs/security-checker": "~3.0"
     },
     "autoload": {
@@ -36,9 +35,6 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
     },
     "scripts": {
         "post-root-package-install": [
