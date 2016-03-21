@@ -1,5 +1,8 @@
 # Scouts en gidsen Sint-Joris Turnhout *(A41029)*
 
+[![Github All Releases](https://img.shields.io/github/downloads/SIJOT/SIJOT-L5.2/total.svg)]()
+[![GitHub release](https://img.shields.io/github/release/SIJOT/SIJOT-L5.2.svg)]()
+
 The platform for Sint-Joris Turnhout. ***(A4107M)***.
 
 ## Table of contents
