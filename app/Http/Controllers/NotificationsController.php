@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Fenos\Notifynder\Facades\Notifynder;
+use Fenos\Notifynder\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -38,7 +39,7 @@ class NotificationsController extends Controller
     {
         if ($request->submit === 'read') {
             // TODO: insert set to read logic.
-            
+            Notification::whereIn('id', $request->get('notifications'))->update(['read' => 1]);
             $message = 'U hebt de notificaties gelezen.';
             // auth()->user()->readAllNotifications();
         } elseif ($request->submit === 'delete') {
