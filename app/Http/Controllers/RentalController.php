@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Rental;
 
 use App\Http\Requests;
+use App\User;
+use Fenos\Notifynder\Builder\NotifynderBuilder;
+use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Mail;
 
 class RentalController extends Controller
@@ -112,13 +115,24 @@ class RentalController extends Controller
                 $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
                 $m->to($user['Email'], $user['Group'])->subject('Er is een nieuwe verhuring aangevraagd');
             });
+
+            // Data mail to the requester.
+            Mail::send('emails.aanvraag', ['user' => $user], function ($m) use ($user) {
+                $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
+                $m->to($user['Email'], $user['Group'])->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
+            });
         }
 
-        // Data mail to the requester.
-        Mail::send('emails.aanvraag', ['user' => $user], function ($m) use ($user) {
-            $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-            $m->to($user['Email'], $user['Group'])->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
-        });
+        $users = User::all();
+        
+        if (auth()->check()) {
+            Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
+                $builder->category('rental.insert');
+                $builder->from(1);
+                $builder->to($user->id);
+                $builder->url(route('backend.rental.overview'));
+            })->send();
+        }
 
         session()->flash('message', 'Nieuwe verhuring toegevoegd');
         return redirect()->back(302);
