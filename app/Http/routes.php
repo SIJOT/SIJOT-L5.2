@@ -21,7 +21,6 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
     //
 });
@@ -50,6 +49,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['prefix' => 'backend/groups'], function () {
         Route::get('view', 'takkenBackendController@view')->name('backend.groups.view');
+    });
+
+    Route::group(['prefix' => 'notifications/'], function() {
+        Route::get('/', 'notificationsController@index');
     });
 
     Route::group(['prefix' => 'backend/users/'], function () {
