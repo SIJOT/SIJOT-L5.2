@@ -99,17 +99,18 @@ class RentalController extends Controller
     public function store(Requests\RentalValidator $input)
     {
         // TODO: Inject UNIX Timestamps
-        // TODO: Implement mailing logic.
+        // TODO: Implement mailing logic UPDATE: Only change the notification mail.
 
         Rental::insert($input->except('_token'));
-        session()->flash('message', 'Nieuwe verhuring toegevoegd');
 
         $user = $input->all();
+        $notification = ''; // Insert Query that get's al the users for notifications
 
+        // TODO: needs further debug methods.
         if (! auth()->check()) {
-            Mail::send('emails.notification', ['data' => $user], function($m) use ($notification) {
-                $m->from('', '');
-                $m->to('', '')->subject('');
+            Mail::send('emails.notification', ['user' => $user], function($m) use ($user) {
+                $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
+                $m->to($user['Email'], $user['Group'])->subject('Er is een nieuwe verhuring aangevraagd');
             });
         }
 
@@ -119,6 +120,7 @@ class RentalController extends Controller
             $m->to($user['Email'], $user['Group'])->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
         });
 
+        session()->flash('message', 'Nieuwe verhuring toegevoegd');
         return redirect()->back(302);
     }
 
@@ -130,6 +132,7 @@ class RentalController extends Controller
      */
     public function destroy($id)
     {
+        // So who take the gun to fire this one down?
         Rental::destroy($id);
         session()->flash('message', 'U hebt een verhuring verwijderd');
 
