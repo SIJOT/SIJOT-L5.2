@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'contact@sint-joris-turnhout.be', 'name' => 'Contact Sint-Joris'],
 
     /*
     |--------------------------------------------------------------------------
