@@ -11,6 +11,10 @@
 |
 */
 
+// TODO: Make Role factory.
+// TODO: Make Group factory.
+// TODO: Make Rental factory
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
@@ -19,5 +23,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'images' => $faker->word,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Group::class, function (Faker\Generator $faker) {
+    return [
+        'Uri' => $faker->word,
+        'title' => $faker->title,
+        'sub_title' => $faker->title,
+        'description' => $faker->text(300),
     ];
 });

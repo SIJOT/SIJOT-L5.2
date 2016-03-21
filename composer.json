@@ -21,6 +21,7 @@
         "fabpot/php-cs-fixer": "~1.10",
         "phpspec/phpspec": "~2.1",
         "phpunit/phpunit": "~4.5",
+        "codeception/codeception": "2.1.x-dev",
         "roave/security-advisories":  "dev-master@dev",
         "squizlabs/php_codesniffer": "~2.3",
         "sensiolabs/security-checker": "~3.0"
@@ -34,9 +35,6 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
     },
     "scripts": {
         "post-root-package-install": [

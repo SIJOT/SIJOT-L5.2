@@ -2,6 +2,7 @@
 
 namespace app\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserValidator;
 use Bouncer;
 use App\User;
