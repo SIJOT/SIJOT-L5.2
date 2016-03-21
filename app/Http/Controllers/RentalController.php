@@ -128,14 +128,14 @@ class RentalController extends Controller
         if (auth()->check()) {
             Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
                 $builder->category('rental.insert');
-                $builder->from(1);
+                $builder->from(auth()->user()->id);
                 $builder->to($user->id);
-                $builder->url(route('backend.rental.overview'));
+                $builder->url(route('backend.rental.overview', ['type' => 'all']));
             })->send();
         }
 
         session()->flash('message', 'Nieuwe verhuring toegevoegd');
-        return redirect()->back(302);
+        return redirect()->route('backend.rental.overview', ['type' => 'all']);
     }
 
     /**

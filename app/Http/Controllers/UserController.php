@@ -39,6 +39,7 @@ class UserController extends Controller
         Bouncer::retract('active')->from($user);
         Bouncer::assign('blocked')->to($user);
 
+        session()->flash('', '');
         return redirect()->back(302);
     }
 
@@ -55,6 +56,7 @@ class UserController extends Controller
         Bouncer::retract('blocked')->from($user);
         Bouncer::assign('active')->to($user);
 
+        session()-flash('', '');
         return redirect()->back(302);
     }
 
@@ -72,6 +74,7 @@ class UserController extends Controller
      */
     public function store(UserValidator $input)
     {
+        // TODO: check possibility for mass assign.
         $new = new User();
         $new->name = $input->name;
         $new->gsm = $input->gsm;

@@ -52,7 +52,8 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::group(['prefix' => 'notifications/'], function() {
-        Route::get('/', 'notificationsController@index');
+        Route::get('/', 'notificationsController@index')->name('notification');
+        Route::post('/update', 'notificationsController@update')->name('notification.update');
     });
 
     Route::group(['prefix' => 'backend/users/'], function () {
