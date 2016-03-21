@@ -71,6 +71,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('option/{id}', 'rentalController@option')->name('backend.rental.option');
         Route::get('confirm/{id}', 'rentalController@confirmed')->name('backend.rental.confirm');
         Route::get('insert', 'rentalController@insert')->name('backend.rental.insert');
+        Route::get('download', 'rentalController@download')->name('backend.rental.download');
     });
 
 });

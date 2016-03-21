@@ -28,6 +28,14 @@
         @else
             <!-- Default box -->
             <div class="box">
+                <div class="box-header with-border">
+                    <div class="pull-left">
+                        <a href="{!! route('backend.rental.download') !!}" class="btn btn-default btn-sm">
+                            <span style="margin-right: 4px;" class="fa fa-download"></span> Download overzicht
+                        </a>
+                    </div>
+                </div>
+
                 <div class="box-body">
                     <table class="table table-condensed table-hover">
                         <thead>

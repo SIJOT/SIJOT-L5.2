@@ -162,7 +162,8 @@ return [
         Silber\Bouncer\BouncerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        Fenos\Notifynder\NotifynderServiceProvider::class
+        Fenos\Notifynder\NotifynderServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -216,7 +217,8 @@ return [
         'Bouncer' => Silber\Bouncer\BouncerFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Notifynder'    => Fenos\Notifynder\Facades\Notifynder::class
+        'Notifynder'    => Fenos\Notifynder\Facades\Notifynder::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
