@@ -37,12 +37,11 @@ class NotificationsController extends Controller
      */
     public function update(Request $request)
     {
-        if ($request->submit === 'read') {
-            // TODO: insert set to read logic.
+        if ($request->get('submit') === 'read') {
             Notification::whereIn('id', $request->get('notifications'))->update(['read' => 1]);
             $message = 'U hebt de notificaties gelezen.';
             // auth()->user()->readAllNotifications();
-        } elseif ($request->submit === 'delete') {
+        } elseif ($request->get('submit') === 'delete') {
             Notifynder::delete($request->get('notifications'));
             $message = 'U hebt notificaties verwijderd.';
         }

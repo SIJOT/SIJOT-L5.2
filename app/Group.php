@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-
     /**
      * @param $query
      * @param string $uri the uri segment.
