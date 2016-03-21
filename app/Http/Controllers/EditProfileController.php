@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\changeUserValidator;
 use Intervention\Image\Facades\Image;
+use App\Http\Controllers\Controller;
 
 class EditProfileController extends Controller
 {

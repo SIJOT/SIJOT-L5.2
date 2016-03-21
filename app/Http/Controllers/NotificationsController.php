@@ -6,6 +6,7 @@ use Fenos\Notifynder\Facades\Notifynder;
 use Fenos\Notifynder\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 class NotificationsController extends Controller
 {

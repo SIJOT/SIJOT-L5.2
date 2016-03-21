@@ -9,6 +9,7 @@ use App\User;
 use Fenos\Notifynder\Builder\NotifynderBuilder;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class RentalController extends Controller
 {
