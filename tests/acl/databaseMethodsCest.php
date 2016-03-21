@@ -38,4 +38,24 @@ class databaseMethodsCest
             'email' => 'The email field is required.'
         ));
     }
+
+    public function setUserToBlocked(FunctionalTester $I)
+    {
+        \Bouncer::seed();
+
+        $I->wantToTest('that the user can be blocked.');
+        $I->haveRecord('users', $this->userAttributes);
+        $I->amLoggedAs(['email' => 'john@doe.com', 'password' => 'password']);
+        $I->seeAuthentication();
+    }
+
+    public function setUserToActive(FunctionalTester $I)
+    {
+        \Bouncer::seed();
+
+        $I->wantToTest('that the user can be unblocked');
+        $I->haveRecord('users', $this->userAttributes);
+        $I->amLoggedAs(['email' => 'john@doe.com', 'password' => 'password']);
+        $I->seeAuthentication();
+    }
 }
