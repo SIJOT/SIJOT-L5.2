@@ -46,8 +46,8 @@
                 <ul class="nav navbar-nav">
 
                     <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="{!! route('notification') !!}" class="dropdown-toggle" data-toggle="dropdown">
+                    <li class="notifications-menu">
+                        <a href="{!! route('notification') !!}">
                             <i class="fa fa-bell-o"></i>
                             <span class="label label-danger">
                                 {!! count(Auth::user()->getNotificationsNotRead($limit = null)) !!}

@@ -6,9 +6,12 @@ use App\Rental;
 
 use App\Http\Requests;
 use App\User;
+use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Fenos\Notifynder\Builder\NotifynderBuilder;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class RentalController extends Controller
 {
@@ -80,6 +83,22 @@ class RentalController extends Controller
         }
 
         return view('backend.rental.overview', $data);
+    }
+
+    /**
+     * Download the rentals to a PDF file.
+     *
+     * @return mixed
+     */
+    public function download()
+    {
+        $data['date']    = Carbon::now();
+        $data['rentals'] = Rental::all();
+
+        // $pdf = PDF::loadView('pdf.rentals', $data);
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('pdf.rentals', $data);
+        return $pdf->stream();
     }
 
     /**

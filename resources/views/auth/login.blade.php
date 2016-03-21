@@ -31,6 +31,12 @@
     <div class="login-box-body">
         <p class="login-box-msg">Login om deze pagina te bekijken</p>
 
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <form action="{{ url('/login') }}" method="POST">
             {{-- CSRF field --}}
             {{ csrf_field() }}
@@ -61,12 +67,40 @@
 
         <!-- /.social-auth-links -->
 
-        <a href="#">Wachtwoord vergeten?</a><br>
+        <a href="#" data-toggle="modal" data-target="#myModal">Wachtwoord vergeten?</a><br>
 
     </div>
     {{-- /.login-box-body --}}
 </div>
 <!-- /.login-box -->
+
+{{-- password reset modal --}}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Reset wachtwoord.</h4>
+            </div>
+            <div class="modal-body">
+                <form name="reset" class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+                    {!! csrf_field() !!}
+
+                    <div style="margin: 5px;" class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email adres">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-btn fa-envelope"></i> Versturen
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- end password reset modal --}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

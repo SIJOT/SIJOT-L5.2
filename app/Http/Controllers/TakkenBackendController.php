@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 class TakkenBackendController extends Controller
 {

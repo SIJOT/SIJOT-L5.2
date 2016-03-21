@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('gsm');
             $table->string('password', 60)->default('no password');
             $table->string('image')->default('gravatar.jpg');
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
