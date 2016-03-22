@@ -12,6 +12,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
     }
 
     /**
@@ -36,10 +37,12 @@ class UserController extends Controller
     public function block($id)
     {
         $user = User::find($id);
+
         Bouncer::retract('active')->from($user);
         Bouncer::assign('blocked')->to($user);
 
-        session()->flash('', '');
+        session()->flash('message', '');
+
         return redirect()->back(302);
     }
 
@@ -53,10 +56,12 @@ class UserController extends Controller
     public function unblock($id)
     {
         $user = User::find($id);
+
         Bouncer::retract('blocked')->from($user);
         Bouncer::assign('active')->to($user);
 
-        session()-flash('', '');
+        session()-flash('message', '');
+
         return redirect()->back(302);
     }
 
