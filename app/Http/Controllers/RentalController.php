@@ -17,7 +17,7 @@ class RentalController extends Controller
 {
     public function __construct()
     {
-        // Set the authencated routes.
+        $this->middleware('auth', ['only' => ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download']]);
     }
 
     /**
