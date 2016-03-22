@@ -49,8 +49,7 @@ class UserController extends Controller
     /**
      * Unblock a user.
      *
-     * @param int, $id, the user id in the database
-     *
+     * @param  int, $id, the user id in the database
      * @return \Illuminate\Http\RedirectResponse
      */
     public function unblock($id)
@@ -79,6 +78,8 @@ class UserController extends Controller
      */
     public function store(UserValidator $input)
     {
+        // TODO: #13 Add mailing logic when a new user is registrated
+        
         $new           = new User();
         $new->name     = $input->name;
         $new->gsm      = $input->gsm;
