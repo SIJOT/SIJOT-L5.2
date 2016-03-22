@@ -146,6 +146,11 @@
                     <a href="{!! route('profile.edit.view') !!}"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>
                 </li>
                 <li>
+                    <a href="">
+                        <i class="fa fa-envelope"></i> <span>Mailing</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{!! url('/logout') !!}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>
                 </li>
             </ul>
