@@ -28,7 +28,7 @@ class RentalController extends Controller
         $controllers = ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download'];
 
         $this->middleware('auth', ['only' => $controllers]);
-        $this->middleware('rentalAcl', ['only' => $controllers]);
+        // $this->middleware('rentalAcl', ['only' => $controllers]);
     }
 
     /**

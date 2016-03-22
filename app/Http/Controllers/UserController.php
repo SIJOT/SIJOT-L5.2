@@ -79,11 +79,11 @@ class UserController extends Controller
      */
     public function store(UserValidator $input)
     {
-        // TODO: check possibility for mass assign.
-        $new = new User();
-        $new->name = $input->name;
-        $new->gsm = $input->gsm;
-        $new->email = $input->email;
+        $new           = new User();
+        $new->name     = $input->name;
+        $new->gsm      = $input->gsm;
+        $new->email    = $input->email;
+        $new->password = bcrypt(str_random(20));
         $new->save();
 
         // Latest inserted id.
