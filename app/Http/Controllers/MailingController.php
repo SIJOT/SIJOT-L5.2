@@ -12,10 +12,13 @@ class MailingController extends Controller
     /**
      * MailingController constructor.
      *
-     * Here the following middleware will be set.
+     * Middleware:
+     *
+     * auth = to see if the user is authencated.
      */
     public function __construct()
     {
+        // TODO: Implement middleware to see if the user is active.
         $this->middleware('auth');
     }
 
@@ -52,15 +55,23 @@ class MailingController extends Controller
 
     }
 
-    public function store()
+    /**
+     * Store a new user into the data table.
+     *
+     * @param  Requests\mailingValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Requests\mailingValidator $input)
     {
+        mailingUsers::create($input->except('_token'));
+        session()->flash('message', '');
 
+        return redirect()->back(302);
     }
-
 
     /**
      * Show the update form off the mailing module.
-     * 
+     *
      * @param  int, $id, the user his id in the data table.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
