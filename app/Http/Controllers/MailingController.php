@@ -39,7 +39,7 @@ class MailingController extends Controller
 
     public function mailGroup()
     {
-        
+
     }
 
     public function send()
@@ -57,9 +57,19 @@ class MailingController extends Controller
 
     }
 
+
+    /**
+     * Show the update form off the mailing module.
+     * 
+     * @param  int, $id, the user his id in the data table.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function update($id)
     {
+        $data['title'] = 'mailing';
+        $data['query'] = mailingUsers::find($id);
 
+        return view('backend.mailing.update', $data);
     }
 
     /**
