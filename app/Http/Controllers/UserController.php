@@ -41,7 +41,7 @@ class UserController extends Controller
         Bouncer::retract('active')->from($user);
         Bouncer::assign('blocked')->to($user);
 
-        session()->flash('message', '');
+        session()->flash('message', trans('flashSession.userBlock'));
 
         return redirect()->back(302);
     }
@@ -59,7 +59,7 @@ class UserController extends Controller
         Bouncer::retract('blocked')->from($user);
         Bouncer::assign('active')->to($user);
 
-        session()-flash('message', '');
+        session()-flash('message', trans('flashSession.userUnblock'));
 
         return redirect()->back(302);
     }
@@ -93,7 +93,7 @@ class UserController extends Controller
         $user = User::find($id);
         Bouncer::assign('active')->to($user);
 
-        session()->flash('message', 'U hebt een gebruiker toegevoegd.');
+        session()->flash('message', trans('flashSession.userAdd'));
 
         return redirect()->back(302);
     }
@@ -111,7 +111,7 @@ class UserController extends Controller
         User::find($id)->roles()->sync([]);
         User::destroy($id);
 
-        session()->flash('message', 'U hebt een gebruiker verwijderd');
+        session()->flash('message', trans('flashSession.userDelete'));
 
         return redirect()->back(302);
     }

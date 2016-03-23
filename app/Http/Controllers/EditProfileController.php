@@ -64,7 +64,7 @@ class EditProfileController extends Controller
 
         $user->save();
 
-        session()->flash('message', 'U hebt successvol uw gegevens aangepast');
+        session()->flash('message', trans('flashSession.changeProfileInfo'));
         return redirect()->back(302);
     }
 

@@ -70,7 +70,7 @@ class MailingController extends Controller
         // TODO: Implement mailing logic.
 
         session()->flash('class', 'alert-success');
-        session()->flash('message', '');
+        session()->flash('message', trans('flashSession.mailingStore'));
 
         return redirect()->back(302);
     }
@@ -98,7 +98,7 @@ class MailingController extends Controller
         mailingUsers::create($input->except('_token'));
 
         session()->flash('class', 'alert-success');
-        session()->flash('message', '');
+        session()->flash('message', trans('flashSession.mailingStore'));
 
         return redirect()->back(302);
     }
@@ -129,7 +129,7 @@ class MailingController extends Controller
         mailingUsers::destroy($id);
 
         session()->flash('class', 'alert-success');
-        session()->flash('message', '');
+        session()->flash('message', trans('flashSession.mailingDelete'));
 
         return redirect()->back(302);
     }

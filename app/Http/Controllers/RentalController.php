@@ -164,7 +164,7 @@ class RentalController extends Controller
             })->send();
         }
 
-        session()->flash('message', 'Nieuwe verhuring toegevoegd');
+        session()->flash('message', trans('flashSession.rentalNew'));
         return redirect()->route('backend.rental.overview', ['type' => 'all']);
     }
 
@@ -178,7 +178,7 @@ class RentalController extends Controller
     {
         // So who take the gun to fire this one down?
         Rental::destroy($id);
-        session()->flash('message', 'U hebt een verhuring verwijderd');
+        session()->flash('message', trans('flashSession.rentalDelete'));
 
         return redirect()->back(302);
     }
@@ -195,7 +195,7 @@ class RentalController extends Controller
         $rental->Status = 2;
         $rental->save();
 
-        session()->flash('message', 'U hebt een verhuring de status bevestgd gegeven.');
+        session()->flash('message', trans('flashSession.rentalConfirm'));
 
         return redirect()->back(302);
     }
@@ -212,7 +212,7 @@ class RentalController extends Controller
         $rental->Status = 1;
         $rental->save();
 
-        session()->flash('message', 'U hebt een verhuring de status optie gegeven');
+        session()->flash('message', trans('flashSession.rentalOption'));
 
         return redirect()->back(302);
     }
