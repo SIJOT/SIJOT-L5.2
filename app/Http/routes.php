@@ -26,6 +26,10 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::group(['middleware' => 'web'], function () {
+
+    /**
+     * Frontend routes.
+     */
     Route::auth();
     Route::get('/', 'HomeController@Front')->name('home');
     Route::get('/home', 'HomeController@index')->name('backend.home');
@@ -34,12 +38,18 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('verhuur/aanvraag', 'rentalController@insertFront')->name('rental.request');
     Route::get('verhuur/bereikbaarheid', 'rentalController@domainAccess')->name('rental.access');
     Route::get('verhuur/kalender', 'rentalController@calendar')->name('rental.calendar');
+    Route::post('rental/insert', 'rentalController@store')->name('rental.store');
 
     Route::get('takken', 'takkenController@overview')->name('takken.index');
     Route::get('tak/{id}', 'takkenController@group')->name('takken.specific');
 
-    // Rental routes
-    Route::post('rental/insert', 'rentalController@store')->name('rental.store');
+    /**
+     * Backend routes
+     */
+    Route::group(['prefix' => 'mailing'], function() {
+        Route::get('/', 'mailingController@index')->name('mailing.index');
+        Route::get('/delete/{id}', 'mailingController@deleteUser')->name('mailing.destroy');
+    });
 
     Route::group(['prefix' => 'profile/'], function() {
         Route::get('edit', 'editProfileController@view')->name('profile.edit.view');
