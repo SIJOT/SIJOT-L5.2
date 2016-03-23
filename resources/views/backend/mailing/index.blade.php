@@ -25,7 +25,7 @@
                     <span style="margin-right: 3px;" class="fa fa-refresh"></span> Ververs
                 </a>
 
-                <a href="" class="btn btn-default btn-xs">
+                <a href="{!! route('mailing.insert') !!}" class="btn btn-default btn-xs">
                     <span style="margin-right: 3px;" class="fa fa-plus"></span> Nieuw adres
                 </a>
 

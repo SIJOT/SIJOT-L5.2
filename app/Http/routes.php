@@ -48,6 +48,7 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::group(['prefix' => 'mailing'], function() {
         Route::get('/', 'mailingController@index')->name('mailing.index');
+        Route::post('/insert', 'mailingController@insert')->name('mailing.insert');
         Route::get('/delete/{id}', 'mailingController@deleteUser')->name('mailing.destroy');
     });
 

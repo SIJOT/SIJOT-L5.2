@@ -35,24 +35,56 @@ class MailingController extends Controller
         return view('backend.mailing.index', $data);
     }
 
-    public function mail()
+    /**
+     * Get the email view for the mailing module.
+     *
+     * @param  int, $id, the user id in the data table.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function mail($id)
     {
+        $data['title'] = 'Mailing';
+        $data['query'] = mailingUsers::find($id);
 
+        return view('backend.mailing.mail', $data);
     }
 
+    /**
+     * Mail all the user off the selected group.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function mailGroup()
     {
 
     }
 
-    public function send()
+    /**
+     * Mail the users.
+     *
+     * @param  Requests\mailingValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function send(Requests\mailingValidator $input)
     {
+        // TODO: Implement mailing logic.
 
+        session()->flash('class', 'alert-success');
+        session()->flash('message', '');
+
+        return redirect()->back(302);
     }
 
+    /**
+     * Display the form for inserting a new user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function insert()
     {
+        $data['title'] = 'Mailing';
 
+        return view('backend.mailing.insert', $data);
     }
 
     /**
@@ -64,6 +96,8 @@ class MailingController extends Controller
     public function store(Requests\mailingValidator $input)
     {
         mailingUsers::create($input->except('_token'));
+
+        session()->flash('class', 'alert-success');
         session()->flash('message', '');
 
         return redirect()->back(302);
@@ -94,6 +128,7 @@ class MailingController extends Controller
         mailingUsers::find($id)->tag()->sync([]);
         mailingUsers::destroy($id);
 
+        session()->flash('class', 'alert-success');
         session()->flash('message', '');
 
         return redirect()->back(302);
