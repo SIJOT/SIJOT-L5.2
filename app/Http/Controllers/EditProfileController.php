@@ -7,7 +7,7 @@ use App\Role;
 use Bouncer;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use App\Http\Requests\changeUserValidator;
+use App\Http\Requests\ChangeUserValidator;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 
@@ -34,10 +34,10 @@ class EditProfileController extends Controller
     /**
      * Update the user info.
      *
-     * @param  changeUserValidator $input
+     * @param  ChangeUserValidator $input
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function editInfo(changeUserValidator $input)
+    public function editInfo(ChangeUserValidator $input)
     {
         $user        = User::find(auth()->user()->id);
         $user->name  = auth()->user()->name;
