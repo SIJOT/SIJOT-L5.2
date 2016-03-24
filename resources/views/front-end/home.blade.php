@@ -47,33 +47,33 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand font-heading" href="http://www.st-joris-turnhout.be/">Sint-Joris</a>
+            <a class="navbar-brand font-heading" href="{!! route('home') !!}">Sint-Joris</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.st-joris-turnhout.be/Takken">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="{!! route('takken.index') !!}">
                         <span class="fa fa-leaf Icon-color"></span> Takken
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="http://www.st-joris-turnhout.be/Takken/Kapoenen"><span class="fa fa-chevron-right"></span> De Kapoenen</a></li>
-                        <li><a href="http://www.st-joris-turnhout.be/Takken/Welpen"><span class="fa fa-chevron-right"></span> De Welpen</a></li>
-                        <li><a href="http://www.st-joris-turnhout.be/Takken/JongGivers"><span class="fa fa-chevron-right"></span> De Jong-givers</a></li>
-                        <li><a href="http://www.st-joris-turnhout.be/Takken/Givers"><span class="fa fa-chevron-right"></span> De Givers</a></li>
-                        <li><a href="http://www.st-joris-turnhout.be/Takken/Jins"><span class="fa fa-chevron-right"></span> De Jins</a></li>
-                        <li><a href="http://www.st-joris-turnhout.be/Takken/Leiding"><span class="fa fa-chevron-right"></span> De Leiding</a></li>
+                        <li><a href="{!! route('takken.specific', ['id' => 'kapoenen']) !!}"><span class="fa fa-chevron-right"></span> De Kapoenen</a></li>
+                        <li><a href="{!! route('takken.specific', ['id' => 'welpen']) !!}"><span class="fa fa-chevron-right"></span> De Welpen</a></li>
+                        <li><a href="{!! route('takken.specific', ['id' => 'jonggivers']) !!}"><span class="fa fa-chevron-right"></span> De Jong-givers</a></li>
+                        <li><a href="{!! route('takken.specific', ['id' => 'givers']) !!}"><span class="fa fa-chevron-right"></span> De Givers</a></li>
+                        <li><a href="{!! route('takken.specific', ['id' => 'jins']) !!}"><span class="fa fa-chevron-right"></span> De Jins</a></li>
+                        <li><a href="{!! route('takken.specific', ['id' => 'leiding']) !!}"><span class="fa fa-chevron-right"></span> De Leiding</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="http://www.st-joris-turnhout.be/Verhuur">
+                    <a href="{!! route('rental.index') !!}">
                         <span class="fa fa-home Icon-color"></span> Verhuur
                     </a>
                 </li>
 
                 <li>
-                    <a href="http://www.st-joris-turnhout.be/Fotos">
+                    <a href="">
                         <span class="fa fa-camera-retro Icon-color"></span> Foto's
                     </a>
                 </li>
@@ -91,7 +91,7 @@
                 </li>
 
                 <li>
-                    <a href="http://www.st-joris-turnhout.be/">
+                    <a href="mailto:">
                         <span class="fa fa-envelope Icon-color"></span> Contact
                     </a>
                 </li>
