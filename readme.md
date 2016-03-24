@@ -1,9 +1,9 @@
-# Scouts en gidsen Sint-Joris Turnhout *(A41029)*
+# Scouts en gidsen Sint-Joris Turnhout *(A4102G)*
 
 [![Github All Releases](https://img.shields.io/github/downloads/SIJOT/SIJOT-L5.2/total.svg)]()
 [![GitHub release](https://img.shields.io/github/release/SIJOT/SIJOT-L5.2.svg)]()
 
-The platform for Sint-Joris Turnhout. ***(A4107M)***.
+The platform for Sint-Joris Turnhout. ***(A4102G)***.
 
 ## Table of contents
 
