@@ -46,7 +46,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="title" value="" placeholder="titel" class="form-control">
+                                            <input type="text" name="title" value="{!! $info1->title !!}" placeholder="titel" class="form-control">
                                         </div>
                                     </div>
 
@@ -56,13 +56,15 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info1->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 col-lg-9">
-                                    <textarea name="description" class="form-control">Easy! You should check out MoxieManager!</textarea>
+                                    <textarea name="description" class="form-control">
+                                        {!! $info1->description !!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -88,7 +90,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="title" value="" placeholder="titel" class="form-control">
+                                            <input type="text" name="title" value="{!! $info2->title !!}" placeholder="titel" class="form-control">
                                         </div>
                                     </div>
 
@@ -98,13 +100,15 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info2->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 col-lg-9">
-                                    <textarea name="description" class="form-control">Easy! You should check out MoxieManager!</textarea>
+                                    <textarea name="description" class="form-control">
+                                        {!! $info2->description !!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -130,7 +134,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="title" value="" placeholder="titel" class="form-control">
+                                            <input type="text" name="title" value="{!! $info3->title !!}" placeholder="titel" class="form-control">
                                         </div>
                                     </div>
 
@@ -140,13 +144,15 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info3->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 col-lg-9">
-                                    <textarea name="description" class="form-control">Easy! You should check out MoxieManager!</textarea>
+                                    <textarea name="description" class="form-control">
+                                        {!! $info3->description !!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -172,7 +178,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="title" value="" placeholder="titel" class="form-control">
+                                            <input type="text" name="title" value="{!! $info4->title !!}" placeholder="titel" class="form-control">
                                         </div>
                                     </div>
 
@@ -182,13 +188,15 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info4->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 col-lg-9">
-                                    <textarea name="description" class="form-control">Easy! You should check out MoxieManager!</textarea>
+                                    <textarea name="description" class="form-control">
+                                        {!! $info4->description !!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -214,7 +222,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="title" value="" placeholder="titel" class="form-control">
+                                            <input type="text" name="title" value="{!! $info5->title !!}" placeholder="titel" class="form-control">
                                         </div>
                                     </div>
 
@@ -224,13 +232,15 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info5->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 col-lg-9">
-                                    <textarea name="description" class="form-control">Easy! You should check out MoxieManager!</textarea>
+                                    <textarea name="description" class="form-control">
+                                        {!! $info5->description !!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">
@@ -256,7 +266,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="title" value="" placeholder="titel" class="form-control">
+                                            <input type="text" name="title" value="{!! $info6->title !!}" placeholder="titel" class="form-control">
                                         </div>
                                     </div>
 
@@ -266,13 +276,15 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info5->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-9 col-lg-9">
-                                    <textarea name="description" class="form-control">Easy! You should check out MoxieManager!</textarea>
+                                    <textarea name="description" class="form-control">
+                                        {!! $info6->description !!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-sm-12 col-lg-12">

@@ -12,6 +12,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
     }
 
     /**
@@ -36,27 +37,30 @@ class UserController extends Controller
     public function block($id)
     {
         $user = User::find($id);
+
         Bouncer::retract('active')->from($user);
         Bouncer::assign('blocked')->to($user);
 
-        session()->flash('', '');
+        session()->flash('message', trans('flashSession.userBlock'));
+
         return redirect()->back(302);
     }
 
     /**
      * Unblock a user.
      *
-     * @param int, $id, the user id in the database
-     *
+     * @param  int, $id, the user id in the database
      * @return \Illuminate\Http\RedirectResponse
      */
     public function unblock($id)
     {
         $user = User::find($id);
+
         Bouncer::retract('blocked')->from($user);
         Bouncer::assign('active')->to($user);
 
-        session()-flash('', '');
+        session()-flash('message', trans('flashSession.userUnblock'));
+
         return redirect()->back(302);
     }
 
@@ -74,11 +78,13 @@ class UserController extends Controller
      */
     public function store(UserValidator $input)
     {
-        // TODO: check possibility for mass assign.
-        $new = new User();
-        $new->name = $input->name;
-        $new->gsm = $input->gsm;
-        $new->email = $input->email;
+        // TODO: #13 Add mailing logic when a new user is registrated
+        
+        $new           = new User();
+        $new->name     = $input->name;
+        $new->gsm      = $input->gsm;
+        $new->email    = $input->email;
+        $new->password = bcrypt(str_random(20));
         $new->save();
 
         // Latest inserted id.
@@ -87,7 +93,7 @@ class UserController extends Controller
         $user = User::find($id);
         Bouncer::assign('active')->to($user);
 
-        session()->flash('message', 'U hebt een gebruiker toegevoegd.');
+        session()->flash('message', trans('flashSession.userAdd'));
 
         return redirect()->back(302);
     }
@@ -101,13 +107,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // Unset all the roles.
-        $user = User::find($id);
-        $user->roles()->sync([]);
-
-        // Delete account
+        // Destroy the user.
+        User::find($id)->roles()->sync([]);
         User::destroy($id);
-        session()->flash('message', 'U hebt een gebruiker verwijderd');
+
+        session()->flash('message', trans('flashSession.userDelete'));
 
         return redirect()->back(302);
     }

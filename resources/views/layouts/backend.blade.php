@@ -20,7 +20,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -144,6 +144,11 @@
                 </li>
                 <li>
                     <a href="{!! route('profile.edit.view') !!}"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="fa fa-envelope"></i> <span>Mailing</span>
+                    </a>
                 </li>
                 <li>
                     <a href="{!! url('/logout') !!}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>

@@ -15,9 +15,20 @@ use App\Http\Controllers\Controller;
 
 class RentalController extends Controller
 {
+    /**
+     * RentalController constructor.
+     *
+     * The following middleware is defined here.
+     *
+     * Auth      = To see if the user is authencated.
+     * rentalAcl = Role based middleware for the rental.
+     */
     public function __construct()
     {
-        // Set the authencated routes.
+        $controllers = ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download'];
+
+        $this->middleware('auth', ['only' => $controllers]);
+        // $this->middleware('rentalAcl', ['only' => $controllers]);
     }
 
     /**
@@ -122,13 +133,13 @@ class RentalController extends Controller
     {
         // TODO: Inject UNIX Timestamps
         // TODO: Implement mailing logic UPDATE: Only change the notification mail.
+        // TODO: needs further debug methods.
 
         Rental::insert($input->except('_token'));
 
         $user = $input->all();
         $notification = ''; // Insert Query that get's al the users for notifications
 
-        // TODO: needs further debug methods.
         if (! auth()->check()) {
             Mail::send('emails.notification', ['user' => $user], function($m) use ($user) {
                 $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
@@ -153,7 +164,7 @@ class RentalController extends Controller
             })->send();
         }
 
-        session()->flash('message', 'Nieuwe verhuring toegevoegd');
+        session()->flash('message', trans('flashSession.rentalNew'));
         return redirect()->route('backend.rental.overview', ['type' => 'all']);
     }
 
@@ -167,7 +178,7 @@ class RentalController extends Controller
     {
         // So who take the gun to fire this one down?
         Rental::destroy($id);
-        session()->flash('message', 'U hebt een verhuring verwijderd');
+        session()->flash('message', trans('flashSession.rentalDelete'));
 
         return redirect()->back(302);
     }
@@ -184,7 +195,7 @@ class RentalController extends Controller
         $rental->Status = 2;
         $rental->save();
 
-        session()->flash('message', 'U hebt een verhuring de status bevestgd gegeven.');
+        session()->flash('message', trans('flashSession.rentalConfirm'));
 
         return redirect()->back(302);
     }
@@ -201,7 +212,7 @@ class RentalController extends Controller
         $rental->Status = 1;
         $rental->save();
 
-        session()->flash('message', 'U hebt een verhuring de status optie gegeven');
+        session()->flash('message', trans('flashSession.rentalOption'));
 
         return redirect()->back(302);
     }

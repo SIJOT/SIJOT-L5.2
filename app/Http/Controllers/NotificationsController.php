@@ -40,11 +40,11 @@ class NotificationsController extends Controller
     {
         if ($request->get('submit') === 'read') {
             Notification::whereIn('id', $request->get('notifications'))->update(['read' => 1]);
-            $message = 'U hebt de notificaties gelezen.';
+            $message = trans('flashSession.notificationRead');
             // auth()->user()->readAllNotifications();
         } elseif ($request->get('submit') === 'delete') {
             Notifynder::delete($request->get('notifications'));
-            $message = 'U hebt notificaties verwijderd.';
+            $message = trans('flashSession.notificationDel');
         }
 
         session()->flash('message', $message);

@@ -29,8 +29,14 @@ class TakkenBackendController extends Controller
         return view('backend.groups.update', $data);
     }
 
-    public function update()
+    /**
+     * Update a group his description.
+     * 
+     * @param Requests\GroupValidator $request
+     * @return mixed
+     */
+    public function update(Requests\GroupValidator $request)
     {
-
+        return redirect()->back(302);
     }
 }
