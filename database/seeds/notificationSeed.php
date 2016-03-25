@@ -16,5 +16,10 @@ class notificationSeed extends Seeder
             'name' => 'rental.insert',
             'text' => '{from.name} heeft een nieuwe verhuring toegevoegd.'
         ]);
+
+        NC::create([
+            'name' => '',
+            'text' => '',
+        ]);
     }
 }
