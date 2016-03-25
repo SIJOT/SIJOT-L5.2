@@ -30,6 +30,6 @@ return [
      * - skin-black
      * - skin-black-light
      */
-    'theme' => 'skin-red',
+    'theme' => 'skin-blue',
 
 ];
