@@ -12,6 +12,8 @@ class NotificationsController extends Controller
 {
     /**
      * NotificationsController constructor.
+     *
+     * TODO: implement activeACL middleware.
      */
     public function __construct()
     {
@@ -21,7 +23,7 @@ class NotificationsController extends Controller
     /**
      * Get the nofitications overview.
      *
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -34,7 +36,8 @@ class NotificationsController extends Controller
     /**
      * Destroy the read notification.
      *
-     * @param Request $request
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {

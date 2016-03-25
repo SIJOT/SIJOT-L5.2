@@ -31,7 +31,7 @@ class TakkenController extends Controller
     /**
      * Get a specific group.
      *
-     * @param $tak
+     * @param  string, $tak, The URI segment off the group.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function group($tak)

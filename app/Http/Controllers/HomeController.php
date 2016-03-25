@@ -9,13 +9,20 @@ use App\User;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance.`
+     *
+     * TODO: set activeAcl middleware.
      */
     public function __construct()
     {
         $this->middleware('auth', ['only' => ['index']]);
     }
 
+    /**
+     * Get the index page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function front()
     {
         return view('front-end.home');
@@ -24,7 +31,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {

@@ -25,9 +25,9 @@ class RentalController extends Controller
      */
     public function __construct()
     {
-        $controllers = ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download'];
+        $authControllers = ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download'];
 
-        $this->middleware('auth', ['only' => $controllers]);
+        $this->middleware('auth', ['only' => $authControllers]);
         // $this->middleware('rentalAcl', ['only' => $controllers]);
     }
 
@@ -99,7 +99,7 @@ class RentalController extends Controller
     /**
      * Download the rentals to a PDF file.
      *
-     * @return mixed
+     * @return mixed, stream of the pdf file.
      */
     public function download()
     {
@@ -133,13 +133,13 @@ class RentalController extends Controller
     {
         // TODO: Inject UNIX Timestamps
         // TODO: Implement mailing logic UPDATE: Only change the notification mail.
-        // TODO: needs further debug methods.
 
         Rental::insert($input->except('_token'));
 
         $user = $input->all();
         $notification = ''; // Insert Query that get's al the users for notifications
 
+        // TODO: needs further debug methods.
         if (! auth()->check()) {
             Mail::send('emails.notification', ['user' => $user], function($m) use ($user) {
                 $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');

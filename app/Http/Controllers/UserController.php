@@ -10,6 +10,11 @@ use App\Http\Requests;
 
 class UserController extends Controller
 {
+    /**
+     * UserController constructor.
+     *
+     * TODO: set activeAcl middleware.
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,8 +35,7 @@ class UserController extends Controller
     /**
      * Block a user.
      *
-     * @param int, $id, the user id in the database
-     *
+     * @param  int, $id, the user id in the database
      * @return \Illuminate\Http\RedirectResponse
      */
     public function block($id)
@@ -72,8 +76,7 @@ class UserController extends Controller
     /**
      * Insert a new user.
      *
-     * @param UserValidator $input
-     *
+     * @param  UserValidator $input
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserValidator $input)
@@ -101,8 +104,7 @@ class UserController extends Controller
     /**
      * Destroy a user.
      *
-     * @param int, $id, The user id in the database.
-     *
+     * @param  int, $id, The user id in the database.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
