@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(mailingUsers::class);
         $this->call(mailingGroups::class);
         $this->call(mailingUsersAssignGroups::class);
+
+        $this->call(notificationSeed::class);
     }
 }

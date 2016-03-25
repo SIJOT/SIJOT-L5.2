@@ -3,6 +3,8 @@
 namespace app\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Rental;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['rentals'] = Rental::count();
+        $data['users']   = User::count();
+
+        return view('home', $data);
     }
 }

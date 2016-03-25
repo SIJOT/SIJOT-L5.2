@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AdminLTE 2 | Blank Page</title>
-    <!-- Tell the browser to be responsive to screen width -->
+    {{-- Tell the browser to be responsive to screen width --}}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -13,39 +13,39 @@
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skin-red.css') }}">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    {{-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --}}
+    {{-- WARNING: Respond.js doesn't work if you view the page via file:// --}}
+
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-red sidebar-mini">
-<!-- Site wrapper -->
+<body class="hold-transition {!! config('platform.theme') !!} sidebar-mini">
+{{-- Site wrapper --}}
 <div class="wrapper">
 
     <header class="main-header">
-        <!-- Logo -->
+        {{-- Logo --}}
         <a href="{!! route('backend.home') !!}" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
+            {{-- mini logo for sidebar mini 50x50 pixels --}}
             <span class="logo-mini"><b>S</b></span>
-            <!-- logo for regular state and mobile devices -->
+            {{-- logo for regular state and mobile devices --}}
             <span class="logo-lg"><b>SIJOT</b></span>
         </a>
-        <!-- Header Navbar: style can be found in header.less -->
+        {{-- Header Navbar: style can be found in header.less --}}
         <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
+            {{-- Sidebar toggle button --}}
+             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </a>
 
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-
-                    <!-- Notifications: style can be found in dropdown.less -->
+                    {{-- Notifications: style can be found in dropdown.less --}}
                     <li class="notifications-menu">
                         <a href="{!! route('notification') !!}">
                             <i class="fa fa-bell-o"></i>
@@ -55,7 +55,7 @@
                         </a>
                     </li>
 
-                    <!-- User Account: style can be found in dropdown.less -->
+                    {{-- User Account: style can be found in dropdown.less --}}
                     <li class="user user-menu">
                         <a href="#">
                             <img src="@if(! empty(Auth::user()->image)) {!! '/assets/img/profile/' . Auth::user()->image !!} @else http://placehold.it/160x160 @endif" class="user-image" alt="User Image">
@@ -66,14 +66,13 @@
             </div>
         </nav>
     </header>
+    {{-- =============================================== --}}
 
-    <!-- =============================================== -->
-
-    <!-- Left side column. contains the sidebar -->
+    {{-- Left side column. contains the sidebar --}}
     <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
+        {{-- sidebar: style can be found in sidebar.less --}}
         <section class="sidebar">
-            <!-- Sidebar user panel -->
+            {{-- Sidebar user panel --}}
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="@if(! empty(Auth::user()->image)) {!! '/assets/img/profile/' . Auth::user()->image !!} @else http://placehold.it/160x160 @endif" class="img-circle" alt="User Image">
@@ -83,7 +82,7 @@
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-            <!-- sidebar menu: : style can be found in sidebar.less -->
+            {{-- sidebar menu: : style can be found in sidebar.less --}}
             <ul class="sidebar-menu">
                 <li class="header">NAVIGATIE</li>
                 <li class="treeview">
@@ -155,7 +154,7 @@
                 </li>
             </ul>
         </section>
-        <!-- /.sidebar -->
+        {{-- /.sidebar --}}
     </aside>
 
     @yield('content')
@@ -164,15 +163,15 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
         </div>
+
         <strong>Copyright &copy; {{ date('Y') }} Tim Joosten.</strong> All rights
         reserved.
     </footer>
 
 
 </div>
-<!-- ./wrapper -->
+{{-- ./wrapper --}}
 
-<!-- jQuery 2.2.0 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>

@@ -46,6 +46,8 @@ class EditProfileController extends Controller
 
         $info    = User::find(auth()->user()->id);
 
+        // TODO: implement notification.
+
         if (Input::file()) {
 
             $image = Input::file('image');

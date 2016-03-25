@@ -119,7 +119,7 @@ class RentalController extends Controller
      */
     public function insert()
     {
-        $data['title'] = '';
+        $data['title'] = 'Insert a new rental.';
         return view('backend.rental.insert', $data);
     }
 
@@ -164,7 +164,9 @@ class RentalController extends Controller
             })->send();
         }
 
+        session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalNew'));
+
         return redirect()->route('backend.rental.overview', ['type' => 'all']);
     }
 
@@ -176,8 +178,11 @@ class RentalController extends Controller
      */
     public function destroy($id)
     {
+        // TODO: add notification logic.
         // So who take the gun to fire this one down?
         Rental::destroy($id);
+
+        session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalDelete'));
 
         return redirect()->back(302);
@@ -191,10 +196,9 @@ class RentalController extends Controller
      */
     public function confirmed($id)
     {
-        $rental = Rental::find($id);
-        $rental->Status = 2;
-        $rental->save();
+        Rental::find($id)->update(['Status' => 2]);
 
+        session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalConfirm'));
 
         return redirect()->back(302);
@@ -208,10 +212,9 @@ class RentalController extends Controller
      */
     public function option($id)
     {
-        $rental = Rental::find($id);
-        $rental->Status = 1;
-        $rental->save();
+        Rental::find($id)->update(['Status' => 1]);
 
+        session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalOption'));
 
         return redirect()->back(302);

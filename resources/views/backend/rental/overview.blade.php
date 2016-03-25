@@ -37,6 +37,17 @@
                 </div>
 
                 <div class="box-body">
+
+                    @if(session()->has('message'))
+                        <div class="alert {!! session('class') !!}" role="alert">
+                            {!! session('message') !!}
+
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                    @endif
+
                     <table class="table table-condensed table-hover">
                         <thead>
                             <tr>

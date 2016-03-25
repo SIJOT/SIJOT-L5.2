@@ -18,7 +18,7 @@ class MailingController extends Controller
      */
     public function __construct()
     {
-        // TODO: Implement middleware to see if the user is active.
+        $this->middleware('activeAcl');
         $this->middleware('auth');
     }
 
