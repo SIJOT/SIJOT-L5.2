@@ -84,8 +84,7 @@ class RentalController extends Controller
      */
     public function indexAdmin($type)
     {
-        if ($type == 'all' || empty($type))
-        {
+        if ($type == 'all' || empty($type)) {
             $data['rentals'] = Rental::paginate(15);
         } elseif($type == 'new') {
             $data['rentals'] = Rental::where('status', 0)->paginate(15);
@@ -141,15 +140,17 @@ class RentalController extends Controller
 
         // TODO: needs further debug methods.
         if (! auth()->check()) {
-            Mail::send('emails.notification', ['user' => $user], function($m) use ($user) {
-                $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-                $m->to($user['Email'], $user['Group'])->subject('Er is een nieuwe verhuring aangevraagd');
+            Mail::send('emails.notification', ['user' => $user], function($mail) use ($user) {
+                $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
+                $mail->to($user['Email'], $user['Group']);
+                $mail->subject('Er is een nieuwe verhuring aangevraagd');
             });
 
             // Data mail to the requester.
-            Mail::send('emails.aanvraag', ['user' => $user], function ($m) use ($user) {
-                $m->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-                $m->to($user['Email'], $user['Group'])->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
+            Mail::send('emails.aanvraag', ['user' => $user], function ($mail) use ($user) {
+                $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
+                $mail->to($user['Email'], $user['Group']);
+                $mail->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
             });
         }
 
