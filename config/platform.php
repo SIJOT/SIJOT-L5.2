@@ -32,4 +32,29 @@ return [
      */
     'theme' => 'skin-blue',
 
+    /**
+     * --------------------------------------------------------------------------
+     * Site admin configuration
+     * --------------------------------------------------------------------------
+     * The name and email address off the sbtie administrator. We preffered
+     * to set your developer as the administrator
+     */
+    'admin' => [
+        'name'  => 'Tim Joosten',
+        'email' => 'Topairy@gmail.com'
+    ],
+    
+    /**
+     * --------------------------------------------------------------------------
+     * Site admin configuration
+     * --------------------------------------------------------------------------
+     * The info about the responsible person for the group domain.
+     * This person will also get the emails about the rental requests. 
+     * And also will be used to send emails about the rentals.
+     */
+    'rental' = [
+        'name'      => 'Leo Willems',
+        'email'     => 'leowillems@telenet.be',
+        'telephone' => '',
+    ],
 ];
