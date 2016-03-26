@@ -12,12 +12,11 @@ class NotificationsController extends Controller
 {
     /**
      * NotificationsController constructor.
-     *
-     * TODO: implement activeACL middleware.
      */
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -50,7 +49,9 @@ class NotificationsController extends Controller
             $message = trans('flashSession.notificationDel');
         }
 
+        // TODO: set class flash message.
         session()->flash('message', $message);
+
         return redirect()->back(302);
     }
 }
