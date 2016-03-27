@@ -9,7 +9,7 @@
 }
 
 .skin-yellow .main-header .navbar .nav > li > a {
-  color: #ffffff;
+  color: $white;
 }
 
 .skin-yellow .main-header .navbar .nav > li > a:hover,
@@ -24,7 +24,7 @@
 }
 
 .skin-yellow .main-header .navbar .sidebar-toggle {
-  color: #ffffff;
+  color: $white;
 }
 
 .skin-yellow .main-header .navbar .sidebar-toggle:hover {
@@ -33,7 +33,7 @@
 }
 
 .skin-yellow .main-header .navbar .sidebar-toggle {
-  color: #fff;
+  color: $white;
 }
 
 .skin-yellow .main-header .navbar .sidebar-toggle:hover {
@@ -45,7 +45,7 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
   .skin-yellow .main-header .navbar .dropdown-menu li a {
-    color: #fff;
+    color: $white;
   }
   .skin-yellow .main-header .navbar .dropdown-menu li a:hover {
     background: #e08e0b;
@@ -54,7 +54,7 @@
 
 .skin-yellow .main-header .logo {
   background-color: #e08e0b;
-  color: #ffffff;
+  color: $white;
   border-bottom: 0 solid transparent;
 }
 
@@ -78,7 +78,7 @@
 
 .skin-yellow .user-panel > .info,
 .skin-yellow .user-panel > .info > a {
-  color: #fff;
+  color: $white;
 }
 
 .skin-yellow .sidebar-menu > li.header {
@@ -92,7 +92,7 @@
 
 .skin-yellow .sidebar-menu > li:hover > a,
 .skin-yellow .sidebar-menu > li.active > a {
-  color: #ffffff;
+  color: $white;
   background: #1e282c;
   border-left-color: #f39c12;
 }
@@ -116,7 +116,7 @@
 
 .skin-yellow .treeview-menu > li.active > a,
 .skin-yellow .treeview-menu > li > a:hover {
-  color: #ffffff;
+  color: $white;
 }
 
 .skin-yellow .sidebar-form {
@@ -143,12 +143,12 @@
 
 .skin-yellow .sidebar-form input[type="text"]:focus,
 .skin-yellow .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
-  background-color: #fff;
+  background-color: $white;
   color: #666;
 }
 
 .skin-yellow .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
-  border-left-color: #fff;
+  border-left-color: $white;
 }
 
 .skin-yellow .sidebar-form .btn {
