@@ -13,11 +13,8 @@ use Symfony\Component\HttpFoundation\Response as Status;
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
-    // TODO: [v1.0.0] #115 Add API documentation.
-    // TODO: [v1.0.0] #116 Add API routes.
     // TODO: [v1.1.0] #117 Add UNIT tests.
-
-    // TODO: [BUG] fix try to get property of non-object. When no rentals and index method is called.
+    
     // TODO: [BUG] fix Call to a member function delete() on null -> delete controller
 
     public function construct()
@@ -42,15 +39,20 @@ class rentalApiController extends Controller
             $rentals = Rental::take(5)->get();
         }
 
-        $prevCursorStr = $request->input('prevCursor', 6);
-        $newCursorStr  = $rentals->last()->id;
+        if (count($rentals) > 0) {
+            $prevCursorStr = $request->input('prevCursor', 6);
+            $newCursorStr  = $rentals->last()->id;
 
-        $cursor   = new Cursor($currentCursorStr, $prevCursorStr, $newCursorStr, $rentals->count());
-        $resource = new Collection($rentals, $this->parser());
-        $resource->setCursor($cursor);
+            $cursor   = new Cursor($currentCursorStr, $prevCursorStr, $newCursorStr, $rentals->count());
+            $resource = new Collection($rentals, $this->parser());
+            $resource->setCursor($cursor);
 
-        $content = $fractal->createData($resource)->toJson();
-        $status  = Status::HTTP_OK;
+            $content = $fractal->createData($resource)->toJson();
+            $status  = Status::HTTP_OK;
+        } elseif(count($rentals) === 0) {
+            $content = ['message' => 'Er zijn geen verhuringen'];
+            $status  = Status::HTTP_OK;
+        }
 
         return response($content, $status)->header('Content-Type', 'application/json');
     }
