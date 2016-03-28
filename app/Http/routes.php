@@ -22,7 +22,7 @@
 |
 */
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
-    Route::delete('rental/{id}', 'rentalApiController@destroy')->name('api.rental.destroy');
+    Route::delete('rental/{id}', 'rentalApiController@delete')->name('api.rental.destroy');
     Route::post('rental/create', 'rentalApiController@insert')->name('api.rental.insert');
     Route::put('rental/{id}', 'rentalApiController@edit')->name('api.rental.update');
     Route::get('rental', 'rentalApiController@index')->name('api.rental.index');

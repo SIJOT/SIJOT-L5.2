@@ -17,6 +17,9 @@ class rentalApiController extends Controller
     // TODO: [v1.0.0] #116 Add API routes.
     // TODO: [v1.1.0] #117 Add UNIT tests.
 
+    // TODO: [BUG] fix try to get property of non-object. When no rentals and index method is called.
+    // TODO: [BUG] fix Call to a member function delete() on null -> delete controller
+
     public function construct()
     {
         // This shit is not a love song.
