@@ -45,7 +45,7 @@
                     <div class="icon">
                         <i class="fa fa-cogs"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{!! route('profile.edit.view') !!}" class="small-box-footer">
                         <i class="fa fa-arrow-circle-right"></i> info
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="icon">
                         <i class="fa fa-user"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{!! route('backend.users.overview') !!}" class="small-box-footer">
                         <i class="fa fa-arrow-circle-right"></i> info
                     </a>
                 </div>

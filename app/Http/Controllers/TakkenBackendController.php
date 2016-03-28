@@ -25,6 +25,7 @@ class TakkenBackendController extends Controller
         $data['jonggivers'] = Group::getGroup('jong-givers')->get();
         $data['givers']     = Group::getGroup('givers')->get();
         $data['jins']       = Group::getGroup('jins')->get();
+        $data['leiding']    = Group::getGroup('leiding')->get();
 
         return view('backend.groups.update', $data);
     }
