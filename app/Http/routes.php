@@ -21,7 +21,7 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-Route::group(['middleware' => ['web']], function () {
+Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
     //
 });
 
