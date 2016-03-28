@@ -21,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
             Bouncer::allow('active')->to('');
             Bouncer::allow('blocked')->to('');
             Bouncer::allow('admin')->to('');
+            Bouncer::allow('developer')->to('');
+            Bouncer::allow('verhuur')->to('');
+            Bouncer::allow('vzw')->to('');
 
             // Takken.
             Bouncer::allow('kapoenen')->to('');

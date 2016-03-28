@@ -85,6 +85,8 @@
             {{-- sidebar menu: : style can be found in sidebar.less --}}
             <ul class="sidebar-menu">
                 <li class="header">NAVIGATIE</li>
+
+                @if(Auth::user()->is('vzw') || Auth::user()->is('admin') || Auth::user()->is('developer') || Auth::user()->is('verhuur'))
                 <li class="@if(Request::is('backend/rental/overview/all')) active @endif treeview">
                     <a href="#">
                         <i class="fa fa-home"></i>
@@ -114,6 +116,9 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if(Auth::user()->is('admin') || Auth::user()->is('developer'))
                 <li class="@if(Request::is('backend/users/overview')) active @endif treeview">
                     <a href="#">
                         <i class="fa fa-user"></i> <span>Gebruikers</span>
@@ -127,6 +132,8 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
                 <li>
                     <a href=""> <i class="fa fa-cloud"></i> <span>De cloud</span></a>
                 </li>

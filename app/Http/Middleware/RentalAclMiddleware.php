@@ -15,11 +15,12 @@ class RentalAclMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $adminRole = auth()->user()->is('admin');
-        $vzwRole   = auth()->user()->is('vzw');
-        $devRole   = auth()->user()->is('developer');
+        $adminRole  = auth()->user()->is('admin');
+        $vzwRole    = auth()->user()->is('vzw');
+        $devRole    = auth()->user()->is('developer');
+        $rentalRole = auth()->user()->is('verhuur');
 
-        if ($adminRole || $vzwRole || $devRole) {
+        if ($rentalRole || $adminRole || $vzwRole || $devRole) {
             return $next($request);
         }
 
