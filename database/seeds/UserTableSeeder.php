@@ -18,6 +18,9 @@ class UserTableSeeder extends Seeder
         $data['gsm'] = '0474834880';
         $data['password'] = bcrypt('admin');
 
-        DB::table('users')->insert($data);
+        $id = DB::table('users')->insertGetId($data);
+
+        $user = App\User::find($id);
+        Bouncer::assign('active')->to($user);
     }
 }

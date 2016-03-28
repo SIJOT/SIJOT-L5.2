@@ -130,13 +130,13 @@
                 <li>
                     <a href=""> <i class="fa fa-cloud"></i> <span>De cloud</span></a>
                 </li>
-                <li>
+                <li @if(Request::is()) class="" @endif >
                     <a href=""> <i class="fa fa-calendar"></i> <span>Activiteiten</span></a>
                 </li>
                 <li>
                     <a href=""> <i class="fa fa-asterisk"></i> <span>Inschrijvingen</span></a>
                 </li>
-                <li>
+                <li @if(Request::is('backend/groups/view')) class="active" @endif>
                     <a href="{{ route('backend.groups.view') }}">
                         <i class="fa fa-leaf"></i> <span>Takken</span>
                     </a>
