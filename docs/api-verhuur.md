@@ -97,7 +97,7 @@ Alle invoer velden zijn verplicht.
 | `1`    | Optie                | 
 | `2`    | Bevestigd            | 
 
-** Success message ** 
+**Success message** 
 
 ```
 {
@@ -105,7 +105,7 @@ Alle invoer velden zijn verplicht.
 }
 ```
 
-** Failure message **
+**Failure message**
 
 ```
 {
@@ -125,7 +125,7 @@ Verwijder een verhuring. De {id} is verplicht zodat het systeem weet welke recor
 }
 ```
 
-** Failure message **
+**Failure message**
 
 ```
 (need to develop this)
