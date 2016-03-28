@@ -14,7 +14,8 @@ class MailingController extends Controller
      *
      * Middleware:
      *
-     * auth = to see if the user is authencated.
+     * auth      = to see if the user is authencated.
+     * activeAcl = to see if the user is blocked or not.
      */
     public function __construct()
     {

@@ -10,9 +10,15 @@ use App\Http\Requests;
 
 class UserController extends Controller
 {
+    /**
+     * UserController constructor.
+     *
+     * TODO: set activeAcl middleware.
+     */
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -30,8 +36,7 @@ class UserController extends Controller
     /**
      * Block a user.
      *
-     * @param int, $id, the user id in the database
-     *
+     * @param  int, $id, the user id in the database
      * @return \Illuminate\Http\RedirectResponse
      */
     public function block($id)
@@ -59,11 +64,17 @@ class UserController extends Controller
         Bouncer::retract('blocked')->from($user);
         Bouncer::assign('active')->to($user);
 
-        session()-flash('message', trans('flashSession.userUnblock'));
+        session()->flash('class', 'alert-success');
+        session()->flash('message', trans('flashSession.userUnblock'));
 
         return redirect()->back(302);
     }
 
+    /**
+     * Insert view for a new user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function insert()
     {
         return view('backend.users.insert');
@@ -72,8 +83,7 @@ class UserController extends Controller
     /**
      * Insert a new user.
      *
-     * @param UserValidator $input
-     *
+     * @param  UserValidator $input
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserValidator $input)
@@ -101,8 +111,7 @@ class UserController extends Controller
     /**
      * Destroy a user.
      *
-     * @param int, $id, The user id in the database.
-     *
+     * @param  int, $id, The user id in the database.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
@@ -111,6 +120,7 @@ class UserController extends Controller
         User::find($id)->roles()->sync([]);
         User::destroy($id);
 
+        session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.userDelete'));
 
         return redirect()->back(302);

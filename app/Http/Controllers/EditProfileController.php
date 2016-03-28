@@ -13,6 +13,11 @@ use App\Http\Controllers\Controller;
 
 class EditProfileController extends Controller
 {
+    /**
+     * EditProfileController constructor.
+     *
+     * TODO: set active ACL middlware.
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,8 +30,8 @@ class EditProfileController extends Controller
      */
     public function view()
     {
-        $data['user']      = User::find(auth()->user()->id);
-        $data['roles']     = Role::all();
+        $data['user']  = User::find(auth()->user()->id);
+        $data['roles'] = Role::all();
 
         return view('backend.users.edit', $data);
     }
@@ -39,6 +44,7 @@ class EditProfileController extends Controller
      */
     public function editInfo(ChangeUserValidator $input)
     {
+        // TODO: clean up insert and set the mass assign.
         $user        = User::find(auth()->user()->id);
         $user->name  = auth()->user()->name;
         $user->email = $input->email;

@@ -16,12 +16,13 @@ class NotificationsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
      * Get the nofitications overview.
      *
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -34,7 +35,8 @@ class NotificationsController extends Controller
     /**
      * Destroy the read notification.
      *
-     * @param Request $request
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
     {
@@ -47,7 +49,9 @@ class NotificationsController extends Controller
             $message = trans('flashSession.notificationDel');
         }
 
+        // TODO: set class flash message.
         session()->flash('message', $message);
+
         return redirect()->back(302);
     }
 }

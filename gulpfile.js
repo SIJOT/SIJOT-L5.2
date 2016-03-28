@@ -1,8 +1,6 @@
 var elixir = require('laravel-elixir');
 
 // TODO; #16 Enable cache busting on js en css files
-// TODO: #24 set rental images to resources.
-// TODO: #19 set group images to resources.
 
 /*
  |--------------------------------------------------------------------------

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class Mailingtags extends Migration
 {
@@ -47,8 +48,12 @@ class Mailingtags extends Migration
      */
     public function down()
     {
+        DB::query('SET FOREIGN_KEY_CHECKS = 0'); // Disable foreign key check.
+
+        Schema::drop('mailing_tags_mailing_users');
         Schema::drop('mailing_tags');
         Schema::drop('mailing_users');
-        Schema::drop('mailing_tags_mailing_users');
+
+        DB::query('SET FOREIGN_KEY_CHECKS = 1'); // Enable foreign key check.
     }
 }

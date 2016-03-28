@@ -52,7 +52,7 @@ return [
      * This person will also get the emails about the rental requests. 
      * And also will be used to send emails about the rentals.
      */
-    'rental' = [
+    'rental' => [
         'name'      => 'Leo Willems',
         'email'     => 'leowillems@telenet.be',
         'telephone' => '',
