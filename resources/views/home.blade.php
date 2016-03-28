@@ -22,7 +22,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>40</h3>
+                        <h3> {!! $rentalCount !!} </h3>
 
                         <p>Verhuringen</p>
                     </div>
@@ -55,7 +55,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>7</h3>
+                        <h3> {!! $users !!} </h3>
                         <p>Gebruikers</p>
                     </div>
                     <div class="icon">
@@ -93,7 +93,7 @@
                     <div class="icon">
                         <i class="fa fa-sign-out"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{!! url('/logout') !!}" class="small-box-footer">
                         <i class="fa fa-arrow-circle-right"></i> info
                     </a>
                 </div>
