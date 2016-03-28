@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rental;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Validator;
 use League\Fractal\Manager;
 use Illuminate\Http\Request;
 use League\Fractal\Pagination\Cursor;
@@ -92,20 +93,39 @@ class rentalApiController extends Controller
      */
     public function insert(Request $request)
     {
-        $rental             = new Rental;
-        $rental->Start_date = $request->get('Start_datum');
-        $rental->End_date   = $request->get('Eind_datum');
-        $rental->Status     = $request->get('Status');
-        $rental->Email      = $request->get('Email');
-        $rental->telephone  = $request->get('telephone');
-        $rental->save();
+        $validator = Validator::make($request->all(), [
+            'Start_datum' => 'required',
+            'Eind_datum'  => 'required',
+            'Status'      => 'required',
+            'Email'       => 'required',
+            'telephone'   => 'required'
+        ]);
 
-        if ($rental->count() === 0) {
-            $status = Status::HTTP_OK;
-            $content = ['message' => 'Rental successfull added.'];
-        } elseif ($rental->count() > 0) {
+
+        if (! $validator->fails())
+        {
+            $rental             = new Rental;
+            $rental->Start_date = $request->get('Start_datum');
+            $rental->End_date   = $request->get('Eind_datum');
+            $rental->Status     = $request->get('Status');
+            $rental->Email      = $request->get('Email');
+            $rental->telephone  = $request->get('telephone');
+            $rental->save();
+
+            if ($rental->count() === 0) {
+                $status = Status::HTTP_OK;
+                $content = ['message' => 'could not perform the action.'];
+            } elseif ($rental->count() > 0) {
+                $status = Status::HTTP_BAD_REQUEST;
+                $content = ['message' => 'Rental successfull added'];
+            }
+        } else {
             $status = Status::HTTP_BAD_REQUEST;
-            $content = ['message' => 'Could not perform the action'];
+            $content = [
+                'message'      => 'Validation errors',
+                'http_status'  => $status,
+                'errors'       => $validator->errors()->all()
+            ];
         }
 
         return response($content, $status)->header('Content-Type', 'application/json');
@@ -120,20 +140,39 @@ class rentalApiController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $rental             = new Rental;
-        $rental->Start_date = $request->get('Start_datum');
-        $rental->End_date   = $request->get('Eind_datum');
-        $rental->Status     = $request->get('Status');
-        $rental->Email      = $request->get('Email');
-        $rental->telephone  = $request->get('telephone');
-        $rental->save();
+        $validator = Validator::make($request->all(), [
+            'Start_datum' => 'required',
+            'Eind_datum'  => 'required',
+            'Status'      => 'required',
+            'Email'       => 'required',
+            'telephone'   => 'required'
+        ]);
 
-        if ($rental->count() === 0) {
-            $status = Status::HTTP_OK;
-            $content = ['message' => 'Rental successfull updated.'];
-        } elseif ($rental->count() > 0) {
+
+        if (! $validator->fails())
+        {
+            $rental             = new Rental;
+            $rental->Start_date = $request->get('Start_datum');
+            $rental->End_date   = $request->get('Eind_datum');
+            $rental->Status     = $request->get('Status');
+            $rental->Email      = $request->get('Email');
+            $rental->telephone  = $request->get('telephone');
+            $rental->save();
+
+            if ($rental->count() === 0) {
+                $status = Status::HTTP_OK;
+                $content = ['message' => 'could not perform the action.'];
+            } elseif ($rental->count() > 0) {
+                $status = Status::HTTP_BAD_REQUEST;
+                $content = ['message' => 'Rental successfull updated'];
+            }
+        } else {
             $status = Status::HTTP_BAD_REQUEST;
-            $content = ['message' => 'Could not perform the action'];
+            $content = [
+                'message'      => 'Validation errors',
+                'http_status'  => $status,
+                'errors'       => $validator->errors()->all()
+            ];
         }
 
         return response($content, $status)->header('Content-Type', 'application/json');
