@@ -14,8 +14,6 @@ class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
     // TODO: [v1.1.0] #117 Add UNIT tests.
-    
-    // TODO: [BUG] fix Call to a member function delete() on null -> delete controller
 
     public function construct()
     {
@@ -66,9 +64,12 @@ class rentalApiController extends Controller
     public function delete($id)
     {
         $rental = Rental::find($id);
-        $rental->delete();
 
-        switch(count($rental->count())) {
+        if (count($rental) > 0) {
+            $rental->delete();
+        }
+
+        switch(count($rental)) {
             case '1':
                 $status  = Status::HTTP_OK;
                 $content = ['message' => 'rental deleted'];
