@@ -85,7 +85,7 @@
             {{-- sidebar menu: : style can be found in sidebar.less --}}
             <ul class="sidebar-menu">
                 <li class="header">NAVIGATIE</li>
-                <li class="treeview">
+                <li class="@if(Request::is('backend/rental/overview/all')) active @endif treeview">
                     <a href="#">
                         <i class="fa fa-home"></i>
                         <span>Verhuur</span>
@@ -114,7 +114,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="treeview">
+                <li class="@if(Request::is('backend/users/overview')) active @endif treeview">
                     <a href="#">
                         <i class="fa fa-user"></i> <span>Gebruikers</span>
                     </a>
