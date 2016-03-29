@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- =============================================== -->
+        {{-- =============================================== --}}
 
-<!-- Content Wrapper. Contains page content -->
+{{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    {{-- Content Header (Page header) --}}
     <section class="content-header">
         <h1>
             Verhuur
@@ -17,10 +17,10 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
-        <!-- Default box -->
+        {{-- Default box --}}
         <div class="box">
             <div class="box-body">
                 <div class="alert alert-danger" role="alert">
@@ -32,7 +32,7 @@
                     {{-- csrf_field() --}}
                     {{ csrf_field() }}
 
-                    <!-- Start date input group -->
+                    {{-- Start date input group --}}
                     <div class="form-group {{ $errors->has('Start_date') ? 'has-feedback has-error' : '' }}">
                         <label>Start datum: <span class="text-danger">*</span></label>
 
@@ -43,9 +43,9 @@
                             <input type="text" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
                         </div>
                     </div>
-                    <!-- /.start date input group -->
+                    {{-- /.start date input group --}}
 
-                    <!-- End date input group  -->
+                    {{-- End date input group  --}}
                     <div class="form-group {{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}">
                         <label>Eind datum: <span class="text-danger">*</span></label>
 
@@ -56,9 +56,9 @@
                             <input type="text" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
                         </div>
                     </div>
-                    <!-- /.end date input group -->
+                    {{-- /.end date input group --}}
 
-                    <!-- Group form group -->
+                    {{-- Group form group --}}
                     <div class="form-group {{ $errors->has('Group') ? 'has-feedback has-error' : '' }}">
                         <label> Groep: <span class="text-danger">*</span></label>
 
@@ -69,9 +69,9 @@
                             <input type="text" value="{{ old('Group') }}" name="Group" style="width:20%;" placeholder="Groep" class="form-control">
                         </div>
                     </div>
-                    <!-- /.group form group -->
+                    {{-- /.group form group --}}
 
-                    <!-- telephone number group -->
+                    {{-- telephone number group --}}
                     <div class="form-group">
                         <label> Tel. nummer: </label>
 
@@ -82,9 +82,9 @@
                             <input type="text" value="{{ old('telephone') }}" name="telephone" style="width:20%;" placeholder="Tel. nummer" class="form-control">
                         </div>
                     </div>
-                    <!-- /. telephone number group-->
+                    {{-- /. telephone number group--}}
 
-                    <!-- email form group -->
+                    {{-- email form group --}}
                     <div class="form-group {{ $errors->has('Email') ? 'has-feedback has-error' : '' }}">
                         <label> Email:  <span class="text-danger">*</span></label>
 
@@ -95,22 +95,22 @@
                             <input type="text" name="Email" value="{{ old('Email') }}" style="width:20%;" placeholder="Email adres" class="form-control">
                         </div>
                     </div>
-                    <!-- /.email gorm group-->
+                    {{-- /.email gorm group--}}
 
-                    <!-- Form buttons -->
+                    {{-- Form buttons --}}
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Toevoegen</button>
                         <button type="reset" class="btn btn-danger">Reset</button>
                     </div>
-                    <!-- /. form buttons-->
+                    {{-- /. form buttons--}}
                 </form>
             </div>
-            <!-- /.box-body -->
+            {{-- /.box-body --}}
         </div>
-        <!-- /.box -->
+        {{-- /.box --}}
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection

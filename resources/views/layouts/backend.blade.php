@@ -85,7 +85,9 @@
             {{-- sidebar menu: : style can be found in sidebar.less --}}
             <ul class="sidebar-menu">
                 <li class="header">NAVIGATIE</li>
-                <li class="treeview">
+
+                @if(Auth::user()->is('vzw') || Auth::user()->is('admin') || Auth::user()->is('developer') || Auth::user()->is('verhuur'))
+                <li class="@if(Request::is('backend/rental/overview/all')) active @endif treeview">
                     <a href="#">
                         <i class="fa fa-home"></i>
                         <span>Verhuur</span>
@@ -114,7 +116,10 @@
                         </li>
                     </ul>
                 </li>
-                <li class="treeview">
+                @endif
+
+                @if(Auth::user()->is('admin') || Auth::user()->is('developer'))
+                <li class="@if(Request::is('backend/users/overview')) active @endif treeview">
                     <a href="#">
                         <i class="fa fa-user"></i> <span>Gebruikers</span>
                     </a>
@@ -127,16 +132,18 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
                 <li>
                     <a href=""> <i class="fa fa-cloud"></i> <span>De cloud</span></a>
                 </li>
-                <li>
+                <li @if(Request::is()) class="" @endif >
                     <a href=""> <i class="fa fa-calendar"></i> <span>Activiteiten</span></a>
                 </li>
                 <li>
                     <a href=""> <i class="fa fa-asterisk"></i> <span>Inschrijvingen</span></a>
                 </li>
-                <li>
+                <li @if(Request::is('backend/groups/view')) class="active" @endif>
                     <a href="{{ route('backend.groups.view') }}">
                         <i class="fa fa-leaf"></i> <span>Takken</span>
                     </a>

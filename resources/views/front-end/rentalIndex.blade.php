@@ -44,7 +44,7 @@
                 een overnachtings plaats zoekt, of ...! We zijn rustig gelegen nabij het stadspark van Turnhout.
             </p>
 
-            <!-- Photo's -->
+            {{-- Photo's --}}
             <div class="row">
                 <div class="col-md-6">
                     <img class="img-rounded img-thumbnail" style="width: 400px; height: 200px;" src="/img/1.jpg" alt="">
@@ -54,14 +54,14 @@
                     <img class="img-rounded img-thumbnail" style="width: 400px; height: 200px;" src="/img/2.jpg" alt="">
                 </div>
             </div>
-            <!-- /// -->
+            {{-- /// --}}
 
             <p style="margin-top: 7px;">
                 Onze lokalen Bestaan uit 2 Blokken. Waarin 1 grote zaal en 5 lokalen en sanitaire blok gevestigd zijn. De grote zaal is<br>
                 Polyvalente. Verder is er ook nog een keuken. Deze keuken is voorzien 2 gasfornuizen, friet ketel ,keuken eilend, enz...
             </p>
 
-            <!-- Photo's -->
+            {{-- Photo's --}}
             <div class="row">
                 <div class="col-md-6">
                     <img class="img-rounded img-thumbnail" style="width: 400px; height: 200px;" src="/img/3.jpg" alt="">
@@ -71,7 +71,7 @@
                     <img class="img-rounded img-thumbnail" style="width: 400px; height: 200px;" src="/img/4.jpg" alt="">
                 </div>
             </div>
-            <!-- /// -->
+            {{-- /// --}}
 
             <p style="margin-top: 7px;">
                 In alle gebouwen is er verwarming aanwezig. Aan de gebouwen grenst er zich een groot grasveld, bos, vuurplaats<br>

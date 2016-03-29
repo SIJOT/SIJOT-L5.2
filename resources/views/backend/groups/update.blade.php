@@ -24,16 +24,36 @@
         <!-- Default box -->
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Kapoenen</a></li>
-                <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Welpen</a></li>
-                <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Jong-givers</a></li>
-                <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Givers</a></li>
-                <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">Jins</a></li>
-                <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Leiding</a></li>
+
+                @if(Auth::user()->is('kapoenen'))
+                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Kapoenen</a></li>
+                @endif
+
+                @if(Auth::user()->is('welpen'))
+                    <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Welpen</a></li>
+                @endif
+
+                @if(Auth::user()->is('jong-givers'))
+                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Jong-givers</a></li>
+                @endif
+
+                @if(Auth::user()->is('givers'))
+                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Givers</a></li>
+                @endif
+
+                @if(Auth::user()->is('jins'))
+                    <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">Jins</a></li>
+                @endif
+
+                @if(Auth::user()->is('leiding'))
+                    <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Leiding</a></li>
+                @endif
+
             </ul>
 
             <div class="tab-content">
 
+                @if(Auth::user()->is('kapoenen'))
                 <div class="tab-pane active" id="tab_1">
                     <div class="row">
                         @foreach($kapoenen as $info1)
@@ -77,10 +97,12 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
 
-                <div class="tab-pane" id="tab_2">
+                    @if(Auth::user()->is('welpen'))
+                    <div class="tab-pane" id="tab_2">
                     <div class="row">
-                        @foreach($kapoenen as $info2)
+                        @foreach($welpen as $info2)
                             <form action="" method="POST">
 
                                 <div class="col-sm-4 col-md-4">
@@ -121,10 +143,12 @@
                         @endforeach
                     </div>
                 </div>
+                    @endif
 
-                <div class="tab-pane" id="tab_3">
+                    @if(Auth::user()->is('jong-givers'))
+                    <div class="tab-pane" id="tab_3">
                     <div class="row">
-                        @foreach($kapoenen as $info3)
+                        @foreach($jonggivers as $info3)
                             <form action="" method="POST">
 
                                 <div class="col-sm-4 col-md-4">
@@ -165,10 +189,12 @@
                         @endforeach
                     </div>
                 </div>
+                    @endif
 
-                <div class="tab-pane" id="tab_4">
+                    @if(Auth::user()->is('givers'))
+                    <div class="tab-pane" id="tab_4">
                     <div class="row">
-                        @foreach($kapoenen as $info4)
+                        @foreach($givers as $info4)
                             <form action="" method="POST">
 
                                 <div class="col-sm-4 col-md-4">
@@ -209,10 +235,12 @@
                         @endforeach
                     </div>
                 </div>
+                    @endif
 
-                <div class="tab-pane" id="tab_5">
+                    @if(Auth::user()->is('jins'))
+                    <div class="tab-pane" id="tab_5">
                     <div class="row">
-                        @foreach($kapoenen as $info5)
+                        @foreach($jins as $info5)
                             <form action="" method="POST">
 
                                 <div class="col-sm-4 col-md-4">
@@ -253,10 +281,12 @@
                         @endforeach
                     </div>
                 </div>
+                    @endif
 
-                <div class="tab-pane" id="tab_6">
+                    @if(Auth::user()->is('leiding'))
+                    <div class="tab-pane" id="tab_6">
                     <div class="row">
-                        @foreach($kapoenen as $info6)
+                        @foreach($leiding as $info6)
                             <form action="" method="POST">
 
                                 <div class="col-sm-4 col-md-4">
@@ -276,7 +306,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </div>
 
-                                            <input type="text" name="sub_title" value="{!! $info5->sub_title !!}" placeholder="sub titel" class="form-control">
+                                            <input type="text" name="sub_title" value="{!! $info6->sub_title !!}" placeholder="sub titel" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -299,6 +329,7 @@
                 </div>
 
             </div>
+            @endif
             <!-- /.tab-content -->
         </div>
         <!-- /.box -->

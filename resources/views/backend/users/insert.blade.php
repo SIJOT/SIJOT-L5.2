@@ -3,12 +3,12 @@
 @section('content')
         <!-- =============================================== -->
 
-<!-- Content Wrapper. Contains page content -->
+{{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    {{-- Content Header (Page header) --}}
     <section class="content-header">
         <h1>
-            Verhuur
+            Nieuwe gebruiker
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i></a></li>
@@ -17,10 +17,10 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
-        <!-- Default box -->
+        {{-- Default box --}}
         <div class="box">
             <div class="box-body">
                 <div class="alert alert-info" role="alert">
@@ -79,12 +79,12 @@
 
                 </form>
             </div>
-            <!-- /.box-body -->
+            {{-- /.box-body --}}
         </div>
-        <!-- /.box -->
+        {{-- /.box --}}
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection

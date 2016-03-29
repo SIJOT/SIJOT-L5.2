@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- =============================================== -->
+        {{-- =============================================== --}}
 
-<!-- Content Wrapper. Contains page content -->
+{{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    {{-- Content Header (Page header) --}}
     <section class="content-header">
         <h1>Info</h1>
         <ol class="breadcrumb">
@@ -14,15 +14,15 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
         <div class="row">
             <div class="col-lg-4 col-xs-8">
-                <!-- small box -->
+                {{-- small box --}}
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>40</h3>
+                        <h3> {!! $rentalCount !!} </h3>
 
                         <p>Verhuringen</p>
                     </div>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-lg-4 col-xs-8">
-                <!-- small box -->
+                {{-- small box --}}
                 <div class="small-box bg-red">
                     <div class="inner">
                         <h3>Wijzig</h3>
@@ -45,7 +45,7 @@
                     <div class="icon">
                         <i class="fa fa-cogs"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{!! route('profile.edit.view') !!}" class="small-box-footer">
                         <i class="fa fa-arrow-circle-right"></i> info
                     </a>
                 </div>
@@ -55,13 +55,13 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>7</h3>
+                        <h3> {!! $users !!} </h3>
                         <p>Gebruikers</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-user"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{!! route('backend.users.overview') !!}" class="small-box-footer">
                         <i class="fa fa-arrow-circle-right"></i> info
                     </a>
                 </div>
@@ -93,7 +93,7 @@
                     <div class="icon">
                         <i class="fa fa-sign-out"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{!! url('/logout') !!}" class="small-box-footer">
                         <i class="fa fa-arrow-circle-right"></i> info
                     </a>
                 </div>
@@ -102,7 +102,7 @@
         </div>
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection
