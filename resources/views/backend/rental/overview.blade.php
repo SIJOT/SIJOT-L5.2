@@ -1,9 +1,9 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- =============================================== -->
+        {{-- =============================================== --}}
 
-<!-- Content Wrapper. Contains page content -->
+{{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -17,7 +17,7 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
         @if(count($rentals) === 0)
@@ -26,7 +26,7 @@
                 <p> Er zijn geen verhuringen onder deze categorie. </p>
             </div>
         @else
-            <!-- Default box -->
+            {{-- Default box --}}
             <div class="box">
                 <div class="box-header with-border">
                     <div class="pull-left">
@@ -102,18 +102,18 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.box-body -->
+                {{-- /.box-body --}}
                 @if($rentalCount > 15)
                     <div class="box-footer">
                         {{ $rentals->render() }}
                     </div>
                 @endif
             </div>
-            <!-- /.box -->
+            {{-- /.box --}}
         @endif
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection

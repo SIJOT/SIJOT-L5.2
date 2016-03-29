@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- =============================================== -->
+        {{-- =============================================== --}}
 
-<!-- Content Wrapper. Contains page content -->
+{{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    {{-- Content Header (Page header) --}}
     <section class="content-header">
         <h1>Info</h1>
         <ol class="breadcrumb">
@@ -14,12 +14,12 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
         <div class="row">
             <div class="col-lg-4 col-xs-8">
-                <!-- small box -->
+                {{-- small box --}}
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h3> {!! $rentalCount !!} </h3>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-lg-4 col-xs-8">
-                <!-- small box -->
+                {{-- small box --}}
                 <div class="small-box bg-red">
                     <div class="inner">
                         <h3>Wijzig</h3>
@@ -102,7 +102,7 @@
         </div>
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection

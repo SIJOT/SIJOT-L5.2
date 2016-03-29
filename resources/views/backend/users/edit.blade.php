@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- =============================================== -->
+        {{-- =============================================== --}}
 
-<!-- Content Wrapper. Contains page content -->
+{{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    {{-- Content Header (Page header) --}}
     <section class="content-header">
         <h1> Wijzig profiel </h1>
 
@@ -16,10 +16,10 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
-        <!-- Default box -->
+        {{-- Default box --}}
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Info</a></li>
@@ -159,12 +159,12 @@
                 </div>
 
             </div>
-            <!-- /.tab-content -->
+            {{-- /.tab-content --}}
         </div>
-        <!-- /.box -->
+        {{-- /.box --}}
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection

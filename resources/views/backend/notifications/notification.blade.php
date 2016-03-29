@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- Content Wrapper. Contains page content -->
+        {{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -14,7 +14,7 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
         <form action="{!! route('notification.update') !!}" method="POST">
             {{-- CSRF protection --}}
@@ -66,13 +66,13 @@
                     </div>
                 </div>
             </div>
-            <!-- /.box-body -->
+            {{-- /.box-body --}}
         </div>
-        <!-- /.box -->
+        {{-- /.box --}}
         </form>
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 
 @endsection

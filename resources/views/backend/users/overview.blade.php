@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('content')
-        <!-- =============================================== -->
+        {{-- =============================================== --}}
 
-<!-- Content Wrapper. Contains page content -->
+        {{-- Content Wrapper. Contains page content --}}
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    {{-- Content Header (Page header) --}}
     <section class="content-header">
         <h1>
             Gebruikers beheer
@@ -17,10 +17,10 @@
         </ol>
     </section>
 
-    <!-- Main content -->
+    {{-- Main content --}}
     <section class="content">
 
-        <!-- Default box -->
+        {{-- Default box --}}
         <div class="box">
             <div class="box-body">
                 <table class="table table-condensed table-hover">
@@ -77,12 +77,12 @@
                     </tbody>
                 </table>
             </div>
-            <!-- /.box-body -->
+            {{-- /.box-body --}}
         </div>
-        <!-- /.box -->
+        {{-- /.box --}}
 
     </section>
-    <!-- /.content -->
+    {{-- /.content --}}
 </div>
-<!-- /.content-wrapper -->
+{{-- /.content-wrapper --}}
 @endsection

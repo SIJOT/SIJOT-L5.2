@@ -97,7 +97,7 @@
                 </li>
             </ul>
 
-        </div><!--/.navbar-collapse -->
+        </div>{{--/.navbar-collapse --}}
     </div>
 </div>
 <img style="margin-bottom: 60px; width: 100%; height: 400px;" src="/assets/img/front.jpg">
