@@ -1,7 +1,5 @@
 var elixir = require('laravel-elixir');
 
-// TODO; #16 Enable cache busting on js en css files
-
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -30,7 +28,7 @@ var jsFiles = [
 
 elixir(function(mix) {
     mix.scripts(jsFiles, 'public/js/bootstrap.js')
-        .less(['bootstrap.less', 'bootstrap.less'])
+        .less(['bootstrap.less'])
         .sass('frontend.scss')
         .sass('404.scss', 'public/css/404.css')
         .copy('resources/assets/img/1.jpg', 'public/img/1.jpg')
@@ -47,5 +45,8 @@ elixir(function(mix) {
         .copy('resources/assets/img/leiding.svg', 'public/img/leiding.svg')
 
         .copy('resources/assets/img/favicon.ico', 'public/img/favicon.ico')
-        .copy('resources/assets/img/background.png', 'public/img/background.png');
+        .copy('resources/assets/img/background.png', 'public/img/background.png')
+
+        // cache busting
+        .version(['404.css', 'bootstrap.js']);
 });
