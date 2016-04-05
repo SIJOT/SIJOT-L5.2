@@ -18,8 +18,13 @@ class notificationSeed extends Seeder
         ]);
 
         NC::create([
-            'name' => '',
-            'text' => '',
+            'name' => 'rental.edit.api',
+            'text' => '{from.name} heeft een verhuring gewijzigd - API',
+        ]);
+
+        NC::create([
+            'name' => 'rental.delete',
+            'text' => '{from.name} heeft een verhuring verwijderd - API',
         ]);
     }
 }

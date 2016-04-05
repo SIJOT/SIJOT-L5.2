@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rental;
 use App\Http\Requests;
+use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Validator;
 use League\Fractal\Manager;
 use Illuminate\Http\Request;
@@ -74,6 +75,16 @@ class rentalApiController extends Controller
             case '1':
                 $status  = Status::HTTP_OK;
                 $content = ['message' => 'rental deleted'];
+
+                $user = Auth::guard('api')->user()->is('verhuur');
+
+                Notifynder::loop($user, function(NotifynderBuilder $builder, $user) {
+                    $builder->category('rental.delete');
+                    $builder->from(auth()->user()->id);
+                    $builder->to($user->id);
+                    $builder->url(route('backend.rental.overview', ['type' => 'all']));
+                })->send();
+
                 break;
 
             case '0':
@@ -118,6 +129,15 @@ class rentalApiController extends Controller
             } elseif ($rental->count() > 0) {
                 $status = Status::HTTP_BAD_REQUEST;
                 $content = ['message' => 'Rental successfull added'];
+
+                $user = Auth::guard('api')->user()->is('verhuur');
+
+                Notifynder::loop($user, function(NotifynderBuilder $builder, $user) {
+                    $builder->category('rental.insert');
+                    $builder->from(auth()->user()->id);
+                    $builder->to($user->id);
+                    $builder->url();
+                })->send();
             }
         } else {
             $status = Status::HTTP_BAD_REQUEST;
@@ -172,6 +192,15 @@ class rentalApiController extends Controller
                 'http_status'  => $status,
                 'errors'       => $validator->errors()->all()
             ];
+
+            $user = Auth::guard('api')->user()->is('verhuur');
+
+            Notifynder::loop($user, function(NotifynderBuilder $builder, $user) {
+                $builder->category('rental.edit.api');
+                $builder->from(auth()->user()->id);
+                $builder->to($user->id);
+                $builder->url();
+            })->send();
         }
 
         return response($content, $status)->header('Content-Type', 'application/json');
