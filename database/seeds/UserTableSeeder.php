@@ -17,6 +17,7 @@ class UserTableSeeder extends Seeder
         $data['email'] = 'Topairy@gmail.com';
         $data['gsm'] = '0474834880';
         $data['password'] = bcrypt('admin');
+        $data['api_token'] = str_random(30);
 
         $id = DB::table('users')->insertGetId($data);
 
