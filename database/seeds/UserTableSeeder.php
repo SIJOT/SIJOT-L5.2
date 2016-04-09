@@ -20,8 +20,9 @@ class UserTableSeeder extends Seeder
         $data['api_token'] = str_random(30);
 
         $id = DB::table('users')->insertGetId($data);
-
         $user = App\User::find($id);
+
         Bouncer::assign('active')->to($user);
+        bOuncer::assign('admin')->to($user);
     }
 }

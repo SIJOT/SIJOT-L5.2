@@ -20,5 +20,9 @@ class HomeRouteTest extends TestCase
     public function testBackendHome()
     {
         $user = factory(App\User::class)->create();
+        
+        $route = $this->actingAs($user);
+        $route->visit('/home');
+        $route->seeStatusCode(200);
     }
 }

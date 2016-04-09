@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['users']   = User::count();
+        $data['users'] = User::count();
         return view('home', $data);
     }
 }
