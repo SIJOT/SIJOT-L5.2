@@ -14,12 +14,11 @@ class HomeRouteTest extends TestCase
      */
     public function testFrontendHome()
     {
-        $this->withoutMiddleware();
         $this->visit('/')->seeStatusCode(200);
     }
 
     public function testBackendHome()
     {
-
+        $user = factory(App\User::class)->create();
     }
 }
