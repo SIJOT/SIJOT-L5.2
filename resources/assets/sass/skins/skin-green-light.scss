@@ -18,7 +18,7 @@
 .skin-green-light .main-header .navbar .nav .open > a:hover,
 .skin-green-light .main-header .navbar .nav .open > a:focus,
 .skin-green-light .main-header .navbar .nav > .active > a {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, .1);
   color: #f6f6f6;
 }
 
@@ -28,7 +28,7 @@
 
 .skin-green-light .main-header .navbar .sidebar-toggle:hover {
   color: #f6f6f6;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, .1);
 }
 
 .skin-green-light .main-header .navbar .sidebar-toggle {
@@ -41,7 +41,7 @@
 
 @media (max-width: 767px) {
   .skin-green-light .main-header .navbar .dropdown-menu li.divider {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, .1);
   }
   .skin-green-light .main-header .navbar .dropdown-menu li a {
     color: $white;
@@ -86,9 +86,9 @@
 }
 
 .skin-green-light .sidebar-menu > li {
-  -webkit-transition: border-left-color 0.3s ease;
-  -o-transition: border-left-color 0.3s ease;
-  transition: border-left-color 0.3s ease;
+  -webkit-transition: border-left-color .3s ease;
+  -o-transition: border-left-color .3s ease;
+  transition: border-left-color .3s ease;
 }
 
 .skin-green-light .sidebar-menu > li.header {
@@ -152,9 +152,9 @@
   background-color: $white;
   border: 1px solid transparent;
   height: 35px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .skin-green-light .sidebar-form input[type="text"] {
