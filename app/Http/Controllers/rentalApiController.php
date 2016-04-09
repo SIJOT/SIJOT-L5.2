@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rental;
 use App\Http\Requests;
+use App\User;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Validator;
 use League\Fractal\Manager;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response as Status;
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
-    // TODO: [v1.1.0] #117 Add UNIT tests.
+    // TODO: [v1.1.0] #117 Add UNIT tests. - in progress 
 
     public function construct()
     {
@@ -75,16 +76,6 @@ class rentalApiController extends Controller
             case '1':
                 $status  = Status::HTTP_OK;
                 $content = ['message' => 'rental deleted'];
-
-                $user = Auth::guard('api')->user()->is('verhuur');
-
-                Notifynder::loop($user, function(NotifynderBuilder $builder, $user) {
-                    $builder->category('rental.delete');
-                    $builder->from(auth()->user()->id);
-                    $builder->to($user->id);
-                    $builder->url(route('backend.rental.overview', ['type' => 'all']));
-                })->send();
-
                 break;
 
             case '0':
@@ -109,7 +100,8 @@ class rentalApiController extends Controller
             'Eind_datum'  => 'required',
             'Status'      => 'required',
             'Email'       => 'required',
-            'telephone'   => 'required'
+            'telephone'   => 'required',
+            'Group'       => 'required'
         ]);
 
 
@@ -120,24 +112,16 @@ class rentalApiController extends Controller
             $rental->End_date   = $request->get('Eind_datum');
             $rental->Status     = $request->get('Status');
             $rental->Email      = $request->get('Email');
+            $rental->Group      = $request->get('Group');
             $rental->telephone  = $request->get('telephone');
             $rental->save();
 
             if ($rental->count() === 0) {
-                $status = Status::HTTP_OK;
+                $status = Status::HTTP_BAD_REQUEST;
                 $content = ['message' => 'could not perform the action.'];
             } elseif ($rental->count() > 0) {
-                $status = Status::HTTP_BAD_REQUEST;
+                $status = Status::HTTP_OK;
                 $content = ['message' => 'Rental successfull added'];
-
-                $user = Auth::guard('api')->user()->is('verhuur');
-
-                Notifynder::loop($user, function(NotifynderBuilder $builder, $user) {
-                    $builder->category('rental.insert');
-                    $builder->from(auth()->user()->id);
-                    $builder->to($user->id);
-                    $builder->url();
-                })->send();
             }
         } else {
             $status = Status::HTTP_BAD_REQUEST;
@@ -179,10 +163,10 @@ class rentalApiController extends Controller
             $rental->save();
 
             if ($rental->count() === 0) {
-                $status = Status::HTTP_OK;
+                $status = Status::HTTP_BAD_REQUEST;
                 $content = ['message' => 'could not perform the action.'];
             } elseif ($rental->count() > 0) {
-                $status = Status::HTTP_BAD_REQUEST;
+                $status = Status::HTTP_OK;
                 $content = ['message' => 'Rental successfull updated'];
             }
         } else {
@@ -192,15 +176,6 @@ class rentalApiController extends Controller
                 'http_status'  => $status,
                 'errors'       => $validator->errors()->all()
             ];
-
-            $user = Auth::guard('api')->user()->is('verhuur');
-
-            Notifynder::loop($user, function(NotifynderBuilder $builder, $user) {
-                $builder->category('rental.edit.api');
-                $builder->from(auth()->user()->id);
-                $builder->to($user->id);
-                $builder->url();
-            })->send();
         }
 
         return response($content, $status)->header('Content-Type', 'application/json');

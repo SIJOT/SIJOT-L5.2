@@ -11,6 +11,13 @@
 |
 */
 
+$factory->define(Fenos\Notifynder\Models\NotificationCategory::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'text' => $faker->text,
+    ];
+});
+
 $factory->define(App\Rental::class, function (Faker\Generator $faker) {
     return [
         'Start_date' => $faker->date('d-m-Y'),

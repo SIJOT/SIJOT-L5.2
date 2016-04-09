@@ -21,6 +21,10 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
+/**
+ * API routes
+ */
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
     Route::delete('rental/{id}', 'rentalApiController@delete')->name('api.rental.destroy');
     Route::post('rental/create', 'rentalApiController@insert')->name('api.rental.insert');

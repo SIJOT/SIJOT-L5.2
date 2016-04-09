@@ -88,6 +88,7 @@ Alle invoer velden zijn verplicht.
 | `Status`      | `integer` | De status van de verhuring.   | 
 | `Email`       | `string`  | De email van de aanvrager.    |
 | `telephone`   | `string`  | De tel. nr van de aanvrager.  |
+| `group`       | `string`  | De group die wilt huren.      |
 
 #### Status parameters 
 
