@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class RentalTest extends TestCase
+class RentalBackEndTest extends TestCase
 {
     /**
      * A basic test example.
