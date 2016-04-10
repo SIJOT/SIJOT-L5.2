@@ -1,5 +1,14 @@
 language: php
 
+env:
+  - DB_HOST=127.0.0.1
+  - DB_DATABASE=homestead
+  - DB_USERNAME=travis
+  - DB_PASSWORD=root
+
+sevices:
+  - mysql
+
 php:
   - 5.6
   - 5.5
@@ -21,5 +30,6 @@ script:
 # code coverage
 before_install:
   - pip install --user codecov
+  - mysql -e 'create database homestead;'
 after_success:
     - bash <(curl -s https://codecov.io/bash)  
