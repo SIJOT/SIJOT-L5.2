@@ -25,7 +25,7 @@ before_script:
   -
 
 script:
-  - phpunit
+  - phpunit -c phpunit.xml
   - vendor/bin/phpunit --coverage-clover=coverage.xml
 
 # code coverage
