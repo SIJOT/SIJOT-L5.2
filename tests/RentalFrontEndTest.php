@@ -69,7 +69,7 @@ class RentalFrontEndTest extends TestCase
         $data['telephone']  = '0000/00.00.00';
 
         $this->post('rental/insert', $data)
-            ->seeStatusCode(302)
+            ->seeStatusCode(500)
             ->seeInDatabase('rentals', $data);
     }
 }
