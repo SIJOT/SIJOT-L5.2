@@ -59,7 +59,7 @@ class RentalFrontEndTest extends TestCase
      */
     public function testRentalInsert()
     {
-        config(['mail.pretend' => true]);
+        config(['mail.driver' => 'log']);
         $this->withoutMiddleware();
 
         $data['End_date']   = '24/01/2016';
