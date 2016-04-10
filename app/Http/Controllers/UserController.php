@@ -89,6 +89,7 @@ class UserController extends Controller
     public function store(UserValidator $input)
     {
         // TODO: #13 Add mailing logic when a new user is registrated
+        // TODO: Check for mass assign.
         
         $new           = new User();
         $new->name     = $input->name;
