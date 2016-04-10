@@ -60,7 +60,7 @@ class RentalFrontEndTest extends TestCase
     public function testRentalInsert()
     {
         $this->withoutMiddleware();
-
+        
         $data['End_date']   = '24/01/2016';
         $data['Start_date'] = '22/01/2015';
         $data['Status']     = 0;
