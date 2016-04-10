@@ -26,6 +26,7 @@ before_script:
 
 script:
   - phpunit
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
 
 # code coverage
 before_install:

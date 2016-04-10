@@ -69,6 +69,9 @@ class RentalFrontEndTest extends TestCase
         $data['telephone']  = '0000/00.00.00';
 
         $this->post('rental/insert', $data)
+
+            // Travis CI bug:
+                
             ->seeStatusCode(500)
             ->seeInDatabase('rentals', $data);
     }
