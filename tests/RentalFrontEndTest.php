@@ -61,12 +61,13 @@ class RentalFrontEndTest extends TestCase
     {
         $this->withoutMiddleware();
 
-        $data['End_date']   = '24/01/2016';
-        $data['Start_date'] = '22/01/2015';
-        $data['Status']     = 0;
-        $data['Group']      = 'group name';
-        $data['Email']      = 'test@domain.org';
-        $data['telephone']  = '0000/00.00.00';
+        $data = ['End_date'   => '24/01/2016',
+        'Start_date' => '22/01/2015',
+        'Status'    => 0,
+        'Group'     => 'group name',
+        'Email'     => 'test@domain.org',
+        'telephone'  = '0000/00.00.00'
+        ];
 
         $this->post('rental/insert', $data)
 
