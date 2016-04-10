@@ -6,8 +6,26 @@ use Illuminate\Support\Facades\Artisan;
 
 class RentalBackEndTest extends TestCase
 {
-    // TODO: need to write unit test for insert url - backend/rental/insert
     use DatabaseMigrations, DatabaseTransactions;
+
+    /**
+     * GET: backend/rental/insert
+     *
+     * @group all
+     * @group rental
+     */
+    public function testRentalInsertView()
+    {
+        $user = factory(App\User::class)->create();
+
+        Artisan::call('bouncer:seed');
+        $role = Bouncer::assign('admin')->to($user);
+        $this->assertTrue($role);
+
+        $this->actingAs($user)
+            ->visit('backend/rental/insert')
+            ->seeStatusCode(200);
+    }
 
     /**
      * GET: backend/rental/overview/all
