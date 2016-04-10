@@ -43,6 +43,8 @@ class UsersManagementTest extends TestCase
      */
     public function testStoreNewUserWithOutErrors()
     {
+        $this->withoutMiddleware();
+
         $user = factory(App\User::class)->create();
 
         Artisan::call('bouncer:seed');
@@ -69,6 +71,7 @@ class UsersManagementTest extends TestCase
      */
     public function testStoreNewUserWithErrors()
     {
+        $this->withoutMiddleware();
         $user = factory(App\User::class)->create();
 
         Artisan::call('bouncer:seed');
