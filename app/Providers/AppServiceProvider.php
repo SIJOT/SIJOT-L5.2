@@ -40,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
             view()->share('rentalCount', Rental::all()->count());
             view()->share('rentalOption', Rental::where('Status', 1)->count());
             view()->share('rentalNew', Rental::where('Status', 0)->count());
+        } else {
+            view()->share('rentalCount', 0);
+            view()->share('rentalOption', 0);
+            view()->share('rentalNew', 0);
         }
     }
 

@@ -11,6 +11,13 @@
 |
 */
 
+$factory->define(Fenos\Notifynder\Models\NotificationCategory::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'text' => $faker->text,
+    ];
+});
+
 $factory->define(App\Rental::class, function (Faker\Generator $faker) {
     return [
         'Start_date' => $faker->date('d-m-Y'),
@@ -30,6 +37,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'image' => $faker->word,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+        'api_token' => str_random(30),
     ];
 });
 

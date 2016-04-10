@@ -21,6 +21,10 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
+/**
+ * API routes
+ */
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:api'], function () {
     Route::delete('rental/{id}', 'rentalApiController@delete')->name('api.rental.destroy');
     Route::post('rental/create', 'rentalApiController@insert')->name('api.rental.insert');
@@ -38,55 +42,55 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'HomeController@Front')->name('home');
     Route::get('/home', 'HomeController@index')->name('backend.home');
 
-    Route::get('verhuur', 'rentalController@indexFront')->name('rental.index');
-    Route::get('verhuur/aanvraag', 'rentalController@insertFront')->name('rental.request');
-    Route::get('verhuur/bereikbaarheid', 'rentalController@domainAccess')->name('rental.access');
-    Route::get('verhuur/kalender', 'rentalController@calendar')->name('rental.calendar');
-    Route::post('rental/insert', 'rentalController@store')->name('rental.store');
+    Route::get('verhuur', 'RentalController@indexFront')->name('rental.index');
+    Route::get('verhuur/aanvraag', 'RentalController@insertFront')->name('rental.request');
+    Route::get('verhuur/bereikbaarheid', 'RentalController@domainAccess')->name('rental.access');
+    Route::get('verhuur/kalender', 'RentalController@calendar')->name('rental.calendar');
+    Route::post('rental/insert', 'RentalController@store')->name('rental.store');
 
-    Route::get('takken', 'takkenController@overview')->name('takken.index');
-    Route::get('tak/{id}', 'takkenController@group')->name('takken.specific');
+    Route::get('takken', 'TakkenController@overview')->name('takken.index');
+    Route::get('tak/{id}', 'TakkenController@group')->name('takken.specific');
 
     /**
      * Backend routes
      */
     Route::group(['prefix' => 'mailing'], function() {
-        Route::get('/', 'mailingController@index')->name('mailing.index');
-        Route::post('/insert', 'mailingController@insert')->name('mailing.insert');
-        Route::get('/delete/{id}', 'mailingController@deleteUser')->name('mailing.destroy');
+        Route::get('/', 'MailingController@index')->name('mailing.index');
+        Route::post('/insert', 'MailingController@insert')->name('mailing.insert');
+        Route::get('/delete/{id}', 'MailingController@deleteUser')->name('mailing.destroy');
     });
 
     Route::group(['prefix' => 'profile/'], function() {
-        Route::get('edit', 'editProfileController@view')->name('profile.edit.view');
-        Route::post('insert', 'editProfileController@editInfo')->name('profile.edit.insert');
-        Route::post('permission/{id}', 'editProfileController@editGroups')->name('profile.edit.perms');
+        Route::get('edit', 'EditProfileController@view')->name('profile.edit.view');
+        Route::post('insert', 'EditProfileController@editInfo')->name('profile.edit.insert');
+        Route::post('permission/{id}', 'EditProfileController@editGroups')->name('profile.edit.perms');
     });
 
     Route::group(['prefix' => 'backend/groups'], function () {
-        Route::get('view', 'takkenBackendController@view')->name('backend.groups.view');
+        Route::get('view', 'TakkenBackendController@view')->name('backend.groups.view');
     });
 
     Route::group(['prefix' => 'notifications/'], function() {
-        Route::get('/', 'notificationsController@index')->name('notification');
-        Route::post('/update', 'notificationsController@update')->name('notification.update');
+        Route::get('/', 'NotificationsController@index')->name('notification');
+        Route::post('/update', 'NotificationsController@update')->name('notification.update');
     });
 
     Route::group(['prefix' => 'backend/users/'], function () {
-        Route::get('insert', 'userController@insert')->name('backend.users.insert');
-        Route::post('store', 'userController@store')->name('backend.users.store');
-        Route::get('overview', 'userController@index')->name('backend.users.overview');
-        Route::get('block/{id}', 'userController@block')->name('backend.users.block');
-        Route::get('unblock/{id}', 'userController@unblock')->name('backend.users.unblock');
-        Route::get('delete/{id}', 'userController@destroy')->name('backend.users.destroy');
+        Route::get('insert', 'UserController@insert')->name('backend.users.insert');
+        Route::post('store', 'UserController@store')->name('backend.users.store');
+        Route::get('overview', 'UserController@index')->name('backend.users.overview');
+        Route::get('block/{id}', 'UserController@block')->name('backend.users.block');
+        Route::get('unblock/{id}', 'UserController@unblock')->name('backend.users.unblock');
+        Route::get('delete/{id}', 'UserController@destroy')->name('backend.users.destroy');
     });
 
     Route::group(['prefix' => 'backend/rental/'], function () {
-        Route::get('overview/{type}', 'rentalController@indexAdmin')->name('backend.rental.overview');
-        Route::get('destroy/{id}', 'rentalController@destroy')->name('backend.rental.destroy');
-        Route::get('option/{id}', 'rentalController@option')->name('backend.rental.option');
-        Route::get('confirm/{id}', 'rentalController@confirmed')->name('backend.rental.confirm');
-        Route::get('insert', 'rentalController@insert')->name('backend.rental.insert');
-        Route::get('download', 'rentalController@download')->name('backend.rental.download');
+        Route::get('overview/{type}', 'RentalController@indexAdmin')->name('backend.rental.overview');
+        Route::get('destroy/{id}', 'RentalController@destroy')->name('backend.rental.destroy');
+        Route::get('option/{id}', 'RentalController@option')->name('backend.rental.option');
+        Route::get('confirm/{id}', 'RentalController@confirmed')->name('backend.rental.confirm');
+        Route::get('insert', 'RentalController@insert')->name('backend.rental.insert');
+        Route::get('download', 'RentalController@download')->name('backend.rental.download');
     });
 
 });
