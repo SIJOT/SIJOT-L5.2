@@ -32,32 +32,6 @@
                     {{-- csrf_field() --}}
                     {{ csrf_field() }}
 
-                    {{-- Start date input group --}}
-                    <div class="form-group {{ $errors->has('Start_date') ? 'has-feedback has-error' : '' }}">
-                        <label>Start datum: <span class="text-danger">*</span></label>
-
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
-                        </div>
-                    </div>
-                    {{-- /.start date input group --}}
-
-                    {{-- End date input group  --}}
-                    <div class="form-group {{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}">
-                        <label>Eind datum: <span class="text-danger">*</span></label>
-
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
-                        </div>
-                    </div>
-                    {{-- /.end date input group --}}
-
                     {{-- Group form group --}}
                     <div class="form-group {{ $errors->has('Group') ? 'has-feedback has-error' : '' }}">
                         <label> Groep: <span class="text-danger">*</span></label>
@@ -96,6 +70,33 @@
                         </div>
                     </div>
                     {{-- /.email gorm group--}}
+
+                    {{-- Start date input group --}}
+                    <div data-provide="datepicker" class="date form-group {{ $errors->has('Start_date') ? 'has-feedback has-error' : '' }}">
+                        <label>Start datum: <span class="text-danger">*</span></label>
+
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
+                        </div>
+                    </div>
+                    {{-- /.start date input group --}}
+
+                    {{-- End date input group  --}}
+                    <div data-provide="datepicker" class="date form-group {{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}">
+                        <label>Eind datum: <span class="text-danger">*</span></label>
+
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
+                        </div>
+                    </div>
+                    {{-- /.end date input group --}}
+
 
                     {{-- Form buttons --}}
                     <div class="form-group">

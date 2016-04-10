@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     <link rel="stylesheet" href="{{ asset('css/skin-red.css') }}">
 
@@ -184,5 +185,15 @@
 <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('js/fastclick.js') }}"></script>
 <script src="{{ asset('js/app.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.nl-BE.min.js"></script>
+
+<script>
+    $('.datepicker').datepicker({
+        language: 'nl-BE',
+        orientation: 'auto bottom',
+        format: 'mm/dd/yyyy',
+    });
+</script>
 </body>
 </html>
