@@ -11,15 +11,15 @@ matrix:
 
 before_script:
   - composer self-update
-  - touch storage/testing.sqlite
+  - touch database/database.sqlite
   - composer install -n --prefer-dist
   - php artisan migrate --database=sqlite --force
-  - ./vendor/bin/codecept build
 
 script:
   - phpunit
 
+# code coverage
 before_install:
-  - pip install codecov
+  - pip install --user codecov
 after_success:
-  - codecov
+    - bash <(curl -s https://codecov.io/bash)  
