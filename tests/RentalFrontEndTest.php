@@ -74,8 +74,8 @@ class RentalFrontEndTest extends TestCase
             // -------------------
             // Test say i got a 500 internal server error here.
             // Meanwhile locally it passed.
-                
-            ->seeStatusCode(302)
             ->seeInDatabase('rentals', $data);
+
+        if ($this->response->getStatusCode() !== 302) { dd($this->response); }
     }
 }
