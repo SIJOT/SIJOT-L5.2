@@ -16,7 +16,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password', 60);
+            $table->string('gsm');
+            $table->string('password', 60)->default('no password');
+            $table->string('image')->default('gravatar.jpg');
+            $table->string('api_token', 60)->unique();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

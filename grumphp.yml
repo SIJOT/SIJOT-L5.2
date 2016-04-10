@@ -1,0 +1,35 @@
+# grumphp.yml
+# testing the code before pushing to github.
+parameters:
+  bin_dir: "./vendor/bin"
+  git_dir: "."
+  stop_on_failure: true
+  ignore_unstaged_changes: true
+  ascii:
+    failed: grumphp-grumpy.txt
+    succeeded: grumphp-happy.txt
+    tasks:
+      composer:
+        file: ./composer.json
+      git_blacklist:
+        keywords:
+          - "die("
+          - "dd("
+          - "var_dump("
+          - "exit;"
+        triggered_by: [php]
+      git_commit_message: ~
+      jsonlint: ~
+      phpcs: ~
+      phpcsfixer: ~
+      phpspec: ~
+      phpunit: ~
+      securitychecker:
+        lockfile: ./composer.lock
+        format: ~
+        end_point: ~
+        timeout: ~
+        run_always: false
+      xmllint: ~
+      yamllint: ~
+    extensions: []

@@ -1,27 +1,40 @@
-# Laravel PHP Framework
+# Scouts en gidsen Sint-Joris Turnhout *(A4102G)*
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![Github All Releases](https://img.shields.io/github/downloads/SIJOT/SIJOT-L5.2/total.svg)]()
+[![GitHub release](https://img.shields.io/github/release/SIJOT/SIJOT-L5.2.svg)]()
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+The platform for Sint-Joris Turnhout. ***(A4102G)***.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Table of contents
 
-## Official Documentation
+* [Quickstart](#quickstart)
+* [Bugs and feature requests](#bugs-and-feature-requests)
+* [Versioning](#versioning)
+* [Copyright and license](#copyright-and-license)
+* [Other handy repositories and resources](#other-handy-repositories-and-resources)
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Quickstart
 
-## Contributing
+## Bugs and feature requests. 
+Have a bug or a feature request? Please first read the [issue guidelines]() and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](). Or you can contact us on [Slack](https://rientjeteen.slack.com).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Security vurnabilities.
 
-## Security Vulnerabilities
+If you discover a security vulnerability within Laravel, please send an e-mail to Tim Joosten at [Topairy@gmail.com](mailto:Topairy@gmail.com) All security vulnerabilities will be promptly addressed.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
+## Versioning 
+For transparency into our release cycle and in striving to maintain backward compatibility, scouts en gidsen template is maintained under the [Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+See the [Releases section](https://github.com/template-hop/web-platform/releases) of our GitHub project for changelogs for each release version of this repo.
+
+## Other handy repositories and resources. 
+
+- [Project documentation](http://hop-template.readthedocs.org/en/latest/GulpJS/)
+- [Module template](https://github.com/Tjoosten/module-skeleton/tree/master)
+- [Git styleguide](https://github.com/jonathanong/git-style-guide)
+- [PSR standards](http://www.php-fig.org/)
+
+## Copyright and license 
+
+This project is released under the MIT license. You can [read](LICENSE) the license if you want.
