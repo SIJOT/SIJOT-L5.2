@@ -97,11 +97,18 @@
                                 Planning
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                <span class="Icon-color fa fa-info-circle"></span>
-                                Info
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                                <span class="fa fa-info-circle Icon-color"></span> Info
                             </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://groepsadmin.scoutsengidsenvlaanderen.be/groepsadmin/lidworden?groep=A4102G">
+                                        Lid worden
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="">
