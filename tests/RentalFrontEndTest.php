@@ -71,6 +71,9 @@ class RentalFrontEndTest extends TestCase
         $this->post('rental/insert', $data)
 
             // Travis CI bug:
+            // -------------------
+            // Test say i got a 500 internal server error here.
+            // But local all the tests. PASSED.
                 
             ->seeStatusCode(302)
             ->seeInDatabase('rentals', $data);

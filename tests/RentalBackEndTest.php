@@ -33,7 +33,7 @@ class RentalBackEndTest extends TestCase
         $all->seeStatusCode(200);
 
         $option = $this->actingAs($user);
-        $option->visit('backend/rental/overview/new');
+        $option->visit('backend/rental/overview/option');
         $option->seeStatusCode(200);
     }
 
