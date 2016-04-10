@@ -16,7 +16,7 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testAuthRegister()
     {
-
+        $this->visit('register')->seeStatusCode(200);
     }
 
     /**
@@ -27,7 +27,7 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testAuthRegisterPost()
     {
-
+       // TODO: write test
     }
 
     /**
@@ -38,7 +38,12 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testAuthLogout()
     {
+        $user = factory(App\User::class)->create();
 
+        $this->actingAs($user)
+            ->visit('logout')
+            ->dontSeeIsAuthenticated()
+            ->seeStatusCode(200);
     }
 
     /**
@@ -49,7 +54,15 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testAuthLoginPost()
     {
+        $this->withoutMiddleware();
+        $user = factory(App\User::class)->create();
 
+        $data['email']    = $user->email;
+        $data['password'] = $user->password;
+
+        $this->post('login', $data)
+            ->seeStatusCode(302)
+            ->isAuthenticated();
     }
 
     /**
@@ -60,7 +73,7 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testAuthLoginGet()
     {
-
+        $this->visit('login')->seeStatusCode(200);
     }
 
     /**
@@ -71,18 +84,22 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testPasswordEmailPost()
     {
-        
+        config(['mail.driver' => 'log']);
+        $user = factory(App\User::class)->create();
+
+        $this->post('password/email', ['email' => $user->email])
+            ->seeStatusCode(302);
     }
 
     /**
-     * POST: password/reset
+     * GET: password/reset
      *
      * @group all
      * @group auth
      */
     public function testAuthPasswordEmail()
     {
-
+        $this->visit('password/reset')->seeStatusCode(200);
     }
 
     /**
@@ -93,6 +110,6 @@ class LaravelAuthPackageTest extends TestCase
      */
     public function testPasswordToken()
     {
-
+        // TODO: write test
     }
 }
