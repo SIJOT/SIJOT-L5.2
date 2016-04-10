@@ -70,11 +70,6 @@ class RentalFrontEndTest extends TestCase
         $data['telephone']  = '0000/00.00.00';
 
         $this->post('rental/insert', $data)
-
-            // Travis CI bug:
-            // -------------------
-            // Test say i got a 500 internal server error here.
-            // Meanwhile locally it passed.
             ->seeStatusCode(302)
             ->seeInDatabase('rentals', $data);
     }

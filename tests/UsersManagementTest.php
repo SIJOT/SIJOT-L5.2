@@ -49,6 +49,14 @@ class UsersManagementTest extends TestCase
         $role = Bouncer::assign('admin')->to($user);
         $this->assertTrue($role);
 
+        $data['name']      = 'name';
+        $data['email']     = 'email';
+        $data['gsm']       = 'gsm';
+        $data['password']  = bcrypt('root');
+
+        $this->actingAs($user)
+            ->post('backend/users/store', $data)
+            ->seeStatusCode(302);
     }
 
     /**
@@ -67,8 +75,10 @@ class UsersManagementTest extends TestCase
         $role = Bouncer::assign('admin')->to($user);
         $this->assertTrue($role);
 
-        $this->visit('backend/users/overview')
-            ->seeStatusCode(200);
+        $this->actingAs($user)
+            ->post('backend/users/store', [])
+            ->seeStatusCode(302)
+            ->assertHasOldInput();
 
     }
 
@@ -85,6 +95,10 @@ class UsersManagementTest extends TestCase
         Artisan::call('bouncer:seed');
         $role = Bouncer::assign('admin')->to($user);
         $this->assertTrue($role);
+
+        $this->actingAs($user)
+            ->visit('backend/users/overview')
+            ->seeStatusCode(200);
     }
 
     /**
@@ -95,11 +109,17 @@ class UsersManagementTest extends TestCase
      */
     public function testUsersBlock()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(App\User::class, 2)->create();
 
         Artisan::call('bouncer:seed');
-        $role = Bouncer::assign('admin')->to($user);
+        $role = Bouncer::assign('admin')->to($user[0]);
         $this->assertTrue($role);
+
+        $this->actingAs($user[0])
+            ->visit('backend/users/block/' . $user[1]->id)
+            ->seeStatusCode(200);
+
+        $this->assertTrue($user[1]->is('blocked'));
     }
 
     /**
