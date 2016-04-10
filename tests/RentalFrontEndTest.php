@@ -72,7 +72,7 @@ class RentalFrontEndTest extends TestCase
 
             // Travis CI bug:
                 
-            ->seeStatusCode(500)
+            ->seeStatusCode(302)
             ->seeInDatabase('rentals', $data);
     }
 }
