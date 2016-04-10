@@ -66,7 +66,7 @@ class RentalFrontEndTest extends TestCase
         'Status'    => 0,
         'Group'     => 'group name',
         'Email'     => 'test@domain.org',
-        'telephone'  = '0000/00.00.00'
+        'telephone'  => '0000/00.00.00'
         ];
 
         $this->post('rental/insert', $data)
