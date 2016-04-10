@@ -18,7 +18,7 @@ matrix:
 before_script:
   - composer self-update
   - touch database/database.sqlite
-  - composer install -n --prefer-dist
+  - composer install
   - php artisan migrate --database=sqlite --force
 
 script:
