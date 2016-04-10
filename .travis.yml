@@ -20,6 +20,7 @@ before_script:
   - touch database/database.sqlite
   - composer install
   - php artisan migrate --database=sqlite --force
+  -
 
 script:
   - phpunit
