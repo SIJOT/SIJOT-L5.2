@@ -10,10 +10,16 @@ class PhotoController extends Controller
 {
     /**
      * PhotoController constructor.
+     *
+     * The following middleware is defined here.
+     * --
+     * auth     = To see if the user is authencated.
+     * activeAcl = to see if the user is blocked or not.
      */
     public function __construct()
     {
-
+        $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -38,7 +44,7 @@ class PhotoController extends Controller
 
     /**
      * Get the frontend index.
-     * 
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function indexFront()
@@ -46,6 +52,11 @@ class PhotoController extends Controller
 
     }
 
+    /**
+     * Upload a new album.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function upload()
     {
         

@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 
 class TakkenBackendController extends Controller
 {
+    /**
+     * TakkenBackendController constructor.
+     *
+     * The following middleware is defined here:
+     * --
+     * auth     = To see if the user is authencated.
+     * activeAcl = to see if the user is blocked or not
+     */
     public function __construct()
     {
         $this->middleware('auth');
