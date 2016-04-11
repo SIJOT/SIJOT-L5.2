@@ -60,21 +60,33 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/delete/{id}', 'MailingController@deleteUser')->name('mailing.destroy');
     });
 
+    /**
+     * Profile routes.
+     */
     Route::group(['prefix' => 'profile/'], function() {
         Route::get('edit', 'EditProfileController@view')->name('profile.edit.view');
         Route::post('insert', 'EditProfileController@editInfo')->name('profile.edit.insert');
         Route::post('permission/{id}', 'EditProfileController@editGroups')->name('profile.edit.perms');
     });
 
+    /**
+     * Takken routes - backend.
+     */
     Route::group(['prefix' => 'backend/groups'], function () {
         Route::get('view', 'TakkenBackendController@view')->name('backend.groups.view');
     });
 
+    /**
+     * Notification routes.
+     */
     Route::group(['prefix' => 'notifications/'], function() {
         Route::get('/', 'NotificationsController@index')->name('notification');
         Route::post('/update', 'NotificationsController@update')->name('notification.update');
     });
 
+    /**
+     * Backend user management.
+     */
     Route::group(['prefix' => 'backend/users/'], function () {
         Route::get('insert', 'UserController@insert')->name('backend.users.insert');
         Route::post('store', 'UserController@store')->name('backend.users.store');
@@ -84,6 +96,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('delete/{id}', 'UserController@destroy')->name('backend.users.destroy');
     });
 
+    /**
+     * Backend rental routes.
+     */
     Route::group(['prefix' => 'backend/rental/'], function () {
         Route::get('overview/{type}', 'RentalController@indexAdmin')->name('backend.rental.overview');
         Route::get('destroy/{id}', 'RentalController@destroy')->name('backend.rental.destroy');
