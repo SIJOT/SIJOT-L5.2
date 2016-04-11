@@ -84,7 +84,6 @@ class MailingController extends Controller
     public function insert()
     {
         $data['title'] = 'Mailing';
-
         return view('backend.mailing.insert', $data);
     }
 
