@@ -1,5 +1,3 @@
-# PHPunit
-
 # PHPunit. 
 
 This repository has some PHPunit tests embedded. 
