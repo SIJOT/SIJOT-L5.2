@@ -70,6 +70,13 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     /**
+     * Mailing routes.
+     */
+    Route::group(['prefix' => 'mailing/'], function() {
+        Route::get('/', 'MailingController@index')->name('mailing.index');
+    });
+
+    /**
      * Takken routes - backend.
      */
     Route::group(['prefix' => 'backend/groups'], function () {
