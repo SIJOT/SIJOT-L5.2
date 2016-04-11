@@ -105,6 +105,18 @@ class MailingController extends Controller
     }
 
     /**
+     * Edit a user into the data table.
+     *
+     * @param  int, $id, the id of the user in the data table.
+     * @param  Requests\mailingValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function edit($id, Requests\mailingValidator $input)
+    {
+
+    }
+
+    /**
      * Show the update form off the mailing module.
      *
      * @param  int, $id, the user his id in the data table.
