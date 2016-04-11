@@ -17,7 +17,6 @@ class mailingTest extends TestCase
      */
     public function testIndex()
     {
-        config(['mail.driver' => 'log']);
         Artisan::call('bouncer:seed');
 
         $user = factory(App\User::class)->create();
@@ -25,5 +24,56 @@ class mailingTest extends TestCase
         $this->assertTrue($role);
 
         $this->actingAs($user)->visit('mailing')->seeStatusCode(200);
+    }
+
+    /**
+     * GET: mailing/insert
+     *
+     * @group all
+     * @group mailing
+     */
+    public function testViewInsert()
+    {
+        Artisan::call('bouncer:seed');
+
+        $user = factory(App\User::class)->create();
+        $role = Bouncer::assign('active')->to($user);
+        $this->assertTrue($role);
+
+        $this->actingAs($user)->visit('mailing/insert')->seeStatusCode(200);
+    }
+
+    /**
+     * GET: mailing/update/{id}
+     *
+     * @group all
+     * @group mailing
+     */
+    public function testUpdateView()
+    {
+        Artisan::call('bouncer:seed');
+
+        $user = factory(App\User::class)->create();
+        $role = Bouncer::assign('active')->to($user);
+        $this->assertTrue($role);
+
+        $this->actingAs($user)->visit('mailing/update/1')->seeStatusCode(200);
+    }
+
+    /**
+     * GET: mailing/mail/{id}
+     *
+     * @group all
+     * @group mailing
+     */
+    public function testMailView()
+    {
+        Artisan::call('bouncer:seed');
+
+        $user = factory(App\User::class)->create();
+        $role = Bouncer::assign('active')->to($user);
+        $this->assertTrue($role);
+
+        $this->actingAs($user)->visit('mailing/mail/1')->seeStatusCode(200);
     }
 }

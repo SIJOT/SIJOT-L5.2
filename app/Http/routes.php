@@ -74,6 +74,9 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::group(['prefix' => 'mailing/'], function() {
         Route::get('/', 'MailingController@index')->name('mailing.index');
+        Route::get('/insert', 'MailingController@insert')->name('mailing.insert');
+        Route::get('/mail/{id}', 'MailingController@mail')->name('mailing.mail');
+        Route::get('/update/{id}', 'MailingController@edit')->name('mailing.update');
     });
 
     /**
