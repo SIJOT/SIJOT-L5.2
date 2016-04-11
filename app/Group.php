@@ -21,8 +21,8 @@ class Group extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     /**
-     * @param $query
-     * @param string $uri the uri segment.
+     * @param  $query
+     * @param  string $uri the uri segment.
      * @return mixed
      */
     public function scopeGetGroup($query, $uri)

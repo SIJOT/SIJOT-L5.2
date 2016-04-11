@@ -29,7 +29,6 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = User::paginate(15);
-
         return view('backend.users.overview', $data);
     }
 
