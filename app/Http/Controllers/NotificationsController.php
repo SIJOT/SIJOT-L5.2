@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 class NotificationsController extends Controller
 {
     /**
-     * NotificationsController constructor.
+     * NotificationsController constructor. 
      */
     public function __construct()
     {

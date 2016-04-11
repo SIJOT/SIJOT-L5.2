@@ -73,4 +73,40 @@ class RentalFrontEndTest extends TestCase
             ->seeStatusCode(302)
             ->seeInDatabase('rentals', $data);
     }
+
+    /**
+     * POST: rental/insert
+     *
+     * @group all
+     * @group rental
+     */
+    public function testRentalInsertAuth()
+    {
+        config(['mail.driver' => 'log']);
+        $this->withoutMiddleware();
+
+        $user = factory(App\User::class)->create();
+        $Ncat = factory(Fenos\Notifynder\Models\NotificationCategory::class)->create([
+            'name' => 'rental.insert',
+            'text' => 'the notification message',
+        ]);
+
+        $role = Bouncer::assign('active')->to($user);
+        $rent = Bouncer::assign('verhuur')->to($user);
+
+        $this->assertTrue($role);
+        $this->assertTrue($rent);
+
+        $data['End_date']   = '24/01/2016';
+        $data['Start_date'] = '22/01/2015';
+        $data['Status']     = 0;
+        $data['Group']      = 'group name';
+        $data['Email']      = 'test@domain.org';
+        $data['telephone']  = '0000/00.00.00';
+
+        $this->actingAs($user)
+            ->post('rental/insert', $data)
+            ->seeStatusCode(302)
+            ->seeInDatabase('rentals', $data);
+    }
 }
