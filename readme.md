@@ -9,6 +9,7 @@ The platform for Sint-Joris Turnhout. ***(A4102G)***.
 
 * [Quickstart](#quickstart)
 * [Bugs and feature requests](#bugs-and-feature-requests)
+* [Stability](#stability)
 * [Versioning](#versioning)
 * [Copyright and license](#copyright-and-license)
 * [Other handy repositories and resources](#other-handy-repositories-and-resources)
