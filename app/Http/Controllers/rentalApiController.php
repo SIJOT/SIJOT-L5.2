@@ -105,8 +105,7 @@ class rentalApiController extends Controller
         ]);
 
 
-        if (! $validator->fails())
-        {
+        if (! $validator->fails()) {
             $rental             = new Rental;
             $rental->Start_date = $request->get('Start_datum');
             $rental->End_date   = $request->get('Eind_datum');
