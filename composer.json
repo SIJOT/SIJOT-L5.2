@@ -15,7 +15,8 @@
         "spatie/laravel-backup": "^3.2",
         "league/fractal": "^0.13.0",
         "doctrine/dbal": "^2.5",
-        "ericmakesstuff/laravel-server-monitor": "^1.2"
+        "ericmakesstuff/laravel-server-monitor": "^1.2",
+        "artesaos/seotools": "^0.9.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

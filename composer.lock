@@ -4,9 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aacc180592449c29ed96aa6449b6f1ee",
-    "content-hash": "3878bd2d703cd3785a4c3e3afc1c584b",
+    "hash": "b244eef1b794c9f8842fbc74f076b7c8",
+    "content-hash": "5a0f0f446a61888be9e78c87b7d8556e",
     "packages": [
+        {
+            "name": "artesaos/seotools",
+            "version": "v0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artesaos/seotools.git",
+                "reference": "858a8378a0c3317341f4cabb2f12173e64535812"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artesaos/seotools/zipball/858a8378a0c3317341f4cabb2f12173e64535812",
+                "reference": "858a8378a0c3317341f4cabb2f12173e64535812",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5",
+                "illuminate/support": "~5",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "2.1.x",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Artesaos\\SEOTools\\": "src/SEOTools/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vinicius",
+                    "email": "luiz.vinicius73@gmail.com"
+                }
+            ],
+            "description": "SEO Tools for Laravel and Lumen",
+            "keywords": [
+                "laravel5",
+                "lumen",
+                "metatags",
+                "opengraph",
+                "seo",
+                "seotools",
+                "webmaster"
+            ],
+            "time": "2016-03-25 16:07:48"
+        },
         {
             "name": "barryvdh/laravel-debugbar",
             "version": "v2.2.0",
@@ -3046,7 +3097,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/0a937607ddbea6605cef8aefdcac058f894d63c6",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/5c56afd2b52ff9f42b5497a366b7e9c06c0a4105",
                 "reference": "0a937607ddbea6605cef8aefdcac058f894d63c6",
                 "shasum": ""
             },
@@ -4209,7 +4260,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ce4c36bdc9310ba76fdd167f16978f14ab3b8e42",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/438196c8f66647073bcaf99908b543bda7ffd6d4",
                 "reference": "ce4c36bdc9310ba76fdd167f16978f14ab3b8e42",
                 "shasum": ""
             },

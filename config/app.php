@@ -166,6 +166,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         EricMakesStuff\ServerMonitor\ServerMonitorServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
     ],
 
@@ -221,6 +222,9 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Notifynder'    => Fenos\Notifynder\Facades\Notifynder::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
 
     ],
 
