@@ -221,8 +221,8 @@
         {{-- Bootstrap core JavaScript --}}
         {{-- ================================================== --}}
         {{-- Placed at the end of the document so the pages load faster --}}
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
 
         @if(Request::is('verhuur/aanvraag'))
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
@@ -232,6 +232,10 @@
                 $(document).ready(function() {
                     $('#datepicker1').datepicker({language: 'nl-BE',});
                     $('#datepicker2').datepicker({language: 'nl-BE',});
+
+                    // $("#clear").click(function(){
+                    //    $('#datepicker1').data('datepicker').setDate(null)
+                    // });
                 });
             </script>
         @endif

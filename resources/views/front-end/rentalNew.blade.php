@@ -121,7 +121,7 @@
                 {{-- Form buttons --}}
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Toevoegen</button>
-                    <button type="reset" class="btn btn-danger">Reset</button>
+                    <button id="clear" type="reset" class="btn btn-danger">Reset</button>
                 </div>
             </form>
         </div>

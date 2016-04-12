@@ -51,6 +51,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('takken', 'TakkenController@overview')->name('takken.index');
     Route::get('tak/{id}', 'TakkenController@group')->name('takken.specific');
 
+    Route::get('ontbijt', 'BreakfastController@index')->name('breakfast.index');
+
     /**
      * Backend routes
      */

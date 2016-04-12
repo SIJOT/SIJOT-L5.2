@@ -116,7 +116,7 @@
             <img class="img-thumbnail img-circle" src="/assets/img/front-2.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2 class="font-heading">Ontbijt!</h2>
             <p>Elke laatste zondag  van de maand! Doe onze scouts een ontbijt. Een ontbijt waar u als u wilt aanwezig kunt zijn met uw kinderen. Dit vind plaats op de scouts gronden U zicht enkel in te schrijven. Hier voor kunt u voorlopig terecht bij Leo Willems.  </p>
-            <p><a class="btn btn-default" href="http://www.st-joris-turnhout.be/Inschrijvingen/Ontbijt_beschrijving">Inschrijven »</a></p>
+            <p><a class="btn btn-default" href="{!! route('breakfast.index') !!}">Inschrijven »</a></p>
         </div>
         <div class="col-lg-4">
             <img class="img-thumbnail img-circle" src="/assets/img/front-1.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
