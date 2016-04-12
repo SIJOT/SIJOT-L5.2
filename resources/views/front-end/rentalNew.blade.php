@@ -99,8 +99,14 @@
                 </div>
                 {{-- /.start date input group --}}
 
+                <style>
+                    .margin-button {
+                       padding-bottom: 15px;
+                    }
+                </style>
+
                 {{-- End date input group  --}}
-                <div class="form-group{{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}">
+                <div class="form-group{{ $errors->has('End_date') ? 'has-feedback has-error margin-button' : '' }}">
                     <label>Eind datum: <span class="text-danger">*</span></label>
 
                     <div id="datepicker2" class="date input-group" data-provide="datepicker">
