@@ -8,8 +8,8 @@ return [
         'defaults'       => [
             'title'       => false, // set false to total remove
             'description' => false, // set false to total remove
-            'separator'   => ' - ',
-            'keywords'    => [],
+            'separator'   => false,
+            'keywords'    => false,
         ],
 
         /*

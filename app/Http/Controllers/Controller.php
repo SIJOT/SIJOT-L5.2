@@ -19,50 +19,42 @@ class Controller extends BaseController
      *
      * @param string $description
      * @param string $title
-     * @param string $currentUrl
-     * @param string $imgUrl
-     * @param string $siteName
      */
-    public function seoFacebook($description, $title, $currentUrl, $imgUrl, $siteName)
+    public function seoFacebook($description, $title)
     {
-        OpenGraph::setDescription($description);  // Define description
-        OpenGraph::setTitle($title);              // Define title
-        OpenGraph::setUrl($currentUrl);           // Define url
-        OpenGraph::addImage($imgUrl);             // Add image url
-        OpenGraph::setSiteName($siteName);        // Define site name
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::setDescription($description);                                     // Define description. max: 140
+        OpenGraph::setTitle('Scouts en Gidsen Sint-Joris, Turnhout - ' . $title);  // Define title
+        OpenGraph::setUrl(request()->fullUrl());                                     // Define url
+        OpenGraph::addProperty('image', url('img/social.jpg'));// Add image url
+        OpenGraph::setSiteName('Scouts en Gidsen - Sint-Joris, Turnhout');           // Define site name
     }
 
     /**
      * Set the SEO tags - Twitter
      *
-     * @param string $type
      * @param string $title
-     * @param string $site
-     * @param string $type
-     * @param string $cardUrl
-     * @param string $imgUrl
+     * @param string $description
      */
-    public function seoTwitter($type, $title, $site, $type, $cardUrl, $imgUrl)
+    public function seoTwitter($title, $description)
     {
-        Twitter::setType($type);         // Type of twitter card tag
-        Twitter::setTitle($title);       // Title of twitter card tag
-        Twitter::setSite($site);         // Site of twitter card tag
-        Twitter::setDescription($type);  // Description of twitter card tag
-        Twitter::setUrl($cardUrl);       // Url of twitter card tag
-        Twitter::addImage($imgUrl);      // Add image url
+        Twitter::addValue('card', 'summary');                                              // Type of twitter card tag
+        Twitter::addValue('title', 'Scouts en Gidsen - Sint-Joris, Turnhout - ' . $title); // Title of twitter card tag
+        Twitter::addValue('site', '@x0rif');                                               // Site of twitter card tag
+        Twitter::addValue('description', $description);
+        TWitter::addValue('image', '/img/social.jpg');// Description of twitter card tag
+        // Twitter::addImage(asset('img/social.png'));                                      // Add image url
     }
 
     /**
      * Set basic meta. - Meta
      *
      * @param array  $keywords
-     * @param string $title
      * @param string $description
      */
-    public function seoMeta($keywords, $title, $description)
+    public function seoMeta($keywords, $description)
     {
         SEOMeta::addKeyword($keywords);
-        SEOMeta::setTitle($title);
         SEOMeta::setDescription($description);
     }
 }

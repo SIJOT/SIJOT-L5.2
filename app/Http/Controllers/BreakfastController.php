@@ -16,6 +16,12 @@ class BreakfastController extends Controller
     public function index()
     {
         $data['title'] = 'Het ontbijt';
+
+        // SEO
+        $this->seoMeta(['Sint-Joris Turnhout', 'Ontbijt'], 'Elke zondag van de maand');
+        $this->seoTwitter('Ontbijt', 'Elke laatste zondag van de maand.');
+        $this->seoFacebook('Elke laatste zondag van de maand', 'Ontbijt');
+
         return view('front-end.ontbijt', $data);
     }
 }
