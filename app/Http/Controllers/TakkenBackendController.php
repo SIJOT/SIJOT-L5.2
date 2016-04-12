@@ -6,6 +6,10 @@ use App\Group;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class TakkenBackendController
+ * @package App\Http\Controllers
+ */
 class TakkenBackendController extends Controller
 {
     /**
@@ -47,6 +51,10 @@ class TakkenBackendController extends Controller
      */
     public function update(Requests\GroupValidator $request)
     {
+        // TODO: implement SEO.
+        // TODO: add notification.
+        // TODO: update method.
+
         return redirect()->back(302);
     }
 }

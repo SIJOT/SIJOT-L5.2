@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+/**
+ * Class MailingController
+ * @package App\Http\Controllers
+ */
 class MailingController extends Controller
 {
     /**
@@ -95,6 +99,8 @@ class MailingController extends Controller
      */
     public function store(Requests\mailingValidator $input)
     {
+        // TODO: Implement notification.
+
         mailingUsers::create($input->except('_token'));
 
         session()->flash('class', 'alert-success');
@@ -112,7 +118,8 @@ class MailingController extends Controller
      */
     public function edit($id, Requests\mailingValidator $input)
     {
-        
+        // TODO: Add edit insert logic.
+        // TODO: Add notification.
     }
 
     /**
@@ -137,6 +144,8 @@ class MailingController extends Controller
      */
     public function deleteUser($id)
     {
+        // TODO: implement notification.
+
         mailingUsers::find($id)->tag()->sync([]);
         mailingUsers::destroy($id);
 

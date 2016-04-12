@@ -13,6 +13,10 @@ use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class RentalController
+ * @package App\Http\Controllers
+ */
 class RentalController extends Controller
 {
     /**
@@ -223,6 +227,8 @@ class RentalController extends Controller
      */
     public function confirmed($id)
     {
+        // TODO: Implement notification.
+
         Rental::find($id)->update(['Status' => 2]);
 
         session()->flash('class', 'alert-success');
@@ -239,6 +245,8 @@ class RentalController extends Controller
      */
     public function option($id)
     {
+        // TODO: Implement notification.
+
         Rental::find($id)->update(['Status' => 1]);
 
         session()->flash('class', 'alert-success');

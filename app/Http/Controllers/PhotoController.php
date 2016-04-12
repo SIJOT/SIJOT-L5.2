@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+/**
+ * Class PhotoController
+ * @package App\Http\Controllers
+ */
 class PhotoController extends Controller
 {
     /**

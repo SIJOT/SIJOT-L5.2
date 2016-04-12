@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+/**
+ * Class BreakfastController
+ * @package App\Http\Controllers
+ */
 class BreakfastController extends Controller
 {
     /**

@@ -11,6 +11,10 @@ use App\Http\Requests\ChangeUserValidator;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class EditProfileController
+ * @package App\Http\Controllers
+ */
 class EditProfileController extends Controller
 {
     /**

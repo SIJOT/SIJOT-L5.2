@@ -8,6 +8,10 @@ use Bouncer;
 use App\User;
 use App\Http\Requests;
 
+/**
+ * Class UserController
+ * @package app\Http\Controllers
+ */
 class UserController extends Controller
 {
     /**

@@ -13,6 +13,10 @@ use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\Collection;
 use Symfony\Component\HttpFoundation\Response as Status;
 
+/**
+ * Class rentalApiController
+ * @package App\Http\Controllers
+ */
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
