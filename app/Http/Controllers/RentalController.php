@@ -16,6 +16,11 @@ use App\Http\Controllers\Controller;
 class RentalController extends Controller
 {
     /**
+     * @var string
+     */
+    protected $seoDescription;
+
+    /**
      * RentalController constructor.
      *
      * The following middleware is defined here.
@@ -29,6 +34,8 @@ class RentalController extends Controller
 
         $this->middleware('auth', ['only' => $authControllers]);
         $this->middleware('rentalAcl', ['only' => $authControllers]);
+
+        $this->seoDescription = 'Verhuur van onze lokalen.';
     }
 
     /**
@@ -38,6 +45,11 @@ class RentalController extends Controller
      */
     public function indexFront()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Turnhout'], $this->seoDescription);
+        $this->seoTwitter('Verhuur', $this->seoDescription);
+        $this->seoFacebook('Verhuur', $this->seoDescription);
+
         $data['title'] = 'Verhuur';
         return view('front-end.rentalIndex', $data);
     }
@@ -49,6 +61,11 @@ class RentalController extends Controller
      */
     public function insertFront()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Turnhout'], $this->seoDescription);
+        $this->seoTwitter('Verhuur aanvraag', $this->seoDescription);
+        $this->seoFacebook('Verhuur aanvraag', $this->seoDescription);
+
         $data['title'] = 'Verhuur aanvragen';
         return view('front-end.rentalNew', $data);
     }
@@ -60,6 +77,11 @@ class RentalController extends Controller
      */
     public function domainAccess()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Verhuur', 'bereikbaarheid'], $this->seoDescription);
+        $this->seoTwitter('Verhuur bereikbaarheid', $this->seoDescription);
+        $this->seoFacebook('Verhuur bereikbaarheid', $this->seoDescription);
+
         $data['title'] = 'Bereikbaarheid';
         return view('front-end.rentalAccess', $data);
     }
@@ -71,6 +93,11 @@ class RentalController extends Controller
      */
     public function calendar()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Verhuur', 'kalender'], $this->seoDescription);
+        $this->seoTwitter('Verhuur kalender', $this->seoDescription);
+        $this->seoFacebook('Verhuur kalender', $this->seoDescription);
+
         $data['title']   = 'verhuur Kalender';
         $data['rentals'] = Rental::where('status', 2)->get();
         return view('front-end.rentalCalendar', $data);
@@ -130,7 +157,6 @@ class RentalController extends Controller
      */
     public function store(Requests\RentalValidator $input)
     {
-        // TODO: Inject UNIX Timestamps
         // TODO: Implement mailing logic UPDATE: Only change the notification mail.
 
         Rental::insert($input->except('_token'));
