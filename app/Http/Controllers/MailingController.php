@@ -112,7 +112,7 @@ class MailingController extends Controller
      */
     public function edit($id, Requests\mailingValidator $input)
     {
-
+        
     }
 
     /**
