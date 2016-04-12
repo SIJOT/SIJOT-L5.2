@@ -13,6 +13,16 @@ use App\Http\Requests;
 class BreakfastController extends Controller
 {
     /**
+     * @var string
+     */
+    protected $seoDescription;
+
+    public function __construct()
+    {
+        $this->seoDescription = 'Elke laaste zondag van de maand';
+    }
+
+    /**
      * Get the breakfast description.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -22,9 +32,9 @@ class BreakfastController extends Controller
         $data['title'] = 'Het ontbijt';
 
         // SEO
-        $this->seoMeta(['Sint-Joris Turnhout', 'Ontbijt'], 'Elke zondag van de maand');
-        $this->seoTwitter('Ontbijt', 'Elke laatste zondag van de maand.');
-        $this->seoFacebook('Elke laatste zondag van de maand', 'Ontbijt');
+        $this->seoMeta(['Sint-Joris Turnhout', 'Sint-Joris'], $this->seoDescription);
+        $this->seoTwitter('Ontbijt', $this->seoDescription);
+        $this->seoFacebook('Ontbijt', $this->seoDescription);
 
         return view('front-end.ontbijt', $data);
     }

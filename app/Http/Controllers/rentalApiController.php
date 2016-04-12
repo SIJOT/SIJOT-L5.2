@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\Response as Status;
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
-    // TODO: [v1.1.0] #117 Add UNIT tests. - in progress 
 
     public function construct()
     {

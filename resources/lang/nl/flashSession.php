@@ -17,6 +17,8 @@ return [
     'mailingStore'      => 'U hebt een gebruiker toegevoegd in de mailing.',
     'mailingDelete'     => 'U hebt een gebruiker verwijderd uit de mailing.',
     'mailingStore'      => 'U hebt mail(s) verzonden',
+    'mailingEdit'       => 'u hebt successvol de gegevens aangepast',
+    'mailingGroup'      => 'u hebt de mails verzonden',
 
     'notificationDel'   => 'U hebt notificaties verwijderd.',
     'notificationRead'  => 'U hebt de notificaties gelezen',

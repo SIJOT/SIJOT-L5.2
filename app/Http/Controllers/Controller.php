@@ -27,11 +27,11 @@ class Controller extends BaseController
     public function seoFacebook($title, $description)
     {
         OpenGraph::addProperty('type', 'article');
-        OpenGraph::setDescription($description);                                     // Define description. max: 140
-        OpenGraph::setTitle('Scouts en Gidsen Sint-Joris, Turnhout - ' . $title);    // Define title
+        OpenGraph::addProperty('title','Scouts en Gidsen Sint-Joris, Turnhout - ' . $title);    // Define title
         OpenGraph::setUrl(request()->fullUrl());                                     // Define url
-        OpenGraph::addProperty('image', url('img/social.jpg'));                      // Add image url
+        OpenGraph::addProperty('image', url('img/social.gif'));                      // Add image url
         OpenGraph::setSiteName('Scouts en Gidsen - Sint-Joris, Turnhout');           // Define site name
+        OpenGraph::addProperty('description', $description);                         // Define description. max: 140
     }
 
     /**
@@ -46,7 +46,7 @@ class Controller extends BaseController
         Twitter::addValue('title', 'Scouts en Gidsen - Sint-Joris, Turnhout - ' . $title); // Title of twitter card tag
         Twitter::addValue('site', '@x0rif');                                               // Site of twitter card tag
         Twitter::addValue('description', $description);                                    // Set description
-        TWitter::addValue('image', '/img/social.jpg');                                     // Description of twitter card tag
+        TWitter::addValue('image', '/img/social.gif');                                     // Description of twitter card tag
         // Twitter::addImage(asset('img/social.png'));                                     // Add image url
     }
 

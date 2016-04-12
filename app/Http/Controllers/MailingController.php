@@ -23,8 +23,8 @@ class MailingController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('activeAcl');
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -55,13 +55,27 @@ class MailingController extends Controller
     }
 
     /**
+     * Get mail group - VIEW
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function mailGroupView()
+    {
+        $data['title'] = 'Groeps mail';
+        $data['query'] = mailingUsers::all();
+
+        return view('backend.mailing.group', $data);
+    }
+
+    /**
      * Mail all the user off the selected group.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function mailGroup()
     {
-
+        session()->class('class', 'alert-success');
+        session()->class('message', trans('flashSession.mailingGroup'));
     }
 
     /**
@@ -118,8 +132,14 @@ class MailingController extends Controller
      */
     public function edit($id, Requests\mailingValidator $input)
     {
-        // TODO: Add edit insert logic.
-        // TODO: Add notification.
+        // TODO: Implement notification.
+
+        mailingUsers::find($id)->update($input->except('_token'));
+        
+        session()->flash('class', 'alert-success');
+        session()->flash('message', trans('flashSession.mailingEdit'));
+
+        return redirect('mailing', 302);
     }
 
     /**
@@ -130,8 +150,8 @@ class MailingController extends Controller
      */
     public function update($id)
     {
-        $data['title'] = 'mailing';
-        $data['query'] = mailingUsers::find($id);
+        $data['title']    = 'mailing';
+        $data['database'] = mailingUsers::where('id', $id)->get();
 
         return view('backend.mailing.update', $data);
     }

@@ -33,7 +33,9 @@ class PhotoController extends Controller
      */
     public function photosTakSpecific()
     {
-        
+        // TODO: Create view.
+        // TODO: Implement SEO.
+        // TODO: Build up the controller.
     }
 
     /**
@@ -53,7 +55,9 @@ class PhotoController extends Controller
      */
     public function indexFront()
     {
-
+        // TODO: Implement SEO.
+        // TODO: Create view.
+        // TODO: Build up the controller.
     }
 
     /**
