@@ -230,12 +230,9 @@
 
             <script>
                 $(document).ready(function() {
-                    $('#datepicker1').datepicker({language: 'nl-BE',});
-                    $('#datepicker2').datepicker({language: 'nl-BE',});
+                    $('#datepicker1').datepicker({language: 'nl-BE', clearBtn: true});
+                    $('#datepicker2').datepicker({language: 'nl-BE', clearBtn: true});
 
-                    // $("#clear").click(function(){
-                    //    $('#datepicker1').data('datepicker').setDate(null)
-                    // });
                 });
             </script>
         @endif
