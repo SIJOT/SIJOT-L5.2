@@ -25,10 +25,9 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.nl-BE.min.js" charset="UTF-8"></script>
 
             <script>
-                $('.datepicker').datepicker({
-                    language: 'nl-BE',
-                    orientation: 'auto bottom',
-                    format: 'dd/mm/yyyy',
+                $(document).ready(function() {
+                    $('#datepicker1').datepicker({language: 'nl-BE',});
+                    $('#datepicker2').datepicker({language: 'nl-BE',});
                 });
             </script>
         @endif

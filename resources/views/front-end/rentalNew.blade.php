@@ -87,27 +87,27 @@
                 {{-- /.email gorm group--}}
 
                 {{-- Start date input group --}}
-                <div class="form-group date {{ $errors->has('Start_date') ? 'has-feedback has-error' : '' }}" data-provide="datepicker">
+                <div class="form-group {{ $errors->has('Start_date') ? 'has-feedback has-error' : '' }}">
                     <label>Start datum: <span class="text-danger">*</span></label>
 
-                    <div class="input-group">
+                    <div id="datepicker1" class="date input-group" data-provide="datepicker">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="mm/dd/yyyy" class="form-control">
+                        <input type="text" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
                     </div>
                 </div>
                 {{-- /.start date input group --}}
 
                 {{-- End date input group  --}}
-                <div class="form-group date {{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}" data-provide="datepicker">
+                <div class="form-group{{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}">
                     <label>Eind datum: <span class="text-danger">*</span></label>
 
-                    <div class="input-group">
+                    <div id="datepicker2" class="date input-group" data-provide="datepicker">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="mm/dd/yyyy" class="form-control">
+                        <input type="text" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
                     </div>
                 </div>
                 {{-- /.end date input group --}}
