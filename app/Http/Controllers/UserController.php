@@ -103,6 +103,7 @@ class UserController extends Controller
         $user = User::find($id);
         Bouncer::assign('active')->to($user);
 
+        
         session()->flash('message', trans('flashSession.userAdd'));
 
         return redirect()->back(302);

@@ -18,6 +18,21 @@ $factory->define(Fenos\Notifynder\Models\NotificationCategory::class, function (
     ];
 });
 
+$factory->define(App\mailingUsers::class, function (Faker\Generator $faker) {
+    return [
+        'firstname' => $faker->firstName,
+        'lastname'  => $faker->lastName,
+        'email'     => $faker->email
+    ];
+});
+
+$factory->define(App\mailingTags::class, function (Faker\Generator $faker) {
+    return [
+        'name'        => $faker->word,
+        'description' => $faker->text(100)
+    ];
+});
+
 $factory->define(App\Rental::class, function (Faker\Generator $faker) {
     return [
         'Start_date' => $faker->date('d-m-Y'),

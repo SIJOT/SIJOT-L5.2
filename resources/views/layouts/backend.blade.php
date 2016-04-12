@@ -153,7 +153,7 @@
                     <a href="{!! route('profile.edit.view') !!}"><i class="fa fa-cogs"></i> <span>Wijzig profiel</span></a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{!! route('mailing.index') !!}">
                         <i class="fa fa-envelope"></i> <span>Mailing</span>
                     </a>
                 </li>

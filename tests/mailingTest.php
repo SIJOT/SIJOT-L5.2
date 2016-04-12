@@ -76,4 +76,26 @@ class mailingTest extends TestCase
 
         $this->actingAs($user)->visit('mailing/mail/1')->seeStatusCode(200);
     }
+
+    /**
+     * GET: mailing/delete/{id}
+     *
+     * @group all
+     * @group mailing
+     */
+    public function testDestroy()
+    {
+        Artisan::call('bouncer:seed');
+
+        $user = factory(App\User::class)->create();
+        $mail = factory(App\mailingUsers::class)->create(['id' => $user->id]);
+
+        $role = Bouncer::assign('active')->to($user);
+        $this->assertTrue($role);
+
+        $this->actingAs($user)
+            ->visit('mailing/delete/' . $mail->id)
+            ->seeStatusCode(200)
+            ->notSeeInDatabase('mailing_users', ['deleted_at' => null, 'id' => $mail->id]);
+    }
 }

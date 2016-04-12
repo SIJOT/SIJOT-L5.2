@@ -77,6 +77,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/insert', 'MailingController@insert')->name('mailing.insert');
         Route::get('/mail/{id}', 'MailingController@mail')->name('mailing.mail');
         Route::get('/update/{id}', 'MailingController@edit')->name('mailing.update');
+        Route::get('/delete/{id}', 'MailingController@deleteUser')->name('mailing.destroy');
     });
 
     /**
