@@ -38,7 +38,6 @@ class rentalApiController extends Controller
         $fractal = new Manager();
 
         if ($currentCursorStr = $request->input('cursor', false)) {
-            // TODO: PHPunit -> this section of the if/else needs testing.
             $rentals = Rental::where('id', '>', $currentCursorStr)->take(5)->get();
         } else {
             $rentals = Rental::take(5)->get();

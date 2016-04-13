@@ -36,7 +36,6 @@ class TakkenBackendController extends Controller
      */
     public function view()
     {
-        // TODO: add phpunit tests
         $data['kapoenen']   = Group::getGroup('kapoenen')->get();
         $data['welpen']     = Group::getGroup('welpen')->get();
         $data['jonggivers'] = Group::getGroup('jong-givers')->get();
@@ -63,7 +62,7 @@ class TakkenBackendController extends Controller
             ->orWhere('name', 'leiding')
             ->with('users')
             ->get();
-        
+
         Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
             $builder->category('group.edit');
             $builder->from(auth()->user()->id);

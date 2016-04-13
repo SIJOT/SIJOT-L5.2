@@ -1,5 +1,4 @@
-# TODO: Add offline issues to gitignore
-
+/offline-issues
 /coverage
 /todo.md
 /vendor

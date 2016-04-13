@@ -92,6 +92,29 @@ class RentalApiTest extends TestCase
     }
 
     /**
+     * Test to get all the rentals through the API.
+     *
+     * @group rental
+     * @group api
+     */
+    public function testGetAllRentalsUrlWithPagination()
+    {
+        $user   = factory(App\User::class)->create();
+        $rental = factory(App\Rental::class, 14)->create();
+
+        $rentalDB['id']         = $rental[0]->id;
+        $rentalDB['Start_date'] = $rental[0]->Start_date;
+        $rentalDB['End_date']   = $rental[0]->End_date;
+        $rentalDB['Status']     = $rental[0]->Status;
+        $rentalDB['Email']      = $rental[0]->Email;
+        $rentalDB['telephone']  = $rental[0]->telephone;
+
+        $this->visit('api/v1/rental?api_token=' . $user->api_token)
+            ->seeStatusCode(200)
+            ->seeInDatabase('rentals', $rentalDB);
+    }
+
+    /**
      * Test to get the null rows response - API
      *
      * @group api

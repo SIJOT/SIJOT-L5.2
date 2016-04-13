@@ -19,12 +19,11 @@ class EditProfileController extends Controller
 {
     /**
      * EditProfileController constructor.
-     *
-     * TODO: set active ACL middlware.
      */
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -34,7 +33,6 @@ class EditProfileController extends Controller
      */
     public function view()
     {
-        // TODO: needs unit tested.
         $data['user']  = User::find(auth()->user()->id);
         $data['roles'] = Role::all();
 
@@ -55,10 +53,6 @@ class EditProfileController extends Controller
         $user->name  = auth()->user()->name;
         $user->email = $input->email;
         $user->gsm   = $input->gsm;
-
-        $info    = User::find(auth()->user()->id);
-
-        // TODO: implement notification.
 
         if (Input::file()) {
 

@@ -4,7 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-// TODO: add properties.
+/**
+ * Class Group
+ * @package App
+ *
+ * @property mixed, Uri,         the uri segment off the group?.
+ * @property mixed, title,       the title off the group description.
+ * @property mixed, sub_title,   the sub title off the group description.
+ * @property mixed, description, the discription off the group.
+ */
 class Group extends Model
 {
     /**

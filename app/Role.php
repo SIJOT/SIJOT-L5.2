@@ -4,7 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-// TODO: add properties.
+/**
+ * Class Role
+ * @package App
+ *
+ * @property mixed, name, The name off the role.
+ */
 class Role extends Model
 {
     /**

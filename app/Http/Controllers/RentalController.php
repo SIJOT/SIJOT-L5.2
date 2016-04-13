@@ -211,10 +211,19 @@ class RentalController extends Controller
      */
     public function destroy($id)
     {
-        // TODO: add notification logic.
         Rental::destroy($id);
 
-        $notification = '';
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.delete')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalDelete'));
@@ -230,10 +239,18 @@ class RentalController extends Controller
      */
     public function confirmed($id)
     {
-        // TODO: Implement notification.
         Rental::find($id)->update(['Status' => 2]);
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
 
-        $notification = '';
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.confirm')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalConfirm'));
@@ -249,8 +266,18 @@ class RentalController extends Controller
      */
     public function option($id)
     {
-        // TODO: Implement notification.
         Rental::find($id)->update(['Status' => 1]);
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.option')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalOption'));

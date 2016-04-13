@@ -16,8 +16,6 @@ class UserController extends Controller
 {
     /**
      * UserController constructor.
-     *
-     * TODO: set activeAcl middleware.
      */
     public function __construct()
     {

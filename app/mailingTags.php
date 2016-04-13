@@ -4,7 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-// TODO: add properties.
+/**
+ * Class mailingTags
+ * @package App
+ *
+ * @property mixed name,        The name off the tag.
+ * @property mixed description, the description from the tag.
+ */
 class mailingTags extends Model
 {
     /**

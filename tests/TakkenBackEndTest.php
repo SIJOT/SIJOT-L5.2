@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class TakkenBackEndTest extends TestCase
 {
     use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * POST: backend/groups/update/{id}
      *
@@ -40,5 +41,25 @@ class TakkenBackEndTest extends TestCase
             ->seeStatusCode(302)
             ->seeInDatabase('groups', $data);
 
+    }
+
+    /**
+     * POST: backend/groups/view
+     *
+     * @group all
+     * @group groups
+     */
+    public function testUpdate()
+    {
+        Artisan::call('bouncer:seed');
+        $user = factory(App\User::class)->create();
+
+        $active = Bouncer::assign('active')->to($user);
+        $role   = Bouncer::assign('kapoenen')->to($user);
+
+        $this->assertTrue($active);
+        $this->assertTrue($role);
+
+        $this->visit('backend/groups/view')->seeStatusCode(200);
     }
 }
