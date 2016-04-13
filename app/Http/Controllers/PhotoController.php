@@ -51,7 +51,6 @@ class PhotoController extends Controller
     public function indexBackend()
     {
         // TODO: build view
-        // TODO: add route.
         $data['title'] = '';
         $data['query'] = Photos::all();
 
