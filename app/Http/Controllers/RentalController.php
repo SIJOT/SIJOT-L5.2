@@ -8,8 +8,8 @@ use App\Http\Requests;
 use App\User;
 use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
-use Fenos\Notifynder\Builder\NotifynderBuilder;
 use Fenos\Notifynder\Facades\Notifynder;
+use Silber\Bouncer\Database\Role;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 
@@ -165,34 +165,36 @@ class RentalController extends Controller
 
         Rental::insert($input->except('_token'));
 
-        $user = $input->all();
-        $notification = ''; // Insert Query that get's al the users for notifications
+        $input = $input->all();
 
         // TODO: needs further debug methods.
         if (! auth()->check()) {
-            Mail::send('emails.notification', ['user' => $user], function($mail) use ($user) {
+            Mail::send('emails.notification', ['input' => $input], function($mail) use ($input) {
                 $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-                $mail->to($user['Email'], $user['Group']);
+                $mail->to($input['Email'], $input['Group']);
                 $mail->subject('Er is een nieuwe verhuring aangevraagd');
             });
 
             // Data mail to the requester.
-            Mail::send('emails.aanvraag', ['user' => $user], function ($mail) use ($user) {
+            Mail::send('emails.aanvraag', ['input' => $input], function ($mail) use ($input) {
                 $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-                $mail->to($user['Email'], $user['Group']);
+                $mail->to($input['Email'], $input['Group']);
                 $mail->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
             });
         }
 
-        $users = User::all();
-        
         if (auth()->check()) {
-            Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
-                $builder->category('rental.insert');
-                $builder->from(auth()->user()->id);
-                $builder->to($user->id);
-                $builder->url(route('backend.rental.overview', ['type' => 'all']));
-            })->send();
+            $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+            foreach ($roles as $role) {
+                foreach ($role->users as $user) {
+                    Notifynder::category('rental.insert')
+                        ->from(auth()->user()->id)
+                        ->to($user->id)
+                        ->url(route('backend.rental.overview', ['type' => 'all']))
+                        ->send();
+                }
+            }
         }
 
         session()->flash('class', 'alert-success');
@@ -210,8 +212,9 @@ class RentalController extends Controller
     public function destroy($id)
     {
         // TODO: add notification logic.
-        // So who take the gun to fire this one down?
         Rental::destroy($id);
+
+        $notification = '';
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalDelete'));
@@ -228,8 +231,9 @@ class RentalController extends Controller
     public function confirmed($id)
     {
         // TODO: Implement notification.
-
         Rental::find($id)->update(['Status' => 2]);
+
+        $notification = '';
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalConfirm'));
@@ -246,7 +250,6 @@ class RentalController extends Controller
     public function option($id)
     {
         // TODO: Implement notification.
-
         Rental::find($id)->update(['Status' => 1]);
 
         session()->flash('class', 'alert-success');

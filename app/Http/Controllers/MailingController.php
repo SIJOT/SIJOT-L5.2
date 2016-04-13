@@ -74,6 +74,9 @@ class MailingController extends Controller
      */
     public function mailGroup()
     {
+        // TODO: implement mailing logic
+        // TODO: Add return method.
+        
         session()->class('class', 'alert-success');
         session()->class('message', trans('flashSession.mailingGroup'));
     }
@@ -114,8 +117,9 @@ class MailingController extends Controller
     public function store(Requests\mailingValidator $input)
     {
         // TODO: Implement notification.
-
         mailingUsers::create($input->except('_token'));
+        
+        $notification = 
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.mailingStore'));

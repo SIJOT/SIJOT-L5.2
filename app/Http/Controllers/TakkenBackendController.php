@@ -61,8 +61,9 @@ class TakkenBackendController extends Controller
         $users = Role::where('name', 'admin')
             ->orWhere('name', 'developer')
             ->orWhere('name', 'leiding')
+            ->with('users')
             ->get();
-
+        
         Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
             $builder->category('group.edit');
             $builder->from(auth()->user()->id);
