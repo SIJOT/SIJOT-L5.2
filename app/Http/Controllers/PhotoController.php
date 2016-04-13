@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Photos;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,8 +14,6 @@ use App\Http\Requests;
 class PhotoController extends Controller
 {
     // TODO: create factory.
-    // TODO: create model.
-    // TODO: create migration.
     
     /**
      * PhotoController constructor.
@@ -26,8 +25,10 @@ class PhotoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('activeAcl');
+        $controllers = ['indexBackend', 'upload'];
+
+        $this->middleware('auth', ['only' => $controllers]);
+        $this->middleware('activeAcl', ['only' => $controllers]);
     }
 
     /**
@@ -67,6 +68,11 @@ class PhotoController extends Controller
         // TODO: Implement SEO.
         // TODO: Create view.
         // TODO: Build up the controller.
+
+        $data['title']  = "Foto's";
+        $data['photos'] = Photos::all();
+
+        return view('front-end.photos', $data);
     }
 
     /**
