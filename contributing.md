@@ -13,7 +13,7 @@ The issue tracker is preferred channel for bug reports, features requests and su
 but please respect the following restrictions:
 
 - Please **do not** use the issue tracker for personal support requests. Our Slack channel is a better place to get help.
--¨Please **do not** derail or troll issues. Keep teh discussion on topic and respect the opinions of others.
+- Please **do not** derail or troll issues. Keep teh discussion on topic and respect the opinions of others.
 
 ## Issues and labels
 
