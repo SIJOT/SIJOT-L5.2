@@ -66,8 +66,7 @@ class PhotoController extends Controller
     public function indexFront()
     {
         // TODO: Implement SEO.
-        // TODO: Create view.
-        // TODO: Build up the controller.
+        // TODO: Integrate phpunit test.
 
         $data['title']  = "Foto's";
         $data['photos'] = Photos::all();
