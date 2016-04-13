@@ -12,6 +12,10 @@ use App\Http\Requests;
  */
 class PhotoController extends Controller
 {
+    // TODO: create factory.
+    // TODO: create model.
+    // TODO: create migration.
+    
     /**
      * PhotoController constructor.
      *
