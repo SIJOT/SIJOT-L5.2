@@ -12,6 +12,8 @@ return [
      * these language lines according to your application's requirements.
      *
      */
+    'groupUpdate'       => 'U hebt een groups beschrijving aangepast.',
+    
     'changeProfileInfo' => 'U hebt successvol uw gegevens aangepast.',
 
     'mailingStore'      => 'U hebt een gebruiker toegevoegd in de mailing.',

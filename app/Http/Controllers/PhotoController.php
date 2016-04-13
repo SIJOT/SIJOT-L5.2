@@ -29,9 +29,10 @@ class PhotoController extends Controller
     /**
      * Get all the photos from a specific group.
      *
+     * @param  string, $uri, the segment that get's the group
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function photosTakSpecific()
+    public function photosTakSpecific($uri)
     {
         // TODO: Create view.
         // TODO: Implement SEO.
@@ -45,7 +46,12 @@ class PhotoController extends Controller
      */
     public function indexBackend()
     {
+        // TODO: build view
+        // TODO: add route.
+        $data['title'] = '';
+        $data['query'] = Photos::all();
 
+        return view('', $data);
     }
 
     /**
@@ -67,7 +73,8 @@ class PhotoController extends Controller
      */
     public function upload()
     {
-        
+        // TODO: Build up the controller.
+        // TODO: Implement notification.
     }
     
 }

@@ -90,6 +90,7 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::group(['prefix' => 'backend/groups'], function () {
         Route::get('view', 'TakkenBackendController@view')->name('backend.groups.view');
+        Route::post('update/{id}', 'TakkenBackendController@update')->name('backend.group.update');
     });
 
     /**

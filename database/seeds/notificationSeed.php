@@ -26,5 +26,10 @@ class notificationSeed extends Seeder
             'name' => 'rental.delete',
             'text' => '{from.name} heeft een verhuring verwijderd - API',
         ]);
+
+        NC::create([
+            'name' => 'group.edit',
+            'text' => '{from.name} heeft een groeps beschrijving aangepast.',
+        ]);
     }
 }
