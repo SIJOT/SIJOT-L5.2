@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+// TODO: add properties.
 class Role extends Model
 {
     /**

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+// TODO: add properties.
 class Group extends Model
 {
     /**
@@ -21,6 +22,8 @@ class Group extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     /**
+     * Scope to get the group through the Uri segment.
+     *
      * @param  $query
      * @param  string $uri the uri segment.
      * @return mixed
