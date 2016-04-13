@@ -56,7 +56,6 @@ class TakkenBackendController extends Controller
      */
     public function update(Requests\GroupValidator $request, $id)
     {
-        // TODO: Set translation flash message.
         Group::find($id)->update($request->except('_token'));
 
         $users = Role::where('name', 'admin')

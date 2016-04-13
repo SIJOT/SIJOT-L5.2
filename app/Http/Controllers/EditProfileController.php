@@ -34,6 +34,7 @@ class EditProfileController extends Controller
      */
     public function view()
     {
+        // TODO: needs unit tested.
         $data['user']  = User::find(auth()->user()->id);
         $data['roles'] = Role::all();
 
@@ -48,6 +49,7 @@ class EditProfileController extends Controller
      */
     public function editInfo(ChangeUserValidator $input)
     {
+        // TODO: needs unit tested.
         // TODO: clean up insert and set the mass assign.
         $user        = User::find(auth()->user()->id);
         $user->name  = auth()->user()->name;
@@ -64,7 +66,6 @@ class EditProfileController extends Controller
             $filename  = time() . '.' . $image->getClientOriginalExtension();
 
             $path = public_path('assets/img/profile/' . $filename);
-
 
             Image::make($image->getRealPath())->resize(160, 160)->save($path);
             $user->image = $filename;
@@ -88,6 +89,7 @@ class EditProfileController extends Controller
      */
     public function editGroups($id)
     {
+        // TODO: needs unit tested.
         $user = User::find($id);
         $user->roles()->sync([]);
 
