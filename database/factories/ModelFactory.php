@@ -10,6 +10,13 @@
 | database. Just tell the factory how a default model should look.
 |
 */
+$factory->define(App\Photos::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'url'  => $faker->url,
+        'path' => $faker->url,
+    ];
+});
 
 $factory->define(Fenos\Notifynder\Models\NotificationCategory::class, function (Faker\Generator $faker) {
     return [

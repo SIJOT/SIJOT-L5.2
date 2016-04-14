@@ -53,6 +53,13 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('ontbijt', 'BreakfastController@index')->name('breakfast.index');
 
+    Route::get('fotos', 'PhotoController@indexFront')->name('photo.frontend.index');
+    Route::get('fotos/{uri}', 'PhotoController@photosTakSpecific')->name('photo.frontend.specific');
+
+    Route::group(['prefix' => 'backend/photos'], function() {
+        Route::get('/', 'PhotoController@indexBackend')->name('photo.backend.index');
+        Route::post('/upload', 'PhotoController@upload')->name('photo.backend.upload');
+    });
     /**
      * Backend routes
      */

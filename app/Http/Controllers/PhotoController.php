@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Photos;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,8 +23,10 @@ class PhotoController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('activeAcl');
+        $controllers = ['indexBackend', 'upload'];
+
+        $this->middleware('auth', ['only' => $controllers]);
+        $this->middleware('activeAcl', ['only' => $controllers]);
     }
 
     /**
@@ -35,8 +38,16 @@ class PhotoController extends Controller
     public function photosTakSpecific($uri)
     {
         // TODO: Create view.
-        // TODO: Implement SEO.
-        // TODO: Build up the controller.
+
+        $data['title']  = "Foto's";
+        $data['photos'] = Photos::where('uri', $uri)->get();
+
+        // SEO:
+        $this->seoFacebook('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoTwitter('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoMeta(['sint-joris', 'scouts', 'turnhout'], 'Fotos van scouts en gidsen Sint-Joris');
+
+        return view('front-end.photos', $data);
     }
 
     /**
@@ -46,12 +57,12 @@ class PhotoController extends Controller
      */
     public function indexBackend()
     {
-        // TODO: build view
-        // TODO: add route.
-        $data['title'] = '';
-        $data['query'] = Photos::all();
+        // TODO: create view.
 
-        return view('', $data);
+        $data['title']  = "Foto's";
+        $data['photos'] = Photos::all();
+
+        return view('backend.photo.index', $data);
     }
 
     /**
@@ -61,9 +72,15 @@ class PhotoController extends Controller
      */
     public function indexFront()
     {
-        // TODO: Implement SEO.
-        // TODO: Create view.
-        // TODO: Build up the controller.
+        // SEO:
+        $this->seoFacebook('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoTwitter('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoMeta(['sint-joris', 'scouts', 'turnhout'], 'Fotos van scouts en gidsen Sint-Joris');
+
+        $data['title']  = "Foto's";
+        $data['photos'] = Photos::all();
+
+        return view('front-end.photos', $data);
     }
 
     /**
