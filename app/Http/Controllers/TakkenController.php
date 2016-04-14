@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
 
+/**
+ * Class TakkenController
+ * @package App\Http\Controllers
+ */
 class TakkenController extends Controller
 {
     /**
@@ -17,6 +21,8 @@ class TakkenController extends Controller
      */
     public function overview()
     {
+        // TODO: Implement SEO.
+
         $data['all']        = Group::all();
         $data['kapoenen']   = Group::getGroup('kapoenen')->get();
         $data['welpen']     = Group::getGroup('welpen')->get();
@@ -36,6 +42,8 @@ class TakkenController extends Controller
      */
     public function group($tak)
     {
+        // TODO: Implement SEO.
+
         $data['group'] = Group::getGroup($tak)->get();
         return view('front-end.group', $data);
     }

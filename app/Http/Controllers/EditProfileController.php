@@ -11,16 +11,19 @@ use App\Http\Requests\ChangeUserValidator;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class EditProfileController
+ * @package App\Http\Controllers
+ */
 class EditProfileController extends Controller
 {
     /**
      * EditProfileController constructor.
-     *
-     * TODO: set active ACL middlware.
      */
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -44,15 +47,12 @@ class EditProfileController extends Controller
      */
     public function editInfo(ChangeUserValidator $input)
     {
+        // TODO: needs unit tested.
         // TODO: clean up insert and set the mass assign.
         $user        = User::find(auth()->user()->id);
         $user->name  = auth()->user()->name;
         $user->email = $input->email;
         $user->gsm   = $input->gsm;
-
-        $info    = User::find(auth()->user()->id);
-
-        // TODO: implement notification.
 
         if (Input::file()) {
 
@@ -60,7 +60,6 @@ class EditProfileController extends Controller
             $filename  = time() . '.' . $image->getClientOriginalExtension();
 
             $path = public_path('assets/img/profile/' . $filename);
-
 
             Image::make($image->getRealPath())->resize(160, 160)->save($path);
             $user->image = $filename;
@@ -84,6 +83,7 @@ class EditProfileController extends Controller
      */
     public function editGroups($id)
     {
+        // TODO: needs unit tested.
         $user = User::find($id);
         $user->roles()->sync([]);
 

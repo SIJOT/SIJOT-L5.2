@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="fb:app_id" content="472828642867079">
 
         {{-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --}}
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="">
+        {!! SEOMeta::generate() !!}
+        {!! OpenGraph::generate() !!}
+        {!! Twitter::generate() !!}
 
         <title>SIJOT</title>
 
@@ -16,6 +17,10 @@
         <link href="{!! asset('css/frontend.css') !!}" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link href="http://fonts.googleapis.com/css?family=Allan:700" rel="stylesheet" type="text/css">
+
+        @if(Request::is('verhuur/aanvraag'))
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+        @endif
 
         {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
         <!--[if lt IE 9]>
@@ -97,11 +102,18 @@
                                 Planning
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                <span class="Icon-color fa fa-info-circle"></span>
-                                Info
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                                <span class="fa fa-info-circle Icon-color"></span> Info
                             </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="https://groepsadmin.scoutsengidsenvlaanderen.be/groepsadmin/lidworden?groep=A4102G">
+                                        Lid worden
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="">
@@ -212,5 +224,18 @@
         {{-- Placed at the end of the document so the pages load faster --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+        @if(Request::is('verhuur/aanvraag'))
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.nl-BE.min.js" charset="UTF-8"></script>
+
+            <script>
+                $(document).ready(function() {
+                    $('#datepicker1').datepicker({language: 'nl-BE', clearBtn: true});
+                    $('#datepicker2').datepicker({language: 'nl-BE', clearBtn: true});
+
+                });
+            </script>
+        @endif
     </body>
 </html>

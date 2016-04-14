@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+/**
+ * Class MailingController
+ * @package App\Http\Controllers
+ */
 class MailingController extends Controller
 {
     /**
      * MailingController constructor.
      *
      * Middleware:
-     *
+     * --
      * auth      = to see if the user is authencated.
      * activeAcl = to see if the user is blocked or not.
      */
     public function __construct()
     {
-        $this->middleware('activeAcl');
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -51,13 +55,30 @@ class MailingController extends Controller
     }
 
     /**
+     * Get mail group - VIEW
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function mailGroupView()
+    {
+        $data['title'] = 'Groeps mail';
+        $data['query'] = mailingUsers::all();
+
+        return view('backend.mailing.group', $data);
+    }
+
+    /**
      * Mail all the user off the selected group.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function mailGroup()
     {
-
+        // TODO: implement mailing logic
+        // TODO: Add return method.
+        
+        session()->class('class', 'alert-success');
+        session()->class('message', trans('flashSession.mailingGroup'));
     }
 
     /**
@@ -84,7 +105,6 @@ class MailingController extends Controller
     public function insert()
     {
         $data['title'] = 'Mailing';
-
         return view('backend.mailing.insert', $data);
     }
 
@@ -96,12 +116,34 @@ class MailingController extends Controller
      */
     public function store(Requests\mailingValidator $input)
     {
+        // TODO: Implement notification.
         mailingUsers::create($input->except('_token'));
+        
+        $notification = 
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.mailingStore'));
 
         return redirect()->back(302);
+    }
+
+    /**
+     * Edit a user into the data table.
+     *
+     * @param  int, $id, the id of the user in the data table.
+     * @param  Requests\mailingValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function edit($id, Requests\mailingValidator $input)
+    {
+        // TODO: Implement notification.
+
+        mailingUsers::find($id)->update($input->except('_token'));
+        
+        session()->flash('class', 'alert-success');
+        session()->flash('message', trans('flashSession.mailingEdit'));
+
+        return redirect('mailing', 302);
     }
 
     /**
@@ -112,8 +154,8 @@ class MailingController extends Controller
      */
     public function update($id)
     {
-        $data['title'] = 'mailing';
-        $data['query'] = mailingUsers::find($id);
+        $data['title']    = 'mailing';
+        $data['database'] = mailingUsers::where('id', $id)->get();
 
         return view('backend.mailing.update', $data);
     }
@@ -126,6 +168,8 @@ class MailingController extends Controller
      */
     public function deleteUser($id)
     {
+        // TODO: implement notification.
+
         mailingUsers::find($id)->tag()->sync([]);
         mailingUsers::destroy($id);
 

@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class NotificationsController
+ * @package App\Http\Controllers
+ */
 class NotificationsController extends Controller
 {
     /**
-     * NotificationsController constructor.
+     * NotificationsController constructor. 
      */
     public function __construct()
     {
@@ -48,8 +52,8 @@ class NotificationsController extends Controller
             Notifynder::delete($request->get('notifications'));
             $message = trans('flashSession.notificationDel');
         }
-
-        // TODO: set class flash message.
+        
+        session()->flash('class', 'alert-success');
         session()->flash('message', $message);
 
         return redirect()->back(302);

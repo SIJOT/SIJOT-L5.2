@@ -13,10 +13,13 @@ use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\Collection;
 use Symfony\Component\HttpFoundation\Response as Status;
 
+/**
+ * Class rentalApiController
+ * @package App\Http\Controllers
+ */
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
-    // TODO: [v1.1.0] #117 Add UNIT tests. - in progress 
 
     public function construct()
     {
@@ -105,8 +108,8 @@ class rentalApiController extends Controller
         ]);
 
 
-        if (! $validator->fails())
-        {
+        if (! $validator->fails()) {
+            // TODO: check for mass assign.
             $rental             = new Rental;
             $rental->Start_date = $request->get('Start_datum');
             $rental->End_date   = $request->get('Eind_datum');
@@ -154,6 +157,7 @@ class rentalApiController extends Controller
 
 
         if (! $validator->fails()) {
+            // TODO: check for mass assign.
             $rental             = Rental::find($id);
             $rental->Start_date = $request->get('Start_datum');
             $rental->End_date   = $request->get('Eind_datum');
@@ -163,6 +167,7 @@ class rentalApiController extends Controller
             $rental->save();
 
             if ($rental->count() === 0) {
+                // TODO: phpunit -> this section of the if/else needs testing.
                 $status = Status::HTTP_BAD_REQUEST;
                 $content = ['message' => 'could not perform the action.'];
             } elseif ($rental->count() > 0) {
@@ -189,6 +194,7 @@ class rentalApiController extends Controller
      */
     public function specific($id)
     {
+        // TODO: needs phpunit test.
         $fractal = new Manager();
 
         // ERROR data.

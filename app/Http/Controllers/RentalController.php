@@ -8,13 +8,22 @@ use App\Http\Requests;
 use App\User;
 use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
-use Fenos\Notifynder\Builder\NotifynderBuilder;
 use Fenos\Notifynder\Facades\Notifynder;
+use Silber\Bouncer\Database\Role;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class RentalController
+ * @package App\Http\Controllers
+ */
 class RentalController extends Controller
 {
+    /**
+     * @var string
+     */
+    protected $seoDescription;
+
     /**
      * RentalController constructor.
      *
@@ -29,6 +38,8 @@ class RentalController extends Controller
 
         $this->middleware('auth', ['only' => $authControllers]);
         $this->middleware('rentalAcl', ['only' => $authControllers]);
+
+        $this->seoDescription = 'Verhuur van onze lokalen.';
     }
 
     /**
@@ -38,6 +49,11 @@ class RentalController extends Controller
      */
     public function indexFront()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Turnhout'], $this->seoDescription);
+        $this->seoTwitter('Verhuur', $this->seoDescription);
+        $this->seoFacebook('Verhuur', $this->seoDescription);
+
         $data['title'] = 'Verhuur';
         return view('front-end.rentalIndex', $data);
     }
@@ -49,6 +65,11 @@ class RentalController extends Controller
      */
     public function insertFront()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Turnhout'], $this->seoDescription);
+        $this->seoTwitter('Verhuur aanvraag', $this->seoDescription);
+        $this->seoFacebook('Verhuur aanvraag', $this->seoDescription);
+
         $data['title'] = 'Verhuur aanvragen';
         return view('front-end.rentalNew', $data);
     }
@@ -60,6 +81,11 @@ class RentalController extends Controller
      */
     public function domainAccess()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Verhuur', 'bereikbaarheid'], $this->seoDescription);
+        $this->seoTwitter('Verhuur bereikbaarheid', $this->seoDescription);
+        $this->seoFacebook('Verhuur bereikbaarheid', $this->seoDescription);
+
         $data['title'] = 'Bereikbaarheid';
         return view('front-end.rentalAccess', $data);
     }
@@ -71,6 +97,11 @@ class RentalController extends Controller
      */
     public function calendar()
     {
+        // SEO:
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Verhuur', 'kalender'], $this->seoDescription);
+        $this->seoTwitter('Verhuur kalender', $this->seoDescription);
+        $this->seoFacebook('Verhuur kalender', $this->seoDescription);
+
         $data['title']   = 'verhuur Kalender';
         $data['rentals'] = Rental::where('status', 2)->get();
         return view('front-end.rentalCalendar', $data);
@@ -130,39 +161,40 @@ class RentalController extends Controller
      */
     public function store(Requests\RentalValidator $input)
     {
-        // TODO: Inject UNIX Timestamps
         // TODO: Implement mailing logic UPDATE: Only change the notification mail.
 
         Rental::insert($input->except('_token'));
 
-        $user = $input->all();
-        $notification = ''; // Insert Query that get's al the users for notifications
+        $input = $input->all();
 
         // TODO: needs further debug methods.
         if (! auth()->check()) {
-            Mail::send('emails.notification', ['user' => $user], function($mail) use ($user) {
+            Mail::send('emails.notification', ['input' => $input], function($mail) use ($input) {
                 $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-                $mail->to($user['Email'], $user['Group']);
+                $mail->to($input['Email'], $input['Group']);
                 $mail->subject('Er is een nieuwe verhuring aangevraagd');
             });
 
             // Data mail to the requester.
-            Mail::send('emails.aanvraag', ['user' => $user], function ($mail) use ($user) {
+            Mail::send('emails.aanvraag', ['input' => $input], function ($mail) use ($input) {
                 $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
-                $mail->to($user['Email'], $user['Group']);
+                $mail->to($input['Email'], $input['Group']);
                 $mail->subject('Scouts en Gidsen - Sint-joris. Verhuur aanvraag');
             });
         }
 
-        $users = User::all();
-        
         if (auth()->check()) {
-            Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
-                $builder->category('rental.insert');
-                $builder->from(auth()->user()->id);
-                $builder->to($user->id);
-                $builder->url(route('backend.rental.overview', ['type' => 'all']));
-            })->send();
+            $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+            foreach ($roles as $role) {
+                foreach ($role->users as $user) {
+                    Notifynder::category('rental.insert')
+                        ->from(auth()->user()->id)
+                        ->to($user->id)
+                        ->url(route('backend.rental.overview', ['type' => 'all']))
+                        ->send();
+                }
+            }
         }
 
         session()->flash('class', 'alert-success');
@@ -179,9 +211,19 @@ class RentalController extends Controller
      */
     public function destroy($id)
     {
-        // TODO: add notification logic.
-        // So who take the gun to fire this one down?
         Rental::destroy($id);
+
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.delete')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalDelete'));
@@ -198,6 +240,17 @@ class RentalController extends Controller
     public function confirmed($id)
     {
         Rental::find($id)->update(['Status' => 2]);
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.confirm')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalConfirm'));
@@ -214,6 +267,17 @@ class RentalController extends Controller
     public function option($id)
     {
         Rental::find($id)->update(['Status' => 1]);
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.option')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.rentalOption'));

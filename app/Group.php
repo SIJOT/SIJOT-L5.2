@@ -4,6 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Group
+ * @package App
+ *
+ * @property mixed, Uri,         the uri segment off the group?.
+ * @property mixed, title,       the title off the group description.
+ * @property mixed, sub_title,   the sub title off the group description.
+ * @property mixed, description, the discription off the group.
+ */
 class Group extends Model
 {
     /**
@@ -21,8 +30,10 @@ class Group extends Model
     protected $hidden = ['created_at', 'updated_at'];
 
     /**
-     * @param $query
-     * @param string $uri the uri segment.
+     * Scope to get the group through the Uri segment.
+     *
+     * @param  $query
+     * @param  string $uri the uri segment.
      * @return mixed
      */
     public function scopeGetGroup($query, $uri)

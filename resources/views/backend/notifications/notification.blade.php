@@ -54,6 +54,10 @@
                                     <td>
                                         @if($notification->body->name == 'rental.insert')
                                             <label class="label label-warning">Verhuur</label>
+                                        @elseif($notification->body->name == 'rental.delete')
+                                            <label class="label label-warning">Verhuur</label>
+                                        @elseif($notification->body->name == 'rental.edit')
+                                            <span class="label label-warning">Verhuur</span>
                                         @endif
                                     </td>
                                     <td> {!! $notification->text !!}</td>

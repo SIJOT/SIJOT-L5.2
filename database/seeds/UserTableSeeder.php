@@ -23,6 +23,6 @@ class UserTableSeeder extends Seeder
         $user = App\User::find($id);
 
         Bouncer::assign('active')->to($user);
-        bOuncer::assign('admin')->to($user);
+        Bouncer::assign('admin')->to($user);
     }
 }

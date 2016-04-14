@@ -4,6 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class mailingTags
+ * @package App
+ *
+ * @property mixed name,        The name off the tag.
+ * @property mixed description, the description from the tag.
+ */
 class mailingTags extends Model
 {
     /**

@@ -29,7 +29,7 @@
                     <span style="margin-right: 3px;" class="fa fa-plus"></span> Nieuw adres
                 </a>
 
-                <a href="" class="btn btn-default btn-xs">
+                <a href="{!! route('mailing.group') !!}" class="btn btn-default btn-xs">
                     <span style="margin-right: 3px;" class="fa fa-envelope"></span> Groeps mailing
                 </a>
             </div>
@@ -63,7 +63,7 @@
                                                     <span class="fa fa-trash"></span>
                                                 </a>
 
-                                                <a class="btn btn-xs btn-danger" href="">
+                                                <a class="btn btn-xs btn-danger" href="{!! route('mailing.update', ['id' => $info->id]) !!}">
                                                     <span class="fa fa-pencil"></span>
                                                 </a>
                                             </div>

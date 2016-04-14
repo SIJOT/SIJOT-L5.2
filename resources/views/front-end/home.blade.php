@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html><head>
     <title>Index</title>
+
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
@@ -84,10 +89,18 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="http://www.st-joris-turnhout.be/Info">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
                         <span class="fa fa-info-circle Icon-color"></span> Info
                     </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="https://groepsadmin.scoutsengidsenvlaanderen.be/groepsadmin/lidworden?groep=A4102G">
+                                Lid worden
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
@@ -108,7 +121,7 @@
             <img class="img-thumbnail img-circle" src="/assets/img/front-2.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
             <h2 class="font-heading">Ontbijt!</h2>
             <p>Elke laatste zondag  van de maand! Doe onze scouts een ontbijt. Een ontbijt waar u als u wilt aanwezig kunt zijn met uw kinderen. Dit vind plaats op de scouts gronden U zicht enkel in te schrijven. Hier voor kunt u voorlopig terecht bij Leo Willems.  </p>
-            <p><a class="btn btn-default" href="http://www.st-joris-turnhout.be/Inschrijvingen/Ontbijt_beschrijving">Inschrijven »</a></p>
+            <p><a class="btn btn-default" href="{!! route('breakfast.index') !!}">Inschrijven »</a></p>
         </div>
         <div class="col-lg-4">
             <img class="img-thumbnail img-circle" src="/assets/img/front-1.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">

@@ -5,12 +5,28 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Fenos\Notifynder\Builder\NotifynderBuilder;
+use Fenos\Notifynder\Facades\Notifynder;
+use Silber\Bouncer\Database\Role;
 
+/**
+ * Class TakkenBackendController
+ * @package App\Http\Controllers
+ */
 class TakkenBackendController extends Controller
 {
+    /**
+     * TakkenBackendController constructor.
+     *
+     * The following middleware is defined here:
+     * --
+     * auth     = To see if the user is authencated.
+     * activeAcl = to see if the user is blocked or not
+     */
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('activeAcl');
     }
 
     /**
@@ -32,12 +48,31 @@ class TakkenBackendController extends Controller
 
     /**
      * Update a group his description.
-     * 
-     * @param Requests\GroupValidator $request
-     * @return mixed
+     *
+     * @param  Requests\GroupValidator $request
+     * @param  int, $id, the id in the mysql data table.
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Requests\GroupValidator $request)
+    public function update(Requests\GroupValidator $request, $id)
     {
+        Group::find($id)->update($request->except('_token'));
+
+        $users = Role::where('name', 'admin')
+            ->orWhere('name', 'developer')
+            ->orWhere('name', 'leiding')
+            ->with('users')
+            ->get();
+
+        Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
+            $builder->category('group.edit');
+            $builder->from(auth()->user()->id);
+            $builder->to($user->id);
+            $builder->url(route('backend.groups.view'));
+        })->send();
+
+        session()->flash('class', 'alert-success');
+        session()->flash('message', trans('flashSession.groupUpdate'));
+
         return redirect()->back(302);
     }
 }

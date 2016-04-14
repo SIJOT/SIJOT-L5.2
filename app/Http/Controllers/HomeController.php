@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Rental;
 use App\User;
 
+/**
+ * Class HomeController
+ * @package app\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**

@@ -8,12 +8,14 @@ use Bouncer;
 use App\User;
 use App\Http\Requests;
 
+/**
+ * Class UserController
+ * @package app\Http\Controllers
+ */
 class UserController extends Controller
 {
     /**
      * UserController constructor.
-     *
-     * TODO: set activeAcl middleware.
      */
     public function __construct()
     {
@@ -29,7 +31,6 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = User::paginate(15);
-
         return view('backend.users.overview', $data);
     }
 
@@ -104,6 +105,7 @@ class UserController extends Controller
         $user = User::find($id);
         Bouncer::assign('active')->to($user);
 
+        
         session()->flash('message', trans('flashSession.userAdd'));
 
         return redirect()->back(302);

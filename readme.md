@@ -9,6 +9,7 @@ The platform for Sint-Joris Turnhout. ***(A4102G)***.
 
 * [Quickstart](#quickstart)
 * [Bugs and feature requests](#bugs-and-feature-requests)
+* [Stability](#stability)
 * [Versioning](#versioning)
 * [Copyright and license](#copyright-and-license)
 * [Other handy repositories and resources](#other-handy-repositories-and-resources)
@@ -17,6 +18,14 @@ The platform for Sint-Joris Turnhout. ***(A4102G)***.
 
 ## Bugs and feature requests. 
 Have a bug or a feature request? Please first read the [issue guidelines]() and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](). Or you can contact us on [Slack](https://rientjeteen.slack.com).
+
+## Stability
+
+| Branch        | Coverage | Build |
+| :------------ | :------------- | :--------- |
+| `master`      | [![codecov.io](https://codecov.io/github/SIJOT/SIJOT-L5.2/coverage.svg?branch=master)](https://codecov.io/github/SIJOT/SIJOT-L5.2?branch=master) | [![Build Status](https://travis-ci.org/SIJOT/SIJOT-L5.2.svg?branch=master)](https://travis-ci.org/SIJOT/SIJOT-L5.2) |
+| `development` | [![codecov.io](https://codecov.io/github/SIJOT/SIJOT-L5.2/coverage.svg?branch=development)](https://codecov.io/github/SIJOT/SIJOT-L5.2?branch=development) | [![Build Status](https://travis-ci.org/SIJOT/SIJOT-L5.2.svg?branch=development)](https://travis-ci.org/SIJOT/SIJOT-L5.2) |
+| `hotfixes`    | [![codecov.io](https://codecov.io/github/SIJOT/SIJOT-L5.2/coverage.svg?branch=hotfixes)](https://codecov.io/github/SIJOT/SIJOT-L5.2?branch=hotfixes) | [![Build Status](https://travis-ci.org/SIJOT/SIJOT-L5.2.svg?branch=hotfixes)](https://travis-ci.org/SIJOT/SIJOT-L5.2) |
 
 ## Security vurnabilities.
 

@@ -4,6 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class mailingUsers
+ * @package App
+ *
+ * @property mixed firstname, The firstname off the user
+ * @property mixed lastname,  The lastname off the user.
+ * @property mixes email,     The email address off the user.
+ */
 class mailingUsers extends Model
 {
     /**

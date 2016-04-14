@@ -13,7 +13,7 @@ class GroupValidator extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class GroupValidator extends Request
     public function rules()
     {
         return [
-            //
+            'title'       => 'required',
+            'sub_title'   => 'required',
+            'description' => 'required'
         ];
     }
 }

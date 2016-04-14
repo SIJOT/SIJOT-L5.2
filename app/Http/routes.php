@@ -51,6 +51,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('takken', 'TakkenController@overview')->name('takken.index');
     Route::get('tak/{id}', 'TakkenController@group')->name('takken.specific');
 
+    Route::get('ontbijt', 'BreakfastController@index')->name('breakfast.index');
+
+    Route::get('fotos', 'PhotoController@indexFront')->name('photo.frontend.index');
+    Route::get('fotos/{uri}', 'PhotoController@photosTakSpecific')->name('photo.frontend.specific');
+
+    Route::group(['prefix' => 'backend/photos'], function() {
+        Route::get('/', 'PhotoController@indexBackend')->name('photo.backend.index');
+        Route::post('/upload', 'PhotoController@upload')->name('photo.backend.upload');
+    });
     /**
      * Backend routes
      */
@@ -60,21 +69,48 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/delete/{id}', 'MailingController@deleteUser')->name('mailing.destroy');
     });
 
+    /**
+     * Profile routes.
+     */
     Route::group(['prefix' => 'profile/'], function() {
         Route::get('edit', 'EditProfileController@view')->name('profile.edit.view');
         Route::post('insert', 'EditProfileController@editInfo')->name('profile.edit.insert');
         Route::post('permission/{id}', 'EditProfileController@editGroups')->name('profile.edit.perms');
     });
 
-    Route::group(['prefix' => 'backend/groups'], function () {
-        Route::get('view', 'TakkenBackendController@view')->name('backend.groups.view');
+    /**
+     * Mailing routes.
+     */
+    Route::group(['prefix' => 'mailing/'], function() {
+        Route::get('/', 'MailingController@index')->name('mailing.index');
+        Route::get('/groep', 'MailingController@mailGroupView')->name('mailing.group');
+        Route::get('/insert', 'MailingController@insert')->name('mailing.insert');
+        Route::post('/insert', 'MailingController@store')->name('mailing.store');
+        Route::get('/mail/{id}', 'MailingController@mail')->name('mailing.mail');
+        Route::get('/update/{id}', 'MailingController@update')->name('mailing.update');
+        Route::post('/update/{id}', 'MailingController@edit')->name('mailing.edit');
+        Route::get('/delete/{id}', 'MailingController@deleteUser')->name('mailing.destroy');
     });
 
+    /**
+     * Takken routes - backend.
+     */
+    Route::group(['prefix' => 'backend/groups'], function () {
+        Route::get('view', 'TakkenBackendController@view')->name('backend.groups.view');
+        Route::post('update/{id}', 'TakkenBackendController@update')->name('backend.group.update');
+    });
+
+    /**
+     * Notification routes.
+     */
     Route::group(['prefix' => 'notifications/'], function() {
         Route::get('/', 'NotificationsController@index')->name('notification');
         Route::post('/update', 'NotificationsController@update')->name('notification.update');
     });
 
+    /**
+     * Backend user management.
+     */
     Route::group(['prefix' => 'backend/users/'], function () {
         Route::get('insert', 'UserController@insert')->name('backend.users.insert');
         Route::post('store', 'UserController@store')->name('backend.users.store');
@@ -84,6 +120,9 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('delete/{id}', 'UserController@destroy')->name('backend.users.destroy');
     });
 
+    /**
+     * Backend rental routes.
+     */
     Route::group(['prefix' => 'backend/rental/'], function () {
         Route::get('overview/{type}', 'RentalController@indexAdmin')->name('backend.rental.overview');
         Route::get('destroy/{id}', 'RentalController@destroy')->name('backend.rental.destroy');
