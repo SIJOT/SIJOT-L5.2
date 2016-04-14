@@ -38,8 +38,16 @@ class PhotoController extends Controller
     public function photosTakSpecific($uri)
     {
         // TODO: Create view.
-        // TODO: Implement SEO.
-        // TODO: Build up the controller.
+
+        $data['title']  = "Foto's";
+        $data['photos'] = Photos::where('uri', $uri)->get();
+
+        // SEO:
+        $this->seoFacebook('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoTwitter('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoMeta(['sint-joris', 'scouts', 'turnhout'], 'Fotos van scouts en gidsen Sint-Joris');
+
+        return view('front-end.photos', $data);
     }
 
     /**
@@ -49,8 +57,10 @@ class PhotoController extends Controller
      */
     public function indexBackend()
     {
-        $data['title'] = "Foto's";
-        $data['query'] = Photos::all();
+        // TODO: create view.
+
+        $data['title']  = "Foto's";
+        $data['photos'] = Photos::all();
 
         return view('backend.photo.index', $data);
     }
@@ -62,8 +72,6 @@ class PhotoController extends Controller
      */
     public function indexFront()
     {
-        // TODO: Integrate phpunit test.
-
         // SEO:
         $this->seoFacebook('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
         $this->seoTwitter('Fotos', 'Fotos van scouts en gidsen Sint-Joris');

@@ -43,14 +43,14 @@ class PhotoControllerTest extends TestCase
     }
 
     /**
-     * GET: backend/photos/upload
+     * POST: backend/photos/upload
      *
      * @group all
      * @group photos
      */
     public function testInsertView()
     {
-
+        $this->withoutMiddleware();
     }
 
     /**
@@ -61,6 +61,6 @@ class PhotoControllerTest extends TestCase
      */
     public function testPhotosSpecific()
     {
-        $this->withoutMiddleware();
+        $this->visit('fotos/kapoenen')->seeStatusCode(200);
     }
 }
