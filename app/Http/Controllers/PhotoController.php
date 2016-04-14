@@ -63,8 +63,12 @@ class PhotoController extends Controller
      */
     public function indexFront()
     {
-        // TODO: Implement SEO.
         // TODO: Integrate phpunit test.
+
+        // SEO:
+        $this->seoFacebook('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoTwitter('Fotos', 'Fotos van scouts en gidsen Sint-Joris');
+        $this->seoMeta(['sint-joris', 'scouts', 'turnhout'], 'Fotos van scouts en gidsen Sint-Joris');
 
         $data['title']  = "Foto's";
         $data['photos'] = Photos::all();
