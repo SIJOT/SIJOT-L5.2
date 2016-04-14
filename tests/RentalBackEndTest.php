@@ -68,8 +68,11 @@ class RentalBackEndTest extends TestCase
         $rent = factory(App\Rental::class)->create();
 
         Artisan::call('bouncer:seed');
-        $role = Bouncer::assign('verhuur')->to($user);
+        $role   = Bouncer::assign('verhuur')->to($user);
+        $active = Bouncer::assign('active')->to($user);
+
         $this->assertTrue($role);
+        $this->assertTrue($active);
 
         $this->actingAs($user)
             ->visit('backend/rental/destroy/' . $rent->id)
@@ -148,5 +151,77 @@ class RentalBackEndTest extends TestCase
         $this->assertTrue($role);
 
         $this->actingAs($user)->visit('backend/rental/download');
+    }
+
+    /**
+     * GET: backend/rental/edit/{id}
+     *
+     * @group all
+     * @group rental
+     */
+    public function rentalEditView()
+    {
+        Artisan::call('bouncer:seed');
+
+        $user = factory(App\User::class)->create();
+        $rent = factory(App\Rental::class)->create();
+
+        $role   = Bouncer::assign('verhuur')->to($user);
+        $active = Bouncer::assign('active')->to($user);
+
+        $this->assertTrue($role);
+        $this->assertTrue($active);
+
+        $this->actingAs($user)
+            ->seeIsAuthenticatedAs($user)
+            ->visit('backend/rental/edit/' . $rent->id)
+            ->seeStatusCode(200);
+    }
+
+    /**
+     * POST: backend/rental/update/{id}
+     *
+     * @group all
+     * @group rental
+     */
+    public function testUpdate()
+    {
+        $this->withoutMiddleware();
+        Artisan::call('bouncer:seed');
+
+        $user         = factory(App\User::class)->create();
+        $rental       = factory(App\Rental::class)->create();
+        $notification = factory(Fenos\Notifynder\Models\NotificationCategory::class)->create([
+            'name' => 'rental.edit',
+            'text' => '{from.name} heeft een verhuur gewijzigd.'
+        ]);
+
+        $role   = Bouncer::assign('verhuur')->to($user);
+        $active = Bouncer::assign('active')->to($user);
+
+        $this->assertTrue($role);
+        $this->assertTrue($active);
+
+        $message['name'] = $notification->name;
+        $message['text'] = $notification->text;
+
+        $oldInput['Start_date'] = $rental->Start_date;
+        $oldInput['End_date']   = $rental->End_date;
+        $oldInput['Status']     = $rental->Status;
+        $oldInput['Email']      = $rental->Email;
+        $oldInput['telephone']  = $rental->telephone;
+
+        $newInput['Start_date'] = '00/00/2000';
+        $newInput['End_date']   = '01/01/2222';
+        $newInput['Status']     = 1;
+        $newInput['Email']      = 'example@example.tld';
+        $newInput['telephone']  = '1111/11.11.11';
+
+        $this->actingAs($user)
+            ->seeIsAuthenticatedAs($user)
+            ->seeInDatabase('notification_categories', $message)
+            ->seeInDatabase('rentals', $oldInput)
+            ->post('backend/rental/update/' . $rental->id, $newInput)
+            ->seeStatusCode(302);
     }
 }

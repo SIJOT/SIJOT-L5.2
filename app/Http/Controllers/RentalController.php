@@ -28,13 +28,13 @@ class RentalController extends Controller
      * RentalController constructor.
      *
      * The following middleware is defined here.
-     *
+     * --
      * Auth      = To see if the user is authencated.
      * rentalAcl = Role based middleware for the rental.
      */
     public function __construct()
     {
-        $authControllers = ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download'];
+        $authControllers = ['indexAdmin', 'option', 'block', 'destroy', 'confirmed', 'download', 'edit', 'update'];
 
         $this->middleware('auth', ['only' => $authControllers]);
         $this->middleware('rentalAcl', ['only' => $authControllers]);
@@ -151,6 +151,48 @@ class RentalController extends Controller
     {
         $data['title'] = 'Insert a new rental.';
         return view('backend.rental.insert', $data);
+    }
+
+    /**
+     * Edit view for the rental.
+     *
+     * @param  int, $id, the id off the rantal in the database.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $data['title'] = 'wijzig verhuur';
+        $data['query'] = Rental::where('id', $id)->get();
+
+        return view('backend.rental.edit', $data);
+    }
+
+    /**
+     * Edit a rental in the database.
+     *
+     * @param  $id, the id off the rantal in the database.
+     * @param  Requests\RentalValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Requests\RentalValidator $input, $id)
+    {
+        Rental::find($id)->update($input->except('_token'));
+        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+
+        session()->flash('class', 'alert-success');
+        session()->flash('message', trans());
+
+        foreach ($roles as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('rental.edit')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url(route('backend.rental.overview', ['type' => 'all']))
+                    ->send();
+            }
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -271,7 +313,7 @@ class RentalController extends Controller
 
         foreach ($roles as $role) {
             foreach ($role->users as $user) {
-                Notifynder::category('rental.option')
+                Notifynder::category('rental.edit')
                     ->from(auth()->user()->id)
                     ->to($user->id)
                     ->url(route('backend.rental.overview', ['type' => 'all']))
