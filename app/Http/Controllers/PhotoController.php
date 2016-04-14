@@ -49,11 +49,10 @@ class PhotoController extends Controller
      */
     public function indexBackend()
     {
-        // TODO: build view
-        $data['title'] = '';
+        $data['title'] = "Foto's";
         $data['query'] = Photos::all();
 
-        return view('', $data);
+        return view('backend.photo.index', $data);
     }
 
     /**
