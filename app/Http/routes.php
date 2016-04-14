@@ -130,6 +130,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('confirm/{id}', 'RentalController@confirmed')->name('backend.rental.confirm');
         Route::get('insert', 'RentalController@insert')->name('backend.rental.insert');
         Route::get('download', 'RentalController@download')->name('backend.rental.download');
+        Route::get('edit/{id}', 'RentalController@edit')->name('backend.rental.edit');
+        Route::post('update/{id}', 'RentalController@update')->name('rental.backend.update');
     });
 
 });

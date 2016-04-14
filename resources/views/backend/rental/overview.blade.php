@@ -80,6 +80,10 @@
 
                                     <td>
                                         <div class="btn-group">
+                                            <a href="{{ route('backend.rental.edit', ['id' => $rental->id]) }}" class="btn btn-xs btn-danger">
+                                                <span class="fa fa-pencil"></span>
+                                            </a>
+
                                             <a href="{{ route('backend.rental.destroy', ['id' => $rental->id])  }}" class="btn btn-xs btn-danger">
                                                 <span class="fa fa-trash"></span>
                                             </a>
