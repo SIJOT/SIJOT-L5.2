@@ -34,5 +34,10 @@
 				</tr>
 			</tbody>
 		</table>
+
+	<hr>
+			<p class="small text-muted">
+				Deze mail notificatie is afkomstig van <a href="http://www.st-joris-turnhout.be">www.st-joris-turnhout.be</a> <br>
+			</p>
 </body>
 </html>
