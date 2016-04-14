@@ -13,8 +13,6 @@ use App\Http\Requests;
  */
 class PhotoController extends Controller
 {
-    // TODO: create factory.
-    
     /**
      * PhotoController constructor.
      *
