@@ -97,11 +97,14 @@ class PhotoController extends Controller
     /**
      * Delete a photo album.
      *
+     * @param  int, $id, the database id.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy()
+    public function destroy($id)
     {
-
+        // TODO build up controller logic.
+        // TODO add routing.
+        // TODO add phpunit test.
     }
     
 }

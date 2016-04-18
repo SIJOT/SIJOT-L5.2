@@ -50,6 +50,7 @@ class PhotoControllerTest extends TestCase
      */
     public function testInsertView()
     {
+        // TODO: write test.
         $this->withoutMiddleware();
     }
 

@@ -20,7 +20,8 @@ use Symfony\Component\HttpFoundation\Response as Status;
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
-
+    // TODO: Implement middleware.
+    
     public function construct()
     {
         // This shit is not a love song.
@@ -194,7 +195,6 @@ class rentalApiController extends Controller
      */
     public function specific($id)
     {
-        // TODO: needs phpunit test.
         $fractal = new Manager();
 
         // ERROR data.

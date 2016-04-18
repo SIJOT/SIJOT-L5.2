@@ -42,9 +42,16 @@ class TakkenController extends Controller
      */
     public function group($tak)
     {
-        // TODO: Implement SEO.
-
         $data['group'] = Group::getGroup($tak)->get();
+
+        foreach ($data['group'] as $info) {
+            $description = substr($info->description, 0, 125);
+
+            $this->seoMeta(['scouts', 'sint-joris', $tak], $description);
+            $this->seoTwitter($info->title, $description);
+            $this->seoFacebook($info->title, $description);
+        }
+
         return view('front-end.group', $data);
     }
 }
