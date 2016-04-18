@@ -119,7 +119,7 @@ class MailingController extends Controller
         // TODO: Implement notification.
         mailingUsers::create($input->except('_token'));
         
-        $notification = 
+        
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.mailingStore'));

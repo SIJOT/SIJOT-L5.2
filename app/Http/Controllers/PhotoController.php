@@ -102,6 +102,8 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
+        $photo = Photos::find($id);
+        
         // TODO build up controller logic.
         // TODO add routing.
         // TODO add phpunit test.

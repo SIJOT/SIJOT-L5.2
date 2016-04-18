@@ -28,7 +28,8 @@ class HomeController extends Controller
      */
     public function front()
     {
-        return view('front-end.home');
+        $data['title'] = 'Index';
+        return view('front-end.home', $data);
     }
 
     /**
