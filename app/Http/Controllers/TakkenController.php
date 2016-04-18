@@ -21,7 +21,9 @@ class TakkenController extends Controller
      */
     public function overview()
     {
-        // TODO: Implement SEO.
+        $this->seoMeta(['Sint-Joris', 'Scouts', 'Turnhout'], 'Takken Overzicht');
+        $this->seoFacebook('Takken', 'Takken overzicht');
+        $this->seoTwitter('Takken', 'Takken overzicht');
 
         $data['all']        = Group::all();
         $data['kapoenen']   = Group::getGroup('kapoenen')->get();
