@@ -91,21 +91,19 @@ class UserController extends Controller
     {
         // TODO: #13 Add mailing logic when a new user is registrated
         // TODO: Check for mass assign.
-        
+        $pass = str_random(20);
+
         $new           = new User();
         $new->name     = $input->name;
         $new->gsm      = $input->gsm;
         $new->email    = $input->email;
-        $new->password = bcrypt(str_random(20));
+        $new->password = bcrypt($pass);
         $new->save();
 
-        // Latest inserted id.
-        $id = $new->id;
-
-        $user = User::find($id);
+        $user = User::find($new->id);
         Bouncer::assign('active')->to($user);
 
-        
+        session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.userAdd'));
 
         return redirect()->back(302);

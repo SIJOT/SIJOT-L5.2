@@ -93,5 +93,15 @@ class PhotoController extends Controller
         // TODO: Build up the controller.
         // TODO: Implement notification.
     }
+
+    /**
+     * Delete a photo album.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy()
+    {
+
+    }
     
 }
