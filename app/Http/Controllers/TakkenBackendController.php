@@ -57,6 +57,7 @@ class TakkenBackendController extends Controller
     {
         Group::find($id)->update($request->except('_token'));
 
+        // TODO: improve notification system.
         $users = Role::where('name', 'admin')
             ->orWhere('name', 'developer')
             ->orWhere('name', 'leiding')
