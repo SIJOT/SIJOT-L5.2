@@ -51,6 +51,7 @@ elixir(function(mix) {
 
         // VUE js setup
         .scripts(['vue/vue.js', 'vue/vue-resource.js'], 'public/js/vue.js')
+        .scripts(['vue/components.js'], 'public/js/components.js')
 
         // cache busting
         .version(['404.css', 'bootstrap.js']);

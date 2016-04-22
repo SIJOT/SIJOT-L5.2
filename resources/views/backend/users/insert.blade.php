@@ -47,7 +47,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label> Gsm nummer:  <span class="text-danger"></span></label>
+                                <label>
+                                    Gsm nummer:
+                                    <span class="text-danger"></span>
+                                </label>
 
                                 <div class="input-group">
                                     <div class="input-group-addon">

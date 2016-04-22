@@ -185,6 +185,8 @@
 <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('js/fastclick.js') }}"></script>
 <script src="{{ asset('js/app.min.js') }}"></script>
+<script src="{{ asset('js/vue.js')  }}"></script>
+<script src="{{ asset('js/components.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/locales/bootstrap-datepicker.nl-BE.min.js"></script>
 

@@ -28,19 +28,22 @@
                     en of de groep al dan niet in het systeem staat.
                 </div>
 
-                <form action="{{ route('rental.store') }}" method="POST">
+                <form id="component" method="POST""- action="{{ url('rental/insert') }}">
                     {{-- csrf_field() --}}
                     {{ csrf_field() }}
 
                     {{-- Group form group --}}
                     <div class="form-group {{ $errors->has('Group') ? 'has-feedback has-error' : '' }}">
-                        <label> Groep: <span class="text-danger">*</span></label>
+                        <label>
+                            Groep:
+                            <span class="text-danger" v-if="! newRental.Group">*</span>
+                        </label>
 
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-users"></i>
                             </div>
-                            <input type="text" value="{{ old('Group') }}" name="Group" style="width:20%;" placeholder="Groep" class="form-control">
+                            <input v-model="newRental.Group" type="text" value="{{ old('Group') }}" name="Group" style="width:20%;" placeholder="Groep" class="form-control">
                         </div>
                     </div>
                     {{-- /.group form group --}}
@@ -60,39 +63,48 @@
 
                     {{-- email form group --}}
                     <div class="form-group {{ $errors->has('Email') ? 'has-feedback has-error' : '' }}">
-                        <label> Email:  <span class="text-danger">*</span></label>
+                        <label>
+                            Email:
+                            <span class="text-danger" v-if="! newRental.Email">*</span>
+                        </label>
 
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-envelope"></i>
                             </div>
-                            <input type="text" name="Email" value="{{ old('Email') }}" style="width:20%;" placeholder="Email adres" class="form-control">
+                            <input type="text" v-model="newRental.Email" name="Email" value="{{ old('Email') }}" style="width:20%;" placeholder="Email adres" class="form-control">
                         </div>
                     </div>
                     {{-- /.email gorm group--}}
 
                     {{-- Start date input group --}}
                     <div data-provide="datepicker" class="date form-group {{ $errors->has('Start_date') ? 'has-feedback has-error' : '' }}">
-                        <label>Start datum: <span class="text-danger">*</span></label>
+                        <label>
+                            Start datum:
+                            <span class="text-danger" v-if="! newRental.Start_date">*</span>
+                        </label>
 
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
+                            <input type="text" v-model="newRental.Start_date" name="Start_date" value="{{ old('Start_date') }}" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
                         </div>
                     </div>
                     {{-- /.start date input group --}}
 
                     {{-- End date input group  --}}
                     <div data-provide="datepicker" class="date form-group {{ $errors->has('End_date') ? 'has-feedback has-error' : '' }}">
-                        <label>Eind datum: <span class="text-danger">*</span></label>
+                        <label>
+                            Eind datum:
+                            <span class="text-danger" v-if="! newRental.End_date">*</span>
+                        </label>
 
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
+                            <input type="text" v-model="newRental.End_date" value="{{ old('End_date')  }}" name="End_date" style="width: 20%;" placeholder="dd/mm/yyyy" class="form-control">
                         </div>
                     </div>
                     {{-- /.end date input group --}}
@@ -100,7 +112,7 @@
 
                     {{-- Form buttons --}}
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">Toevoegen</button>
+                        <button type="submit" :disabled="errorsNewRental" class="btn btn-success">Toevoegen</button>
                         <button type="reset" class="btn btn-danger">Reset</button>
                     </div>
                     {{-- /. form buttons--}}
