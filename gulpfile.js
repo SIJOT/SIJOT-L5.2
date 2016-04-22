@@ -49,6 +49,9 @@ elixir(function(mix) {
         .copy('resources/assets/img/favicon.ico', 'public/img/favicon.ico')
         .copy('resources/assets/img/background.png', 'public/img/background.png')
 
+        // VUE js setup
+        .scripts(['vue/vue.js', 'vue/vue-resource.js'], 'public/js/vue.js')
+
         // cache busting
         .version(['404.css', 'bootstrap.js']);
 });
