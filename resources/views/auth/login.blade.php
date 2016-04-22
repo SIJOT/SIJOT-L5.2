@@ -41,13 +41,25 @@
             {{-- CSRF field --}}
             {{ csrf_field() }}
 
-            <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Email">
+            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
+                <input type="email" value="{!! old('email') !!}" name="email" class="form-control" placeholder="Email">
                 <span class="fa fa-envelope form-control-feedback"></span>
+
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
             </div>
-            <div class="form-group has-feedback">
+            <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" name="password" class="form-control" placeholder="Password">
                 <span class="fa fa-lock form-control-feedback"></span>
+
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="row">
                 <div class="col-xs-8">
