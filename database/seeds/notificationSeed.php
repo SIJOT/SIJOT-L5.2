@@ -46,5 +46,15 @@ class notificationSeed extends Seeder
             'name' => 'rental.option',
             'text' => '{from.name} heeft een verhuring als optie gezet.'
         ]);
+
+        NC::create([
+            'name' => 'mailing.group', 
+            'text' => '{from.name} een mail naar een specifiek group verzonden'
+        ]);
+
+        NC::create([
+            'name' => 'mailing.store', 
+            'text' => '{from.name} heeft een email adres toegevoegd',
+        ]);
     }
 }

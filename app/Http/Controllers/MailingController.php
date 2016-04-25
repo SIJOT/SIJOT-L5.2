@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\mailingUsers;
 use Illuminate\Http\Request;
-
+use Fenos\Notifynder\Facades\Notifynder;
+use Silber\Bouncer\Database\Role;
 use App\Http\Requests;
 
 /**
@@ -76,9 +77,23 @@ class MailingController extends Controller
     {
         // TODO: implement mailing logic
         // TODO: Add return method.
+
+        $notification = Role::with('users')->whereIn('name', ['mailing'])->get();
+
+        foreach($notification as $role) {
+            foreach($role->users as $user) {
+                Notifynder::category('mailing.group')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url()
+                    ->send();
+            }
+        }
         
         session()->class('class', 'alert-success');
         session()->class('message', trans('flashSession.mailingGroup'));
+
+        return redirect()->back(302);
     }
 
     /**
@@ -119,7 +134,17 @@ class MailingController extends Controller
         // TODO: Implement notification.
         mailingUsers::create($input->except('_token'));
         
-        $notification = 
+        $notification = Role::with('users')->whereIn('name', ['mailing'])->get();
+
+        foreach ($notification as $role) {
+            foreach ($role->users as $user) {
+                Notifynder::category('mailing.store')
+                    ->from(auth()->user()->id)
+                    ->to($user->id)
+                    ->url()
+                    ->send();
+            }
+        }
 
         session()->flash('class', 'alert-success');
         session()->flash('message', trans('flashSession.mailingStore'));
