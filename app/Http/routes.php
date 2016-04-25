@@ -55,6 +55,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('fotos', 'PhotoController@indexFront')->name('photo.frontend.index');
     Route::get('fotos/{uri}', 'PhotoController@photosTakSpecific')->name('photo.frontend.specific');
+    Route::get('fotos/verwijder/{id}', 'PhotoController@destroy')->name('photo.backend.destroy');
 
     Route::group(['prefix' => 'backend/photos'], function() {
         Route::get('/', 'PhotoController@indexBackend')->name('photo.backend.index');

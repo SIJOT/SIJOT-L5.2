@@ -6,6 +6,7 @@ use App\Photos;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PhotoController
@@ -93,5 +94,27 @@ class PhotoController extends Controller
         // TODO: Build up the controller.
         // TODO: Implement notification.
     }
-    
+
+
+    /**
+     * Destroy a photo album.
+     *
+     * $param  int, $id, album id in the database.
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $album = Photos::find($id);
+
+        if (Storage::file($album->path)) {
+            Storage::delete($album->path);
+        }
+
+        Photos::destroy($id);
+
+        session()->flash('class', 'alert-success'):
+        session()->flash('message', 'Het album is verwijderd');
+        
+        return redirect()->back(302);
+    }
 }
