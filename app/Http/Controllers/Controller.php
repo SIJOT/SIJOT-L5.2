@@ -12,7 +12,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  * Class Controller
- * @package App\Http\Controllers
+ *
+ * @category Controllers
+ * @package  SIJOT_Website
+ * @author   Tim Joosten <Topairy@gmail.com>
  */
 class Controller extends BaseController
 {
@@ -21,8 +24,8 @@ class Controller extends BaseController
     /**
      * Set the SEO tags. - Facebook
      *
-     * @param string $description
-     * @param string $title
+     * @param string $description  The discription you want to use
+     * @param string $title        The title you want to use.
      */
     public function seoFacebook($title, $description)
     {
@@ -37,8 +40,8 @@ class Controller extends BaseController
     /**
      * Set the SEO tags - Twitter
      *
-     * @param string $title
-     * @param string $description
+     * @param string $title        The title you want to use.
+     * @param string $description  The description you want to use.
      */
     public function seoTwitter($title, $description)
     {
