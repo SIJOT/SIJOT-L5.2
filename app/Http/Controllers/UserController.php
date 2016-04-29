@@ -10,7 +10,9 @@ use App\Http\Requests;
 
 /**
  * Class UserController
- * @package app\Http\Controllers
+ *
+ * @package Application_Controllers
+ * @author  Tim Joosten <topairy@gmail.com>
  */
 class UserController extends Controller
 {

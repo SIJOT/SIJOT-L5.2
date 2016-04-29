@@ -10,7 +10,9 @@ use App\Http\Controllers\Controller;
 
 /**
  * Class NotificationsController
+ *
  * @package App\Http\Controllers
+ * @author  Tim Joosten <topairy@gmail.com>
  */
 class NotificationsController extends Controller
 {

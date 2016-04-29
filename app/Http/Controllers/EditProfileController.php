@@ -13,7 +13,11 @@ use App\Http\Controllers\Controller;
 
 /**
  * Class EditProfileController
+ *
  * @package App\Http\Controllers
+ * @author  Tim Joosten <topairy@gmail.com>
+ * @license 
+ * @link     
  */
 class EditProfileController extends Controller
 {

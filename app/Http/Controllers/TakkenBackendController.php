@@ -11,7 +11,9 @@ use Silber\Bouncer\Database\Role;
 
 /**
  * Class TakkenBackendController
+ *
  * @package App\Http\Controllers
+ * @author  Tim Joosten <topairy@gmail.com>
  */
 class TakkenBackendController extends Controller
 {
@@ -63,7 +65,7 @@ class TakkenBackendController extends Controller
             ->with('users')
             ->get();
 
-        Notifynder::loop($users, function(NotifynderBuilder $builder, $user) {
+        Notifynder::loop($users, function (NotifynderBuilder $builder, $user) {
             $builder->category('group.edit');
             $builder->from(auth()->user()->id);
             $builder->to($user->id);

@@ -10,7 +10,9 @@ use App\Http\Requests;
 
 /**
  * Class TakkenController
+ *
  * @package App\Http\Controllers
+ * @author  Tim Joosten <topairy@gmail.com>
  */
 class TakkenController extends Controller
 {

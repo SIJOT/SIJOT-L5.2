@@ -211,7 +211,7 @@ class RentalController extends Controller
 
         // TODO: needs further debug methods.
         if (! auth()->check()) {
-            Mail::send('emails.notification', ['input' => $input], function($mail) use ($input) {
+            Mail::send('emails.notification', ['input' => $input], function ($mail) use ($input) {
                 $mail->from('verhuur@st-joris-turnhout.be', 'Aanvraag verhuur');
                 $mail->to($input['Email'], $input['Group']);
                 $mail->subject('Er is een nieuwe verhuring aangevraagd');
@@ -255,7 +255,8 @@ class RentalController extends Controller
     {
         Rental::destroy($id);
 
-        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+        $WhereClause = [ 'admin', 'developer', 'leiding' ];
+        $roles = Role::with('users')->whereIn('name', $WhereClause)->get();
 
         foreach ($roles as $role) {
             foreach ($role->users as $user) {
@@ -282,7 +283,9 @@ class RentalController extends Controller
     public function confirmed($id)
     {
         Rental::find($id)->update(['Status' => 2]);
-        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+        
+        $whereClause = [ 'admin', 'developer', 'leiding' ];
+        $roles = Role::with('users')->whereIn('name', $whereClause)->get();
 
         foreach ($roles as $role) {
             foreach ($role->users as $user) {
@@ -309,7 +312,9 @@ class RentalController extends Controller
     public function option($id)
     {
         Rental::find($id)->update(['Status' => 1]);
-        $roles = Role::with('users')->whereIn('name', [ 'admin', 'developer', 'leiding' ])->get();
+        
+        $whereClause = [ 'admin', 'developer', 'leiding'];
+        $roles = Role::with('users')->whereIn('name', $whereClause)->get();
 
         foreach ($roles as $role) {
             foreach ($role->users as $user) {
