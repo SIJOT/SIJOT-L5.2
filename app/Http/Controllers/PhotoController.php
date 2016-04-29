@@ -112,7 +112,7 @@ class PhotoController extends Controller
 
         Photos::destroy($id);
 
-        session()->flash('class', 'alert-success'):
+        session()->flash('class', 'alert-success');
         session()->flash('message', 'Het album is verwijderd');
         
         return redirect()->back(302);
