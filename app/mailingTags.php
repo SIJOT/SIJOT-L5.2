@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class mailingTags
- * @package App
+ *
+ * @package Sijot_Website
+ * @author  Tim Joosten <topairy@gmail.com>
+ *
+ * Database scheme:
  *
  * @property mixed name,        The name off the tag.
  * @property mixed description, the description from the tag.
@@ -28,7 +32,7 @@ class mailingTags extends Model
     protected $hidden = ['deleted_at','created_at', 'updated_at'];
 
     /**
-     * get all the users off the given tag.
+     * Get all the users off the given tag.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

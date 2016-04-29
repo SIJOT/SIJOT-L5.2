@@ -8,7 +8,9 @@ use App\Http\Requests;
 
 /**
  * Class BreakfastController
- * @package App\Http\Controllers
+ *
+ * @package Sijot_Website
+ * @author  Tim Joosten <Topairy@gmail.com>
  */
 class BreakfastController extends Controller
 {
@@ -17,6 +19,9 @@ class BreakfastController extends Controller
      */
     protected $seoDescription;
 
+    /**
+     * BreakfastController constructor.
+     */ 
     public function __construct()
     {
         $this->seoDescription = 'Elke laaste zondag van de maand';
@@ -38,4 +43,28 @@ class BreakfastController extends Controller
 
         return view('front-end.ontbijt', $data);
     }
+    
+    
+    /**
+     * Display the substription page.
+     */
+    public function subScriptionView()
+    {
+        $data['title'] = '';
+        return view('', $data); 
+    } 
+     
+    /**
+     * Delete a breakfast subscription.
+     * 
+     * @param int, $id, the id in the database.
+     */
+    public function delete($id) 
+    {
+        session()->flash('', ''); 
+        session()->flash('', '');
+        
+        return redirect()->back(302);
+    }
+
 }
