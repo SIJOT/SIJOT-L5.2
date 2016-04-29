@@ -4,6 +4,12 @@
  * --------------------------------------------------------------------------
  * Platform Configuration
  * --------------------------------------------------------------------------
+ * 
+ * @category Config
+ * @package  Laravel/configuration
+ * @author   Tim Joosten <topairy@gmail.com>
+ * @license  https://opensource.org/licenses/MIT MIT
+ * @link     www.github.com/SIJOT/SIJOT-L2-2
  */
 
 return [
