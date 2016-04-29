@@ -119,8 +119,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::find($id);
+        
         // Destroy the user.
-        User::find($id)->roles()->sync([]);
+        $user->roles()->sync([]);
         User::destroy($id);
 
         session()->flash('class', 'alert-success');
