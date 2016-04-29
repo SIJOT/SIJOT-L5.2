@@ -8,15 +8,22 @@ class HomeRouteTest extends TestCase
 {
     use DatabaseMigrations, DatabaseTransactions;
     /**
-     * A basic test example.
+     * Test the front-end home url. 
      *
-     * @return void
+     * @group all 
+     * @group backend
      */
     public function testFrontendHome()
     {
         $this->visit('/')->seeStatusCode(200);
     }
 
+    /**
+     * Test the home route for the backend.
+     * 
+     * @group all 
+     * @group backend
+     */
     public function testBackendHome()
     {
         $user = factory(App\User::class)->create();
