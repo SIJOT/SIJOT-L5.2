@@ -15,12 +15,18 @@ use Symfony\Component\HttpFoundation\Response as Status;
 
 /**
  * Class rentalApiController
- * @package App\Http\Controllers
+ *
+ * @category Controllers
+ * @package  SIJOT_Website
+ * @author   Tim Joosten <Topairy@gmail.com>
  */
 class rentalApiController extends Controller
 {
     // TODO: [v1.0.0] #114 Add notifications for the backend.
 
+    /**
+     * RentalApiController constructor
+     */
     public function construct()
     {
         // This shit is not a love song.
@@ -53,7 +59,7 @@ class rentalApiController extends Controller
 
             $content = $fractal->createData($resource)->toJson();
             $status  = Status::HTTP_OK;
-        } elseif(count($rentals) === 0) {
+        } elseif (count($rentals) === 0) {
             $content = ['message' => 'Er zijn geen verhuringen'];
             $status  = Status::HTTP_OK;
         }
@@ -87,7 +93,10 @@ class rentalApiController extends Controller
                 break;
         }
 
-        return response($content, $status)->header('Content-Type', 'application/json');
+        $response = response($content, $status); 
+        $response->header('Content-Type', 'application/json');
+        
+        return $response;
     }
 
     /**
@@ -135,7 +144,10 @@ class rentalApiController extends Controller
             ];
         }
 
-        return response($content, $status)->header('Content-Type', 'application/json');
+        $response = response($content, $status); 
+        $response->header('Content-Type', 'application/json');
+
+        return $response;
     }
 
     /**
@@ -182,8 +194,11 @@ class rentalApiController extends Controller
                 'errors'       => $validator->errors()->all()
             ];
         }
+        
+        $response = response($content, $status);
+        $response->jeader('Content-Type', 'application/json');
 
-        return response($content, $status)->header('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -227,8 +242,7 @@ class rentalApiController extends Controller
          * @param  array , $data, collection, database output.
          * @return array, the data structure off the AI.
          */
-        return function ($data)
-        {
+        return function ($data) {
             return [
                 'id'          => (int)    $data['id'],
                 'start_datum' => (string) $data['Start_date'],
