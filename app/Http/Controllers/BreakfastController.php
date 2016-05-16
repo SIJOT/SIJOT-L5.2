@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Breakfast;
+use App\BreakfastMonths;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 /**
  * Class BreakfastController
- * @package App\Http\Controllers
+ *
+ * @package Sijot_Website
+ * @author  Tim Joosten <Topairy@gmail.com>
  */
 class BreakfastController extends Controller
 {
@@ -17,6 +21,9 @@ class BreakfastController extends Controller
      */
     protected $seoDescription;
 
+    /**
+     * BreakfastController constructor.
+     */ 
     public function __construct()
     {
         $this->seoDescription = 'Elke laaste zondag van de maand';
@@ -38,4 +45,33 @@ class BreakfastController extends Controller
 
         return view('front-end.ontbijt', $data);
     }
+
+    /**
+     * Display the substription page.
+     * 
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function subScriptionView()
+    {
+        $data['title']  = 'Het ontbijt inschrijven';
+        $data['months'] = BreakfastMonths::where('status', 1)->get();
+        return view('front-end.ontbijt-subscription', $data);
+    }
+
+    /**
+     * Delete a breakfast subscription.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(Request $request)
+    {
+        Breakfast::destroy($request->get('id'));
+
+        session()->flash('class', 'alert-success');
+        session()->flash('message', 'De inschrijvingen zijn verwijderd.');
+        
+        return redirect()->back(302);
+    }
+
 }

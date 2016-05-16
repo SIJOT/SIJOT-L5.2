@@ -10,6 +10,7 @@ use App\Http\Requests;
 
 /**
  * Class MailingController
+ *
  * @package App\Http\Controllers
  */
 class MailingController extends Controller

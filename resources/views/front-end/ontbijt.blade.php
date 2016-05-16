@@ -19,7 +19,7 @@
             <a class="list-group-item" href="{!! route('breakfast.index') !!}">
                  Ontbijt op het groen
             </a>
-            <a class="list-group-item" href=" {!! route('breakfast.index') !!}">
+            <a class="list-group-item" href=" {!! route('breakfast.subscription') !!}">
                 Inschrijven
             </a>
         </div>

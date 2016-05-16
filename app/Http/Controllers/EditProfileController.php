@@ -15,9 +15,7 @@ use App\Http\Controllers\Controller;
  * Class EditProfileController
  *
  * @package App\Http\Controllers
- * @author  Tim Joosten <topairy@gmail.com>
- * @license 
- * @link     
+ * @author  Tim Joosten <Topairy@gmail.com>  
  */
 class EditProfileController extends Controller
 {
@@ -82,7 +80,7 @@ class EditProfileController extends Controller
     /**
      * Edit the user groups off the user.
      *
-     * @param $id
+     * @param  int, $id, the userId from the user.
      * @return \Illuminate\Http\RedirectResponse
      */
     public function editGroups($id)
@@ -91,7 +89,7 @@ class EditProfileController extends Controller
         $user = User::find($id);
         $user->roles()->sync([]);
 
-        foreach(Input::get('roles') as $role) {
+        foreach (Input::get('roles') as $role) {
             Bouncer::assign($role)->to($user);
         }
 
