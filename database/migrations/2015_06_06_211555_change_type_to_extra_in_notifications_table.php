@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class ChangeTypeToExtraInNotificationsTable
+ */
 class ChangeTypeToExtraInNotificationsTable extends Migration
 {
 

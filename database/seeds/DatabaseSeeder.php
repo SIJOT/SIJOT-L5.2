@@ -13,12 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserTableSeeder::class);
         $this->call(GroupTableSeed::class);
-
-        // Mailing system.
         $this->call(mailingUsers::class);
         $this->call(mailingGroups::class);
         $this->call(mailingUsersAssignGroups::class);
-
         $this->call(notificationSeed::class);
+        $this->call(breakfastMonthsSeeder::class);
     }
 }

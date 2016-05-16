@@ -48,7 +48,7 @@ class BreakfastController extends Controller
 
     /**
      * Display the substription page.
-     * 
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function subScriptionView()
@@ -56,6 +56,14 @@ class BreakfastController extends Controller
         $data['title']  = 'Het ontbijt inschrijven';
         $data['months'] = BreakfastMonths::where('status', 1)->get();
         return view('front-end.ontbijt-subscription', $data);
+    }
+
+    public function store()
+    {
+        // TODO: add mailing logic.
+        // TODO: Add redirect
+        // TODO: add database store logic.
+        // TODO: Add flash message
     }
 
     /**
