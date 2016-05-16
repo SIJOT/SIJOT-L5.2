@@ -52,6 +52,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('tak/{id}', 'TakkenController@group')->name('takken.specific');
 
     Route::get('ontbijt', 'BreakfastController@index')->name('breakfast.index');
+    Route::get('ontbijt/inschrijven', 'BreakfastController@subScriptionView')->name('breakfast.subscription');
 
     Route::get('fotos', 'PhotoController@indexFront')->name('photo.frontend.index');
     Route::get('fotos/{uri}', 'PhotoController@photosTakSpecific')->name('photo.frontend.specific');

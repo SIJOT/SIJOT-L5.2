@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Breakfast;
+use App\BreakfastMonths;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -43,26 +45,31 @@ class BreakfastController extends Controller
 
         return view('front-end.ontbijt', $data);
     }
-    
-    
+
     /**
      * Display the substription page.
+     * 
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function subScriptionView()
     {
-        $data['title'] = '';
-        return view('', $data); 
-    } 
-     
+        $data['title']  = 'Het ontbijt inschrijven';
+        $data['months'] = BreakfastMonths::where('status', 1)->get();
+        return view('front-end.ontbijt-subscription', $data);
+    }
+
     /**
      * Delete a breakfast subscription.
-     * 
-     * @param int, $id, the id in the database.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete($id) 
+    public function delete(Request $request)
     {
-        session()->flash('', ''); 
-        session()->flash('', '');
+        Breakfast::destroy($request->get('id'));
+
+        session()->flash('class', 'alert-success');
+        session()->flash('message', 'De inschrijvingen zijn verwijderd.');
         
         return redirect()->back(302);
     }
